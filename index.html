@@ -439,6 +439,40 @@ footer a{color:var(--muted)}
     });
   }
 
+  /* Contagem anónima para o funil do Radar: só o tipo de ação, a origem (ex.: instagram.com) e a hora.
+     Sem cookies, sem IP, sem dados de quem visita. */
+  var origem = (function () {
+    try {
+      var u = new URLSearchParams(location.search).get("utm_source");
+      if (u) return u;
+      var r = document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, "") : "";
+      return r && r !== location.hostname ? r : "direto";
+    } catch (e) { return ""; }
+  })();
+  function conta(tipo) {
+    if (!C.supabaseUrl || !C.supabaseAnonKey) return;
+    try {
+      fetch(C.supabaseUrl + "/rest/v1/rpc/registar_evento_site", {
+        method: "POST", keepalive: true,
+        headers: { "Content-Type": "application/json", apikey: C.supabaseAnonKey, Authorization: "Bearer " + C.supabaseAnonKey },
+        body: JSON.stringify({ p_tipo: tipo, p_origem: origem })
+      }).catch(function () {});
+    } catch (e) {}
+  }
+  conta("visita");
+  var jaContou = {};
+  function contaUmaVez(tipo) { if (!jaContou[tipo]) { jaContou[tipo] = 1; conta(tipo); } }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a,button");
+    if (!a) return;
+    if (a.hasAttribute("data-wa") || /wa\.me/.test(a.href || "")) contaUmaVez("whatsapp");
+    else if (/instagram\.com/.test(a.href || "")) contaUmaVez("instagram");
+    else if (a.id === "cQuero") contaUmaVez("configurador");
+  });
+  document.addEventListener("focusin", function (e) {
+    if (e.target.closest && e.target.closest("#pedido")) contaUmaVez("formulario");
+  });
+
   /* Separadores (personalização e sugestões). */
   document.querySelectorAll("[data-tabs]").forEach(function (bar) {
     var tabs = bar.querySelectorAll("[role=tab]");
