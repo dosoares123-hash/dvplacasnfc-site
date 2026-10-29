@@ -214,8 +214,10 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 .btn-insta{justify-self:start;background:linear-gradient(90deg,#d6249f,#fd5949);color:#fff;border-color:transparent}
 .btn-insta:hover{filter:brightness(1.08)}
 /* floating whatsapp */
-.conf{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
-@media (max-width:860px){.conf{grid-template-columns:1fr;gap:20px}.conf-prev{order:-1;min-height:0;padding:20px}.conf-prev .plaque{width:min(200px,56vw)}.conf-prev .note{display:none}}
+.conf{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.conf{align-items:start}
+.conf-prev{position:sticky;top:84px}
+@media (max-width:860px){.conf{grid-template-columns:1fr;gap:20px}.conf-prev{position:static;min-height:0;padding:24px 20px}.conf-prev .plaque{width:min(240px,66vw)}}
 .conf-form{display:grid;gap:16px}
 .conf-f{border:0;margin:0;padding:0;display:grid;gap:8px}
 .conf-f legend{font-size:14px;font-weight:600;color:var(--muted);padding:0;margin-bottom:8px}
@@ -359,7 +361,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 
 <section id="criar">
   <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Oficina</p><h2>Crie a sua placa agora</h2><p class="lead">Escreva o nome, escolha a frase, a posição, o estilo das letras e as cores. A placa muda à medida que escolhe. No fim, envie-nos o pedido com um toque.</p></div>
+    <div class="sec-head"><p class="eyebrow">Oficina</p><h2>Crie a sua placa agora</h2><p class="lead">Escreva o nome, escolha a frase, a posição, as letras e as cores. A placa muda à medida que escolhe. No fim, veja o resultado e envie-nos o pedido com um toque.</p></div>
     <div class="conf">
       <form class="card conf-form" id="conf" onsubmit="return false">
         <label for="cNome">Nome do negócio<input id="cNome" maxlength="28" value="O seu negócio"></label>
@@ -367,14 +369,14 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
         <label for="cFrase">Frase principal<input id="cFrase" maxlength="24" value="Avalie-nos"></label>
         <div class="chips-s" id="cFrases" aria-label="Frases sugeridas"></div>
         <fieldset class="conf-f"><legend>Posição do nome</legend><div class="chips-s" id="cPos"><button type="button" aria-pressed="true" data-v="cima">Em cima</button><button type="button" aria-pressed="false" data-v="centro">Ao centro</button><button type="button" aria-pressed="false" data-v="baixo">Em baixo</button></div></fieldset>
-        <fieldset class="conf-f"><legend>Estilo das letras</legend><div class="chips-s" id="cFonte"></div></fieldset>
+        <fieldset class="conf-f"><legend>Letra do nome da empresa</legend><div class="chips-s" id="cFonteNome"></div></fieldset>
+        <fieldset class="conf-f"><legend>Letra da frase</legend><div class="chips-s" id="cFonteFrase"></div></fieldset>
         <fieldset class="conf-f"><legend>Cor da placa</legend><div class="sws" id="cBase"><button type="button" aria-label="Preto" title="Preto" aria-pressed="true" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f1ede4" style="background:#f1ede4"></button><button type="button" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#5e5e62" style="background:#5e5e62"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#1f3a8a" style="background:#1f3a8a"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#1f5a3a" style="background:#1f5a3a"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#8f1d2e" style="background:#8f1d2e"></button><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#c9a24f" style="background:#c9a24f"></button></div></fieldset>
         <fieldset class="conf-f"><legend>Cor das letras</legend><div class="sws" id="cTxt"><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="true" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f7f4ee" style="background:#f7f4ee"></button><button type="button" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#111114" style="background:#111114"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#c0263f" style="background:#c0263f"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#3b6cf0" style="background:#3b6cf0"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#3fa46a" style="background:#3fa46a"></button><button type="button" aria-label="Prateado" title="Prateado" aria-pressed="false" data-c="#c7c9cc" style="background:#c7c9cc"></button></div></fieldset>
         <fieldset class="conf-f"><legend>Material</legend><div class="chips-s" id="cMat"><button type="button" aria-pressed="false" data-v="PLA">PLA · desde 19 €</button><button type="button" aria-pressed="true" data-v="PETG">PETG · desde 24 €</button></div></fieldset>
         <fieldset class="conf-f"><legend>Tipo de link</legend><div class="chips-s" id="cLink"><button type="button" aria-pressed="true" data-v="direto">Direto (definitivo)</button><button type="button" aria-pressed="false" data-v="gerido">Gerido (pode mudar)</button></div><p class="hint" id="cLinkHint"></p></fieldset>
-        <button class="btn btn-gold" type="button" id="cQuero" style="justify-self:start">Quero esta placa</button>
       </form>
-      <div class="mini conf-prev" aria-live="polite"><div class="plaque" id="cPlaca"><div class="p-name" id="pvNome">O seu negócio</div><div class="p-stars" id="pvStars">★★★★★</div><div class="p-title" id="pvFrase">Avalie-nos</div><div class="p-tap" id="pvTap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div><div class="p-hint" id="pvHint">Encoste o telemóvel</div></div><p class="note" style="text-align:center;margin:16px 0 0">Pré-visualização aproximada. Recebe a prova final em 24 horas.</p></div>
+      <div class="mini conf-prev" aria-live="polite"><div class="plaque" id="cPlaca"><div class="p-name" id="pvNome">O seu negócio</div><div class="p-stars" id="pvStars">★★★★★</div><div class="p-title" id="pvFrase">Avalie-nos</div><div class="p-tap" id="pvTap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div><div class="p-hint" id="pvHint">Encoste o telemóvel</div></div><p class="note" style="text-align:center;margin:16px 0 0">Pré-visualização aproximada. Recebe a prova final em 24 horas.</p><button class="btn btn-gold" type="button" id="cQuero" style="margin-top:16px">Quero esta placa</button></div>
     </div>
   </div>
 </section>
@@ -596,7 +598,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
     direto: "Abre logo a sua página e fica bloqueado para sempre.",
     gerido: "Pode mudar o destino sem trocar a placa e recebe o relatório de toques."
   };
-  var st = { dest: "google", pos: "cima", fonte: "moderno", base: "#0c0c0e", txt: "#d4ad5b", mat: "PETG", link: "direto" };
+  var st = { dest: "google", pos: "cima", fonteNome: "moderno", fonteFrase: "moderno", base: "#0c0c0e", txt: "#d4ad5b", mat: "PETG", link: "direto" };
   var escolhida = false;
 
   function lum(hex) { var n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255; }
@@ -622,20 +624,21 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   }
 
   function draw() {
-    var pl = $("cPlaca"), F = FONTES[st.fonte];
+    var pl = $("cPlaca"), F = FONTES[st.fonteNome], G = FONTES[st.fonteFrase];
     pl.style.transform = "none";
     pintar(pl, st.base, st.txt);
     $("pvNome").textContent = $("cNome").value.trim() || "O seu negócio";
     $("pvFrase").textContent = $("cFrase").value.trim() || " ";
-    [$("pvNome"), $("pvFrase")].forEach(function (e) { e.style.fontFamily = F.f; e.style.fontWeight = F.w; });
+    $("pvNome").style.fontFamily = F.f; $("pvNome").style.fontWeight = F.w;
+    $("pvFrase").style.fontFamily = G.f; $("pvFrase").style.fontWeight = G.w;
     /* O nome da empresa é o destaque da placa: maior, ajustado ao comprimento. */
     var n = $("pvNome"), len = n.textContent.length;
     n.style.fontSize = Math.round((len <= 9 ? 34 : len <= 14 ? 28 : len <= 20 ? 22 : 18) * F.k) + "px";
     n.style.letterSpacing = F.up ? F.ls : "0"; n.style.textTransform = F.up ? "uppercase" : "none";
     n.style.lineHeight = "1.1";
-    $("pvFrase").style.letterSpacing = F.ls;
-    $("pvFrase").style.textTransform = "none";
-    $("pvFrase").style.fontSize = Math.round(($("pvFrase").textContent.length > 14 ? 17 : 21) * F.k) + "px";
+    $("pvFrase").style.letterSpacing = G.up ? G.ls : "0";
+    $("pvFrase").style.textTransform = G.up ? "uppercase" : "none";
+    $("pvFrase").style.fontSize = Math.round(($("pvFrase").textContent.length > 14 ? 17 : 21) * G.k) + "px";
     $("pvStars").hidden = st.dest !== "google";
     var ordem = { cima: [0, 1, 2, 3, 4], centro: [2, 0, 1, 3, 4], baixo: [4, 0, 1, 2, 3] }[st.pos];
     ["pvNome", "pvStars", "pvFrase", "pvTap", "pvHint"].forEach(function (id, i) { $(id).style.order = ordem[i]; });
@@ -646,7 +649,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 
   function textoPlaca() {
     return "Placa “" + ($("cNome").value.trim() || "O seu negócio") + "” com a frase “" + ($("cFrase").value.trim() || "-") + "”, a abrir " + DESTINOS[st.dest] +
-      ". Nome " + { cima: "em cima", centro: "ao centro", baixo: "em baixo" }[st.pos] + ", estilo de letra " + FONTES[st.fonte].nome.toLowerCase() +
+      ". Nome " + { cima: "em cima", centro: "ao centro", baixo: "em baixo" }[st.pos] + ", letra do nome " + FONTES[st.fonteNome].nome.toLowerCase() + ", letra da frase " + FONTES[st.fonteFrase].nome.toLowerCase() +
       ". Cor da placa: " + nomeCor("cBase", st.base) + ", letras: " + nomeCor("cTxt", st.txt) + ". Material " + st.mat + ", link " + st.link + ".";
   }
 
@@ -684,10 +687,12 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   }
 
   /* Estilos de letra a partir de FONTES. */
-  $("cFonte").innerHTML = Object.keys(FONTES).map(function (k) {
+  function botoesFontes(sel) { return Object.keys(FONTES).map(function (k) {
     var F = FONTES[k];
-    return '<button type="button" data-v="' + k + '" aria-pressed="' + (k === st.fonte) + '" style="font-family:' + F.f.replace(/"/g, "'") + ';font-weight:' + F.w + ';font-size:' + Math.round(15 * F.k) + 'px' + (F.up ? ';text-transform:uppercase;letter-spacing:.06em' : "") + '">' + F.nome + "</button>";
-  }).join("");
+    return '<button type="button" data-v="' + k + '" aria-pressed="' + (k === sel) + '" style="font-family:' + F.f.replace(/"/g, "'") + ';font-weight:' + F.w + ';font-size:' + Math.round(15 * F.k) + 'px' + (F.up ? ';text-transform:uppercase;letter-spacing:.06em' : "") + '">' + F.nome + "</button>";
+  }).join(""); }
+  $("cFonteNome").innerHTML = botoesFontes(st.fonteNome);
+  $("cFonteFrase").innerHTML = botoesFontes(st.fonteFrase);
 
   function grupo(gid, chave, attr) {
     $(gid).addEventListener("click", function (e) {
@@ -697,7 +702,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       st[chave] = v; marcar(gid, attr, v); draw();
     });
   }
-  grupo("cDest", "dest", "data-v"); grupo("cPos", "pos", "data-v"); grupo("cFonte", "fonte", "data-v");
+  grupo("cDest", "dest", "data-v"); grupo("cPos", "pos", "data-v"); grupo("cFonteNome", "fonteNome", "data-v"); grupo("cFonteFrase", "fonteFrase", "data-v");
   grupo("cBase", "base", "data-c"); grupo("cTxt", "txt", "data-c"); grupo("cMat", "mat", "data-v"); grupo("cLink", "link", "data-v");
   $("cFrases").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; $("cFrase").value = b.dataset.f; draw(); });
   $("cNome").addEventListener("input", draw); $("cFrase").addEventListener("input", draw);
