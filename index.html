@@ -657,6 +657,12 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       ". Cor da placa: " + nomeCor("cBase", st.base) + ", letras: " + nomeCor("cTxt", st.txt) + ". Material " + st.mat + ", link " + st.link + ".";
   }
 
+  /* O desenho vai com o pedido para o Radar mostrar a placa exatamente como o cliente a criou. */
+  function desenho() {
+    return { v: 1, nome: ($("cNome").value.trim() || "O seu negócio").slice(0, 40), frase: $("cFrase").value.trim().slice(0, 40), dest: st.dest, pos: st.pos,
+      fn: st.fonteNome, ff: st.fonteFrase, base: st.base, txt: st.txt, mat: st.mat, link: st.link };
+  }
+
   /* Mostra no formulário a placa escolhida (pré-visualização pequena + resumo). */
   function resumo() {
     escolhida = true;
@@ -763,11 +769,12 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
     var body = {
       p_nome: nome, p_telefone: tel, p_email: String(d.get("email") || "").trim(), p_negocio: String(d.get("negocio") || "").trim(),
       p_material: String(d.get("material") || ""), p_quantidade: parseInt(d.get("quantidade"), 10) || 1,
-      p_mensagem: ((escolhida ? textoPlaca() + "\n" : "") + String(d.get("mensagem") || "").trim()).trim().slice(0, 2000)
+      p_mensagem: ((escolhida ? textoPlaca() + "\n" : "") + String(d.get("mensagem") || "").trim()).trim().slice(0, 2000),
+      p_desenho: escolhida ? desenho() : null
     };
     var resumo = "Olá! Pedido de orçamento:\n" + (body.p_negocio ? "Negócio: " + body.p_negocio + "\n" : "") + "Material: " + body.p_material + "\nPlacas: " + body.p_quantidade + (body.p_mensagem ? "\n" + body.p_mensagem : "");
     btn.disabled = true; btn.textContent = "A enviar…";
-    fetch(C.supabaseUrl + "/rest/v1/rpc/enviar_pedido", {
+    fetch(C.supabaseUrl + "/rest/v1/rpc/enviar_pedido_v2", {
       method: "POST",
       headers: { "Content-Type": "application/json", apikey: C.supabaseAnonKey, Authorization: "Bearer " + C.supabaseAnonKey },
       body: JSON.stringify(body)
