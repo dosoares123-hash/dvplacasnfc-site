@@ -194,6 +194,14 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 .lk .ideal{margin:0;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
 .lk .ideal b{color:var(--fg)}
 /* oficina */
+.plaque.real{background:url(placa-mesa.jpg) center/100% 100% no-repeat!important;aspect-ratio:640/909;min-height:0;overflow:hidden;border:0!important;border-radius:16px;width:240px!important;padding:26px 30px 140px 42px;align-content:center;gap:10px}
+.plaque.real .p-tap,.plaque.real .p-hint{display:none}
+.escolha .esc-prev .plaque.real{margin-bottom:-218px}
+.modelos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.modelos button{display:grid;gap:8px;justify-items:center;padding:10px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--muted);font:600 14px/1.2 var(--body);cursor:pointer;text-align:center}
+.modelos button[aria-pressed="true"]{border-color:var(--gold);color:var(--fg);background:rgba(212,173,91,.12)}
+.modelos .thumb{width:64px;aspect-ratio:3/4;border-radius:8px;background:linear-gradient(160deg,#1d1d22,#0b0b0d);border:1px solid #34333a}
+.modelos .thumb.foto{background:url(placa-mesa.jpg) center/cover;border:0}
 .conf-f .hint{font-size:13px;color:var(--muted);margin:0}
 .plaque .p-name,.plaque .p-title{transition:color .2s}
 #cPlaca .p-name,#cPlaca .p-title{overflow-wrap:anywhere;max-width:100%}
@@ -367,6 +375,10 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
     <div class="sec-head"><p class="eyebrow">Oficina</p><h2>Crie a sua placa agora</h2><p class="lead">Escreva o nome, escolha a frase, a posição, as letras e as cores. A placa muda à medida que escolhe. No fim, veja o resultado e envie-nos o pedido com um toque.</p></div>
     <div class="conf">
       <form class="card conf-form" id="conf" onsubmit="return false">
+        <fieldset class="conf-f"><legend>Modelo da placa</legend><div class="modelos" id="cModelo">
+          <button type="button" data-v="mesa" aria-pressed="true"><span class="thumb foto"></span>Placa de mesa<br><small style="font-weight:500">preta texturada, com símbolo NFC</small></button>
+          <button type="button" data-v="livre" aria-pressed="false"><span class="thumb"></span>À medida<br><small style="font-weight:500">escolhe a cor da placa</small></button>
+        </div></fieldset>
         <label for="cNome">Nome do negócio<input id="cNome" maxlength="28" value="O seu negócio"></label>
         <fieldset class="conf-f"><legend>O que a placa abre</legend><div class="chips-s" id="cDest"><button type="button" aria-pressed="true" data-v="google">Avaliações</button><button type="button" aria-pressed="false" data-v="insta">Instagram</button><button type="button" aria-pressed="false" data-v="wifi">Wi-Fi</button><button type="button" aria-pressed="false" data-v="menu">Menu</button><button type="button" aria-pressed="false" data-v="whats">WhatsApp</button><button type="button" aria-pressed="false" data-v="cartao">Cartão de visita</button><button type="button" aria-pressed="false" data-v="pagar">Pagamentos</button></div></fieldset>
         <label for="cFrase">Frase principal<input id="cFrase" maxlength="24" value="Avalie-nos"></label>
@@ -374,7 +386,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
         <fieldset class="conf-f"><legend>Posição do nome</legend><div class="chips-s" id="cPos"><button type="button" aria-pressed="true" data-v="cima">Em cima</button><button type="button" aria-pressed="false" data-v="centro">Ao centro</button><button type="button" aria-pressed="false" data-v="baixo">Em baixo</button></div></fieldset>
         <fieldset class="conf-f"><legend>Letra do nome da empresa</legend><div class="chips-s" id="cFonteNome"></div></fieldset>
         <fieldset class="conf-f"><legend>Letra da frase</legend><div class="chips-s" id="cFonteFrase"></div></fieldset>
-        <fieldset class="conf-f"><legend>Cor da placa</legend><div class="sws" id="cBase"><button type="button" aria-label="Preto" title="Preto" aria-pressed="true" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f1ede4" style="background:#f1ede4"></button><button type="button" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#5e5e62" style="background:#5e5e62"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#1f3a8a" style="background:#1f3a8a"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#1f5a3a" style="background:#1f5a3a"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#8f1d2e" style="background:#8f1d2e"></button><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#c9a24f" style="background:#c9a24f"></button></div></fieldset>
+        <fieldset class="conf-f" id="fsBase"><legend>Cor da placa</legend><div class="sws" id="cBase"><button type="button" aria-label="Preto" title="Preto" aria-pressed="true" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f1ede4" style="background:#f1ede4"></button><button type="button" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#5e5e62" style="background:#5e5e62"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#1f3a8a" style="background:#1f3a8a"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#1f5a3a" style="background:#1f5a3a"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#8f1d2e" style="background:#8f1d2e"></button><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#c9a24f" style="background:#c9a24f"></button></div></fieldset>
         <fieldset class="conf-f"><legend>Cor das letras</legend><div class="sws" id="cTxt"><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="true" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f7f4ee" style="background:#f7f4ee"></button><button type="button" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#111114" style="background:#111114"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#c0263f" style="background:#c0263f"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#3b6cf0" style="background:#3b6cf0"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#3fa46a" style="background:#3fa46a"></button><button type="button" aria-label="Prateado" title="Prateado" aria-pressed="false" data-c="#c7c9cc" style="background:#c7c9cc"></button></div></fieldset>
         <fieldset class="conf-f"><legend>Material</legend><div class="chips-s" id="cMat"><button type="button" aria-pressed="false" data-v="PLA">PLA · desde 19 €</button><button type="button" aria-pressed="true" data-v="PETG">PETG · desde 24 €</button></div></fieldset>
         <fieldset class="conf-f"><legend>Tipo de link</legend><div class="chips-s" id="cLink"><button type="button" aria-pressed="true" data-v="direto">Direto (definitivo)</button><button type="button" aria-pressed="false" data-v="gerido">Gerido (pode mudar)</button></div><p class="hint" id="cLinkHint"></p></fieldset>
@@ -602,7 +614,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
     direto: "Abre logo a sua página e fica bloqueado para sempre.",
     gerido: "Pode mudar o destino sem trocar a placa e recebe o relatório de toques."
   };
-  var st = { dest: "google", pos: "cima", fonteNome: "moderno", fonteFrase: "moderno", base: "#0c0c0e", txt: "#d4ad5b", mat: "PETG", link: "direto" };
+  var st = { modelo: "mesa", dest: "google", pos: "cima", fonteNome: "moderno", fonteFrase: "moderno", base: "#0c0c0e", txt: "#d4ad5b", mat: "PETG", link: "direto" };
   var escolhida = false;
 
   function lum(hex) { var n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255; }
@@ -630,19 +642,24 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   function draw() {
     var pl = $("cPlaca"), F = FONTES[st.fonteNome], G = FONTES[st.fonteFrase];
     pl.style.transform = "none";
-    pintar(pl, st.base, st.txt);
+    var real = st.modelo === "mesa";
+    pl.classList.toggle("real", real); $("fsBase").hidden = real;
+    pintar(pl, real ? "#0c0c0e" : st.base, st.txt);
+    if (real) pl.style.background = "";
     $("pvNome").textContent = $("cNome").value.trim() || "O seu negócio";
     $("pvFrase").textContent = $("cFrase").value.trim() || " ";
     $("pvNome").style.fontFamily = F.f; $("pvNome").style.fontWeight = F.w;
     $("pvFrase").style.fontFamily = G.f; $("pvFrase").style.fontWeight = G.w;
     /* O nome da empresa é o destaque da placa: maior, ajustado ao comprimento. */
     var n = $("pvNome"), len = n.textContent.length;
-    n.style.fontSize = Math.round((len <= 9 ? 34 : len <= 14 ? 28 : len <= 20 ? 22 : 18) * F.k) + "px";
+    var esc = st.modelo === "mesa" ? 0.78 : 1;
+    n.style.fontSize = Math.round((len <= 9 ? 34 : len <= 14 ? 28 : len <= 20 ? 22 : 18) * F.k * esc) + "px";
     n.style.letterSpacing = F.up ? F.ls : "0"; n.style.textTransform = F.up ? "uppercase" : "none";
     n.style.lineHeight = "1.1";
     $("pvFrase").style.letterSpacing = G.up ? G.ls : "0";
     $("pvFrase").style.textTransform = G.up ? "uppercase" : "none";
-    $("pvFrase").style.fontSize = Math.round(($("pvFrase").textContent.length > 14 ? 17 : 21) * G.k) + "px";
+    $("pvFrase").style.fontSize = Math.round(($("pvFrase").textContent.length > 14 ? 17 : 21) * G.k * esc) + "px";
+    $("pvStars").style.fontSize = st.modelo === "mesa" ? "17px" : "";
     $("pvStars").hidden = st.dest !== "google";
     var ordem = { cima: [0, 1, 2, 3, 4], centro: [2, 0, 1, 3, 4], baixo: [4, 0, 1, 2, 3] }[st.pos];
     ["pvNome", "pvStars", "pvFrase", "pvTap", "pvHint"].forEach(function (id, i) { $(id).style.order = ordem[i]; });
@@ -654,13 +671,13 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   function textoPlaca() {
     return "Placa “" + ($("cNome").value.trim() || "O seu negócio") + "” com a frase “" + ($("cFrase").value.trim() || "-") + "”, a abrir " + DESTINOS[st.dest] +
       ". Nome " + { cima: "em cima", centro: "ao centro", baixo: "em baixo" }[st.pos] + ", letra do nome " + FONTES[st.fonteNome].nome.toLowerCase() + ", letra da frase " + FONTES[st.fonteFrase].nome.toLowerCase() +
-      ". Cor da placa: " + nomeCor("cBase", st.base) + ", letras: " + nomeCor("cTxt", st.txt) + ". Material " + st.mat + ", link " + st.link + ".";
+      ". " + (st.modelo === "mesa" ? "Modelo: placa de mesa preta texturada" : "Cor da placa: " + nomeCor("cBase", st.base)) + ", letras: " + nomeCor("cTxt", st.txt) + ". Material " + st.mat + ", link " + st.link + ".";
   }
 
   /* O desenho vai com o pedido para o Radar mostrar a placa exatamente como o cliente a criou. */
   function desenho() {
-    return { v: 1, nome: ($("cNome").value.trim() || "O seu negócio").slice(0, 40), frase: $("cFrase").value.trim().slice(0, 40), dest: st.dest, pos: st.pos,
-      fn: st.fonteNome, ff: st.fonteFrase, base: st.base, txt: st.txt, mat: st.mat, link: st.link };
+    return { v: 1, modelo: st.modelo, nome: ($("cNome").value.trim() || "O seu negócio").slice(0, 40), frase: $("cFrase").value.trim().slice(0, 40), dest: st.dest, pos: st.pos,
+      fn: st.fonteNome, ff: st.fonteFrase, base: st.modelo === "mesa" ? "#0c0c0e" : st.base, txt: st.txt, mat: st.mat, link: st.link };
   }
 
   /* Mostra no formulário a placa escolhida (pré-visualização pequena + resumo). */
@@ -712,7 +729,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       st[chave] = v; marcar(gid, attr, v); draw();
     });
   }
-  grupo("cDest", "dest", "data-v"); grupo("cPos", "pos", "data-v"); grupo("cFonteNome", "fonteNome", "data-v"); grupo("cFonteFrase", "fonteFrase", "data-v");
+  grupo("cModelo", "modelo", "data-v"); grupo("cDest", "dest", "data-v"); grupo("cPos", "pos", "data-v"); grupo("cFonteNome", "fonteNome", "data-v"); grupo("cFonteFrase", "fonteFrase", "data-v");
   grupo("cBase", "base", "data-c"); grupo("cTxt", "txt", "data-c"); grupo("cMat", "mat", "data-v"); grupo("cLink", "link", "data-v");
   $("cFrases").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; $("cFrase").value = b.dataset.f; draw(); });
   $("cNome").addEventListener("input", draw); $("cFrase").addEventListener("input", draw);
