@@ -14,6 +14,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Figtree:wght@400;500;600&display=swap">
+<!-- Fontes da oficina (só descarregam quando o cliente as escolhe) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cinzel:wght@600&family=Cormorant+Garamond:wght@600&family=Great+Vibes&family=Dancing+Script:wght@700&family=Parisienne&family=Montserrat:wght@300&family=Josefin+Sans:wght@600&family=Bebas+Neue&family=Abril+Fatface&family=Nunito:wght@800&display=swap">
 <style>
 /* Layout: página única, faixas escuras de largura total com conteúdo centrado a 1120px. Tema escuro por design (preto e dourado). */
 :root{
@@ -194,6 +196,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 /* oficina */
 .conf-f .hint{font-size:13px;color:var(--muted);margin:0}
 .plaque .p-name,.plaque .p-title{transition:color .2s}
+#cPlaca .p-name,#cPlaca .p-title{overflow-wrap:anywhere;max-width:100%}
 /* placa escolhida no formulário */
 .escolha{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:14px;border-radius:14px;border:1px solid var(--gold);background:rgba(212,173,91,.08)}
 .escolha .esc-prev{width:96px;overflow:hidden}
@@ -559,11 +562,20 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
      Para acrescentar estilos de letra, junte uma linha em FONTES; frases sugeridas em FRASES. */
   var form = document.getElementById("pedido");
   var $ = function (id) { return document.getElementById(id); };
+  /* k = ajuste de tamanho; up = maiúsculas no nome; ls = espaço entre letras. */
   var FONTES = {
-    moderno: { nome: "Moderno", f: "var(--display)", w: 800, ls: "-.02em" },
-    classico: { nome: "Clássico", f: "Georgia,'Times New Roman',serif", w: 700, ls: "0" },
-    elegante: { nome: "Elegante", f: "var(--body)", w: 500, ls: ".06em", up: true },
-    arredondado: { nome: "Arredondado", f: "'Trebuchet MS','Segoe UI',sans-serif", w: 700, ls: "0" }
+    moderno: { nome: "Moderno", f: "var(--display)", w: 800, ls: "-.01em", k: 1, up: false },
+    classico: { nome: "Clássico", f: "'Playfair Display',Georgia,serif", w: 700, ls: "0", k: 1, up: false },
+    luxo: { nome: "Luxo", f: "'Cinzel',Georgia,serif", w: 600, ls: ".06em", k: .9, up: true },
+    elegante: { nome: "Elegante", f: "'Cormorant Garamond',Georgia,serif", w: 600, ls: ".02em", k: 1.15, up: false },
+    manuscrito: { nome: "Manuscrito", f: "'Great Vibes',cursive", w: 400, ls: "0", k: 1.45, up: false },
+    caligrafia: { nome: "Caligrafia", f: "'Dancing Script',cursive", w: 700, ls: "0", k: 1.2, up: false },
+    assinatura: { nome: "Assinatura", f: "'Parisienne',cursive", w: 400, ls: "0", k: 1.3, up: false },
+    minimalista: { nome: "Minimalista", f: "'Montserrat',sans-serif", w: 300, ls: ".14em", k: .85, up: true },
+    geometrico: { nome: "Geométrico", f: "'Josefin Sans',sans-serif", w: 600, ls: ".08em", k: .95, up: true },
+    impacto: { nome: "Impacto", f: "'Bebas Neue',sans-serif", w: 400, ls: ".04em", k: 1.25, up: true },
+    retro: { nome: "Retro", f: "'Abril Fatface',Georgia,serif", w: 400, ls: "0", k: 1, up: false },
+    arredondado: { nome: "Arredondado", f: "'Nunito',sans-serif", w: 800, ls: "0", k: 1, up: false }
   };
   var DESTINOS = { google: "avaliações Google", insta: "Instagram", wifi: "Wi-Fi", menu: "menu digital", whats: "WhatsApp", cartao: "cartão de visita", pagar: "pagamentos" };
   var FRASES = {
@@ -616,9 +628,14 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
     $("pvNome").textContent = $("cNome").value.trim() || "O seu negócio";
     $("pvFrase").textContent = $("cFrase").value.trim() || " ";
     [$("pvNome"), $("pvFrase")].forEach(function (e) { e.style.fontFamily = F.f; e.style.fontWeight = F.w; });
+    /* O nome da empresa é o destaque da placa: maior, ajustado ao comprimento. */
+    var n = $("pvNome"), len = n.textContent.length;
+    n.style.fontSize = Math.round((len <= 9 ? 34 : len <= 14 ? 28 : len <= 20 ? 22 : 18) * F.k) + "px";
+    n.style.letterSpacing = F.up ? F.ls : "0"; n.style.textTransform = F.up ? "uppercase" : "none";
+    n.style.lineHeight = "1.1";
     $("pvFrase").style.letterSpacing = F.ls;
-    $("pvFrase").style.textTransform = F.up ? "uppercase" : "none";
-    $("pvFrase").style.fontSize = ($("pvFrase").textContent.length > 14 ? 24 : 32) * (F.up ? 0.8 : 1) + "px";
+    $("pvFrase").style.textTransform = "none";
+    $("pvFrase").style.fontSize = Math.round(($("pvFrase").textContent.length > 14 ? 17 : 21) * F.k) + "px";
     $("pvStars").hidden = st.dest !== "google";
     var ordem = { cima: [0, 1, 2, 3, 4], centro: [2, 0, 1, 3, 4], baixo: [4, 0, 1, 2, 3] }[st.pos];
     ["pvNome", "pvStars", "pvFrase", "pvTap", "pvHint"].forEach(function (id, i) { $(id).style.order = ordem[i]; });
@@ -669,7 +686,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   /* Estilos de letra a partir de FONTES. */
   $("cFonte").innerHTML = Object.keys(FONTES).map(function (k) {
     var F = FONTES[k];
-    return '<button type="button" data-v="' + k + '" aria-pressed="' + (k === st.fonte) + '" style="font-family:' + F.f.replace(/"/g, "'") + ';font-weight:' + F.w + (F.up ? ';text-transform:uppercase;letter-spacing:.06em' : "") + '">' + F.nome + "</button>";
+    return '<button type="button" data-v="' + k + '" aria-pressed="' + (k === st.fonte) + '" style="font-family:' + F.f.replace(/"/g, "'") + ';font-weight:' + F.w + ';font-size:' + Math.round(15 * F.k) + 'px' + (F.up ? ';text-transform:uppercase;letter-spacing:.06em' : "") + '">' + F.nome + "</button>";
   }).join("");
 
   function grupo(gid, chave, attr) {
