@@ -191,6 +191,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 .lk.gerido{border-color:var(--gold)}
 .lk.gerido .lk-tag{background:var(--gold);color:var(--gold-ink);border-color:transparent}
 .lk ul{margin:0}
+.lk.gerido .lk-tag.lk-mais{background:transparent;color:var(--gold);border-color:var(--gold)}
 .lk .ideal{margin:0;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
 .lk .ideal b{color:var(--fg)}
 /* tags NFC */
@@ -324,8 +325,8 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   <div class="wrap">
     <div class="sec-head"><p class="eyebrow">Materiais</p><h2>Escolha a resistência certa</h2><p class="lead">Todas as placas levam um chip NFC compatível com qualquer telemóvel recente, já programado com o seu link.</p></div>
     <div class="grid2">
-      <article class="card mat"><h3>PLA</h3><div class="price">desde <b>19 €</b></div><ul><li>Cores vivas e acabamento mate</li><li>Leve e económico</li><li>Ideal para balcões e interiores</li></ul><a class="btn" href="#orcamento" data-material="PLA">Escolher PLA</a></article>
-      <article class="card mat featured"><span class="tag">Mais pedido</span><h3>PETG</h3><div class="price">desde <b>24 €</b></div><ul><li>A opção mais robusta</li><li>Resistente a impactos, humidade e calor</li><li>Para uso intenso todos os dias</li></ul><a class="btn btn-gold" href="#orcamento" data-material="PETG">Escolher PETG</a></article>
+      <article class="card mat featured"><span class="tag">Mais pedido</span><h3>PLA</h3><div class="price">desde <b>19 €</b></div><ul><li>Cores vivas e acabamento mate</li><li>Leve e económico</li><li>Ideal para balcões e interiores</li></ul><a class="btn btn-gold" href="#orcamento" data-material="PLA">Escolher PLA</a></article>
+      <article class="card mat"><h3>PETG</h3><div class="price">desde <b>24 €</b></div><ul><li>A opção mais robusta</li><li>Resistente a impactos, humidade e calor</li><li>Para uso intenso todos os dias</li></ul><a class="btn" href="#orcamento" data-material="PETG">Escolher PETG</a></article>
     </div>
     <p class="note">Preços por placa. Descontos para várias placas no mesmo pedido.</p>
   </div>
@@ -365,7 +366,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
         <p class="ideal"><b>Ideal para:</b> avaliações Google, Wi-Fi ou cartão de visita, que quase nunca mudam.</p>
       </article>
       <article class="card lk gerido">
-        <span class="lk-tag">Pode mudar</span>
+        <span style="display:flex;gap:8px;flex-wrap:wrap"><span class="lk-tag">Pode mudar</span><span class="lk-tag lk-mais">Mais pedido</span></span>
         <h3>Link gerido</h3>
         <ul>
           <li>A placa abre um endereço nosso, que leva o cliente para a sua página.</li>
@@ -398,7 +399,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
         <fieldset class="conf-f" id="fsBase"><legend>Cor da placa</legend><div class="sws" id="cBase"><button type="button" aria-label="Preto" title="Preto" aria-pressed="true" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f1ede4" style="background:#f1ede4"></button><button type="button" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#5e5e62" style="background:#5e5e62"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#1f3a8a" style="background:#1f3a8a"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#1f5a3a" style="background:#1f5a3a"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#8f1d2e" style="background:#8f1d2e"></button><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#c9a24f" style="background:#c9a24f"></button></div></fieldset>
         <fieldset class="conf-f"><legend>Cor das letras</legend><div class="sws" id="cTxt"><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="true" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f7f4ee" style="background:#f7f4ee"></button><button type="button" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#111114" style="background:#111114"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#c0263f" style="background:#c0263f"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#3b6cf0" style="background:#3b6cf0"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#3fa46a" style="background:#3fa46a"></button><button type="button" aria-label="Prateado" title="Prateado" aria-pressed="false" data-c="#c7c9cc" style="background:#c7c9cc"></button></div></fieldset>
         <fieldset class="conf-f"><legend>Material</legend><div class="chips-s" id="cMat"><button type="button" aria-pressed="true" data-v="PLA">PLA · desde 19 €</button><button type="button" aria-pressed="false" data-v="PETG">PETG · desde 24 €</button></div></fieldset>
-        <fieldset class="conf-f"><legend>Tipo de link</legend><div class="chips-s" id="cLink"><button type="button" aria-pressed="true" data-v="direto">Direto (definitivo)</button><button type="button" aria-pressed="false" data-v="gerido">Gerido (pode mudar)</button></div><p class="hint" id="cLinkHint"></p></fieldset>
+        <fieldset class="conf-f"><legend>Tipo de link</legend><div class="chips-s" id="cLink"><button type="button" aria-pressed="true" data-v="direto">Direto (definitivo)</button><button type="button" aria-pressed="false" data-v="gerido">Gerido (pode mudar) · Mais pedido</button></div><p class="hint" id="cLinkHint"></p></fieldset>
       </form>
       <div class="mini conf-prev" aria-live="polite"><div class="plaque" id="cPlaca"><div class="p-name" id="pvNome">O seu negócio</div><div class="p-stars" id="pvStars">★★★★★</div><div class="p-title" id="pvFrase">Avalie-nos</div><div class="p-tap" id="pvTap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div><div class="p-hint" id="pvHint">Encoste o telemóvel</div></div><p class="note" style="text-align:center;margin:16px 0 0">Pré-visualização aproximada. Recebe a prova final em 24 horas.</p><button class="btn btn-gold" type="button" id="cQuero" style="margin-top:16px">Quero esta placa</button></div>
     </div>
