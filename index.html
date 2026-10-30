@@ -193,6 +193,14 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 .lk ul{margin:0}
 .lk .ideal{margin:0;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
 .lk .ideal b{color:var(--fg)}
+/* tags NFC */
+.ntag{position:relative;width:180px;height:180px;border-radius:50%;background:linear-gradient(160deg,#1d1d22,#0b0b0d);border:1px solid #34333a;box-shadow:0 24px 50px rgba(0,0,0,.5);display:grid;justify-items:center;align-content:center;gap:6px;color:var(--gold);text-align:center}
+.ntag-r{border-radius:44px;width:170px;height:200px}
+.ntag-k{border-radius:28px 28px 60px 60px;width:160px;height:200px}
+.ntag-furo{position:absolute;top:14px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--card-2);border:2px solid #34333a}
+.ntag-ic svg{width:34px;height:34px}
+.ntag-t{font-family:var(--display);font-weight:800;font-size:19px;color:var(--fg)}
+.ntag-nfc svg{width:22px;height:22px;opacity:.85}
 /* oficina */
 .plaque.real{background:url(placa-mesa.jpg) center/100% 100% no-repeat!important;aspect-ratio:640/909;min-height:0;overflow:hidden;border:0!important;border-radius:16px;width:240px!important;padding:26px 30px 140px 42px;align-content:center;gap:10px}
 .plaque.real .p-tap,.plaque.real .p-hint{display:none}
@@ -257,6 +265,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       <li><a href="#personalizacao">Personalização</a></li>
       <li><a href="#criar">Criar</a></li>
       <li><a href="#sugestoes">Sugestões</a></li>
+      <li><a href="#tags">Tags</a></li>
       <li><a href="#como">Como funciona</a></li>
       <li><a href="#faq">Perguntas</a></li>
     </ul></nav>
@@ -424,7 +433,30 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   </div>
 </section>
 
-<section id="como" class="band">
+<section id="tags" class="band">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Tags NFC</p><h2>Tags pequenas, para levar para todo o lado</h2><p class="lead">Do tamanho de um porta-chaves, impressas em 3D com o nome e as cores que escolher. Quem encontrar a tag encosta o telemóvel e vê logo a informação que decidiu mostrar.</p></div>
+    <div class="tabs" role="tablist" aria-label="Tipos de tags" data-tabs="tags">
+      <button role="tab" aria-selected="true" data-tab="t-animais">Animais</button>
+      <button role="tab" aria-selected="false" data-tab="t-criancas">Crianças</button>
+      <button role="tab" aria-selected="false" data-tab="t-negocios">Negócios</button>
+    </div>
+    <div class="panel" role="tabpanel" id="t-animais">
+      <div class="mini"><div class="ntag"><span class="ntag-furo"></span><span class="ntag-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6" cy="9" rx="2" ry="2.6"/><ellipse cx="10" cy="5.5" rx="2" ry="2.6"/><ellipse cx="14" cy="5.5" rx="2" ry="2.6"/><ellipse cx="18" cy="9" rx="2" ry="2.6"/><path d="M12 11c-3 0-6 4-6 6.5 0 2 2 2.5 3 2s2-.8 3-.8 2 .3 3 .8 3 0 3-2c0-2.5-3-6.5-6-6.5z"/></svg></span><span class="ntag-t">Bolinhas</span><span class="ntag-nfc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></span></div></div>
+      <div><h3>Tag para a coleira</h3><p class="lead" style="font-size:16px">Se o seu animal se perder, quem o encontrar encosta o telemóvel à tag e vê logo como o contactar.</p><ul><li>Nome do animal e o seu telefone ou WhatsApp</li><li>Notas úteis: alergias, medicação, veterinário</li><li>Com link gerido, atualiza os dados sem trocar a tag</li><li>Leve e resistente à água (PETG)</li></ul><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-tag="Tag para animais (coleira)">Quero esta tag</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="t-criancas" hidden>
+      <div class="mini"><div class="ntag ntag-r"><span class="ntag-furo"></span><span class="ntag-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></span><span class="ntag-t">Contacto</span><span class="ntag-nfc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></span></div></div>
+      <div><h3>Tag de contacto para crianças</h3><p class="lead" style="font-size:16px">Para a mochila, o casaco ou a pulseira em passeios, praias e eventos. Se a criança se perder, quem a ajudar liga logo aos pais.</p><ul><li>Mostra só o contacto dos pais e o que escolher</li><li>Recomendamos não pôr o nome completo nem a morada da criança</li><li>Pode juntar informação importante, como alergias</li><li>Com link gerido, muda os contactos quando quiser</li></ul><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-tag="Tag de contacto para crianças">Quero esta tag</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="t-negocios" hidden>
+      <div class="mini"><div class="ntag ntag-k"><span class="ntag-furo"></span><span class="ntag-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span><span class="ntag-t">A sua marca</span><span class="ntag-nfc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></span></div></div>
+      <div><h3>Tag porta-chaves para negócios</h3><p class="lead" style="font-size:16px">Um cartão de visita que nunca se perde, ou um brinde para os seus clientes com a sua marca.</p><ul><li>Abre o seu contacto, Instagram, avaliações ou site</li><li>Ideal para oferecer a clientes e equipas</li><li>Com o logótipo e as cores da sua marca</li><li>Preços especiais por quantidade</li></ul><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-tag="Tags porta-chaves para negócios">Quero estas tags</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="como">
   <div class="wrap">
     <div class="sec-head"><p class="eyebrow">Como funciona</p><h2>Do pedido à entrega em quatro passos</h2></div>
     <ol class="steps" style="list-style:none;margin:0;padding:0">
@@ -745,6 +777,15 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       if (a.dataset.nome) cfg.nome = a.dataset.nome;
       if (a.dataset.mat) cfg.mat = a.dataset.mat;
       aplicar(cfg); resumo(); irPara("pedido", "fNome");
+      return;
+    }
+    var tg = e.target.closest("[data-tag]");
+    if (tg) {
+      e.preventDefault();
+      var msg = $("fMsg"), linha = "Quero: " + tg.dataset.tag + ".";
+      if (msg.value.indexOf(linha) < 0) msg.value = (linha + (msg.value ? "\n" + msg.value : ""));
+      escolhida = false; $("escolha").hidden = true;
+      irPara("pedido", "fNome");
       return;
     }
     var m = e.target.closest("[data-material]");
