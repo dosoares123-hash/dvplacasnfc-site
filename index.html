@@ -325,8 +325,8 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   <div class="wrap">
     <div class="sec-head"><p class="eyebrow">Materiais</p><h2>Escolha a resistência certa</h2><p class="lead">Todas as placas levam um chip NFC compatível com qualquer telemóvel recente, já programado com o seu link.</p></div>
     <div class="grid2">
-      <article class="card mat featured"><span class="tag">Mais pedido</span><h3>PLA</h3><div class="price">desde <b>19 €</b></div><ul><li>Cores vivas e acabamento mate</li><li>Leve e económico</li><li>Ideal para balcões e interiores</li></ul><a class="btn btn-gold" href="#orcamento" data-material="PLA">Escolher PLA</a></article>
-      <article class="card mat"><h3>PETG</h3><div class="price">desde <b>24 €</b></div><ul><li>A opção mais robusta</li><li>Resistente a impactos, humidade e calor</li><li>Para uso intenso todos os dias</li></ul><a class="btn" href="#orcamento" data-material="PETG">Escolher PETG</a></article>
+      <article class="card mat featured"><span class="tag">Mais pedido</span><h3>PLA</h3><div class="price">desde <b>19 €</b></div><ul><li>Cores vivas e acabamento mate</li><li>Leve e económico</li><li>Ideal para balcões e interiores</li></ul><a class="btn btn-gold" href="#orcamento" data-material="PLA">Escolher PLA</a><a href="produtos/placa-mesa-pla.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
+      <article class="card mat"><h3>PETG</h3><div class="price">desde <b>24 €</b></div><ul><li>A opção mais robusta</li><li>Resistente a impactos, humidade e calor</li><li>Para uso intenso todos os dias</li></ul><a class="btn" href="#orcamento" data-material="PETG">Escolher PETG</a><a href="produtos/placa-mesa-petg.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
     </div>
     <p class="note">Preços por placa. Descontos para várias placas no mesmo pedido.</p>
   </div>
@@ -530,7 +530,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 <footer>
   <div class="wrap">
     <span>© <span id="ano">2026</span> D&amp;V Placas NFC · Placas NFC personalizadas, impressas em 3D em Portugal</span>
-    <span style="display:flex;gap:18px;flex-wrap:wrap"><a href="https://instagram.com/dv_placasnfc" target="_blank" rel="noopener">Instagram</a><a href="privacidade.html">Política de privacidade</a></span>
+    <span style="display:flex;gap:18px;flex-wrap:wrap"><a href="produtos/placa-mesa-pla.html">Produtos</a><a href="https://instagram.com/dv_placasnfc" target="_blank" rel="noopener">Instagram</a><a href="privacidade.html">Política de privacidade</a></span>
   </div>
 </footer>
 
@@ -744,6 +744,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
     if (cfg.mat) st.mat = cfg.mat;
     marcar("cDest", "data-v", st.dest); marcar("cLink", "data-v", st.link); marcar("cMat", "data-v", st.mat);
     draw();
+
   }
 
   /* Estilos de letra a partir de FONTES. */
@@ -813,6 +814,19 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   })();
 
   draw();
+
+  /* Vindo das páginas de produto: ?material=PETG ou ?tag=animais já preenchem a escolha. */
+  (function () {
+    try {
+      var q = new URLSearchParams(location.search), mat = q.get("material"), tag = q.get("tag");
+      if (mat === "PLA" || mat === "PETG") {
+        st.mat = mat; marcar("cMat", "data-v", mat);
+        var r = form.querySelector('input[name=material][value="' + mat + '"]'); if (r) r.checked = true;
+      }
+      var TAGS = { animais: "Tag para animais (coleira)", criancas: "Tag de contacto para crianças", negocios: "Tags porta-chaves para negócios" };
+      if (TAGS[tag]) $("fMsg").value = "Quero: " + TAGS[tag] + ".";
+    } catch (e) {}
+  })();
 
   /* Envio do pedido: guarda no Supabase (função enviar_pedido) e mostra alternativa por WhatsApp. */
   var msg = document.getElementById("formMsg"), btn = document.getElementById("fBtn");
