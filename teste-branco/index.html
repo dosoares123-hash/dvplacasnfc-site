@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>D&amp;V Placas NFC | Um toque. Tudo ligado.</title>
+<meta name="description" content="Placas NFC personalizadas, impressas em 3D com o nome e as cores do seu negócio. Um toque abre as avaliações Google, o Instagram, o WhatsApp, o menu ou o Wi-Fi. Envio para todo o país.">
+<meta name="theme-color" content="#ffffff">
+<meta name="facebook-domain-verification" content="rinkzyhp3dbmelx9fyz9rds2w0aqr4" />
+<meta property="og:title" content="D&amp;V Placas NFC · Um toque. Tudo ligado.">
+<meta property="og:description" content="Crie a sua placa NFC personalizada em 1 minuto: avaliações Google, Instagram, WhatsApp, menu e Wi-Fi com um toque. Prova digital em 24 h e envio para todo o país.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:url" content="https://dvplacasnfc.pt/">
+<meta property="og:image" content="https://dvplacasnfc.pt/social/og-site.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="D&amp;V Placas NFC: um toque, tudo ligado.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://dvplacasnfc.pt/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0c0e'/%3E%3Cpath d='M26 22a14 14 0 0 1 0 20M33 17a21 21 0 0 1 0 30M40 12a28 28 0 0 1 0 40' fill='none' stroke='%237c3aed' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Figtree:wght@400;500;600&display=swap">
+<!-- Fontes da oficina (só descarregam quando o cliente as escolhe) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cinzel:wght@600&family=Cormorant+Garamond:wght@600&family=Great+Vibes&family=Dancing+Script:wght@700&family=Parisienne&family=Montserrat:wght@300&family=Josefin+Sans:wght@600&family=Bebas+Neue&family=Abril+Fatface&family=Nunito:wght@800&display=swap">
+<style>
+/* Layout: página única, faixas escuras de largura total com conteúdo centrado a 1120px. Tema escuro por design (preto e dourado). */
+:root{
+  --bg:#ffffff; --band:#f6f6f3; --card:#ffffff; --card-2:#f2f2ee; --line:#e3e3dd;
+  --fg:#0c0c0e; --muted:#55555c; --gold:#7c3aed; --gold-2:#a855f7; --gold-ink:#0c0c0e; --lima:#c6ff1a; --lima-2:#dcff5c;
+  --ok:#7fd3a0; --bad:#ff8f8f;
+  --display:"Sora","Avenir Next","Segoe UI",sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  --r:18px; --max:1120px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+[hidden]{display:none!important}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+section{padding-block:88px;scroll-margin-top:60px}
+section.band{background:var(--band);border-block:1px solid var(--line)}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(28px,4.4vw,44px);font-weight:700}
+h3{font-size:19px;font-weight:600;letter-spacing:-.01em}
+.eyebrow{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.lead{color:var(--muted);font-size:18px;max-width:60ch;margin:16px 0 0}
+.sec-head{margin-bottom:44px}
+.gold{color:var(--gold)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 15px/1 var(--body);padding:15px 22px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--fg);text-decoration:none;cursor:pointer;transition:transform .15s,background .15s,border-color .15s}
+.btn:hover{border-color:var(--gold)}
+.btn:active{transform:scale(.98)}
+.btn-gold{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:var(--gold-ink);border-color:transparent}
+.btn-gold:hover{filter:brightness(1.05)}
+.btn-wa{background:#25d366;color:#05210f;border-color:transparent}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+/* header */
+header.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em}
+.brand svg{width:30px;height:30px}
+.brand small{font-weight:600;color:var(--muted);font-size:13px;letter-spacing:0}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.nav ul a{display:block;padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--muted);font-size:14px;font-weight:500}
+.nav ul a:hover{color:var(--fg);background:var(--card)}
+.nav .btn{padding:11px 18px;font-size:14px}
+@media (max-width:960px){.nav ul{display:none}}
+/* hero */
+.hero{padding-block:72px 88px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:720px;height:720px;background:radial-gradient(closest-side,rgba(124,58,237,.18),transparent 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;position:relative}
+.hero h1{font-size:clamp(44px,7.4vw,84px);font-weight:800;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .lead{font-size:19px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:10px 24px;margin:32px 0 0;padding:0;list-style:none;color:var(--muted);font-size:14px}
+.hero-facts li{display:flex;align-items:center;gap:8px}
+.hero-facts li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero{padding-block:48px 64px}}
+/* plaque mock */
+.stage{display:grid;place-items:center;min-height:420px;position:relative}
+.plaque{width:min(300px,78vw);aspect-ratio:3/4;border-radius:22px;background:linear-gradient(160deg,#1d1d22,#0b0b0d 60%);border:1px solid #34333a;box-shadow:0 40px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06);display:grid;align-content:center;justify-items:center;gap:16px;padding:28px;text-align:center;position:relative;transform:rotate(-4deg)}
+.plaque .p-name{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.plaque .p-title{font-family:var(--display);font-weight:800;font-size:32px;letter-spacing:-.02em;color:var(--fg);line-height:1}
+.plaque .p-stars{color:var(--gold);font-size:22px;letter-spacing:4px}
+.plaque .p-tap{width:72px;height:72px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;color:var(--gold)}
+.plaque .p-tap svg{width:34px;height:34px}
+.plaque .p-hint{font-size:12px;color:var(--muted);letter-spacing:.04em}
+.phone{position:absolute;right:max(4%,calc(50% - 230px));bottom:6%;width:120px;height:230px;border-radius:26px;background:#09090b;border:6px solid #2a2a30;box-shadow:0 30px 60px rgba(0,0,0,.6);transform:rotate(12deg);display:grid;place-items:center}
+.phone::before{content:"";position:absolute;top:8px;width:40px;height:8px;border-radius:8px;background:#1b1b20}
+.phone .ring{width:56px;height:56px;border-radius:50%;border:2px solid var(--gold);opacity:.8;animation:ping 2.2s ease-out infinite}
+@keyframes ping{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+@media (max-width:520px){.phone{width:96px;height:184px;right:2%}}
+/* cards grid */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.grid3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.use{display:grid;gap:10px;align-content:start}
+.use .ic{width:44px;height:44px;border-radius:12px;background:rgba(124,58,237,.12);color:var(--gold);display:grid;place-items:center}
+.use .ic svg{width:22px;height:22px}
+.use p{margin:0;color:var(--muted);font-size:15px}
+/* materials */
+.mat{display:grid;gap:14px;align-content:start;position:relative}
+.mat .price{font-family:var(--display);font-size:15px;color:var(--muted)}
+.mat .price b{font-size:40px;color:var(--fg);font-weight:800;letter-spacing:-.03em}
+.mat ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--muted);font-size:15px}
+.mat li{display:flex;gap:10px}
+.mat li::before{content:"✓";color:var(--gold);font-weight:700}
+.mat.featured{border-color:var(--gold);background:linear-gradient(180deg,rgba(124,58,237,.10),var(--card) 40%)}
+.tag{position:absolute;top:18px;right:18px;font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;background:var(--gold);color:var(--gold-ink)}
+.mat .btn{justify-self:start;margin-top:6px}
+.note{color:var(--muted);font-size:14px;margin-top:18px}
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.tabs button{font:600 14px/1 var(--body);padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+@media (max-width:800px){.panel{grid-template-columns:1fr}}
+.panel ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:10px;color:var(--muted)}
+.panel li{display:flex;gap:10px}
+.panel li::before{content:"";flex:none;width:6px;height:6px;margin-top:10px;border-radius:50%;background:var(--gold)}
+.swatches{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.sw{width:38px;height:38px;border-radius:50%;border:2px solid var(--line)}
+.mini{display:grid;place-items:center;padding:28px;border-radius:var(--r);background:var(--card-2);border:1px solid var(--line)}
+.mini .plaque{transform:none;width:min(240px,70vw)}
+.sugg-meta{display:grid;gap:6px;margin-top:16px;color:var(--muted);font-size:15px}
+.sugg-meta b{color:var(--fg);font-weight:600}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.step{display:grid;gap:10px;align-content:start}
+.step .n{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;color:var(--gold);letter-spacing:-.04em}
+.step p{margin:0;color:var(--muted);font-size:15px}
+/* faq */
+.faq{display:grid;gap:10px;max-width:820px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 20px}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--gold);font-size:22px;line-height:1;font-weight:400}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 18px;color:var(--muted)}
+/* form */
+.quote{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+@media (max-width:860px){.quote{grid-template-columns:1fr}}
+form.card{display:grid;gap:16px;padding:28px;scroll-margin-top:84px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-size:14px;font-weight:600;color:var(--muted)}
+input,select,textarea{font:inherit;font-size:16px;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:13px 14px;width:100%;min-width:0}
+textarea{resize:vertical;min-height:96px}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);outline:none}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg label{display:block;position:relative}
+.seg input{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
+.seg span{display:grid;gap:2px;text-align:center;padding:12px 8px;border-radius:12px;border:1px solid var(--line);background:var(--bg);cursor:pointer;color:var(--fg)}
+.seg span small{color:var(--muted);font-weight:500}
+.seg input:checked+span{border-color:var(--gold);background:rgba(124,58,237,.12)}
+.seg input:focus-visible+span{outline:2px solid var(--gold);outline-offset:2px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:14px}
+.consent input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--gold)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-msg{padding:14px 16px;border-radius:12px;font-size:15px}
+.form-msg.ok{background:rgba(127,211,160,.12);color:var(--ok)}
+.form-msg.err{background:rgba(255,143,143,.12);color:var(--bad)}
+.contact-list{display:grid;gap:14px;margin-top:28px}
+.contact-list .card{display:flex;gap:14px;align-items:center;padding:18px}
+.contact-list .ic{width:42px;height:42px;border-radius:12px;background:rgba(124,58,237,.12);color:var(--gold);display:grid;place-items:center;flex:none}
+.contact-list p{margin:0;color:var(--muted);font-size:14px}
+.contact-list b{display:block;color:var(--fg);font-size:16px}
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:36px calc(36px + env(safe-area-inset-bottom,0px));color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
+footer a{color:var(--muted)}
+/* utilizações clicáveis */
+button.use{font:inherit;color:inherit;text-align:left;cursor:pointer;transition:border-color .15s,transform .15s,background .15s}
+button.use:hover{border-color:var(--gold);background:var(--card-2)}
+button.use:active{transform:scale(.99)}
+.use .go{margin-top:auto;padding-top:6px;font-size:14px;font-weight:600;color:var(--gold)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:760px}
+@media (max-width:600px){.grid2{grid-template-columns:1fr}}
+/* cores (personalização) */
+.sw-row{display:grid;gap:8px;margin-top:18px}
+.sw-row>span{font-size:14px;font-weight:600;color:var(--muted)}
+button.sw{cursor:pointer;padding:0}
+button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--gold)}
+/* links direto vs gerido */
+.links2{grid-template-columns:1fr 1fr;align-items:stretch}
+@media (max-width:800px){.links2{grid-template-columns:1fr}}
+.lk{display:grid;gap:12px;align-content:start}
+.lk .lk-tag{justify-self:start;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.lk.gerido{border-color:var(--gold)}
+.lk.gerido .lk-tag{background:var(--gold);color:var(--gold-ink);border-color:transparent}
+.lk ul{margin:0}
+.lk.gerido .lk-tag.lk-mais{background:transparent;color:var(--gold);border-color:var(--gold)}
+.lk .ideal{margin:0;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+.lk .ideal b{color:var(--fg)}
+/* tags NFC */
+.ntag{position:relative;width:180px;height:180px;border-radius:50%;background:linear-gradient(160deg,#1d1d22,#0b0b0d);border:1px solid #34333a;box-shadow:0 24px 50px rgba(0,0,0,.5);display:grid;justify-items:center;align-content:center;gap:6px;color:var(--gold);text-align:center}
+.ntag-r{border-radius:44px;width:170px;height:200px}
+.ntag-k{border-radius:28px 28px 60px 60px;width:160px;height:200px}
+.ntag-furo{position:absolute;top:14px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--card-2);border:2px solid #34333a}
+.ntag-ic svg{width:34px;height:34px}
+.ntag-t{font-family:var(--display);font-weight:800;font-size:19px;color:var(--fg)}
+.ntag-nfc svg{width:22px;height:22px;opacity:.85}
+/* pagamento seguro */
+.pagar{margin-top:8px;padding-top:20px;border-top:1px solid var(--line);display:grid;gap:12px}
+.pagar-head{display:flex;align-items:center;gap:10px;color:var(--gold)}.pagar-head b{font-family:var(--display);font-size:18px;color:var(--fg)}
+.pagar p{margin:0;color:var(--muted);font-size:15px}
+.pagar-metodos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (max-width:420px){.pagar-metodos{grid-template-columns:1fr}}
+.pm{display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;background:#f6f3ec;color:#141414}
+.pm b{display:block;font-size:15px;line-height:1.2}.pm small{display:block;font-size:12.5px;color:#5c5a55}
+.pm-ic{width:38px;height:38px;flex:none;border-radius:10px;background:#141414;color:#f0d38d;display:grid;place-items:center}.pm-ic svg{width:22px;height:22px}
+.pagar-passos{list-style:none;margin:4px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media (max-width:560px){.pagar-passos{grid-template-columns:repeat(2,1fr)}}
+.pagar-passos li{display:grid;gap:4px;font-size:13px;color:var(--muted);padding:10px;border:1px dashed var(--line);border-radius:12px}
+.pagar-passos b{font-family:var(--display);color:var(--gold);font-size:18px}
+.pagar-nota{font-size:13px!important;opacity:.85}
+/* oficina */
+.plaque.real{background:url(../placa-mesa.jpg) center/100% 100% no-repeat!important;aspect-ratio:640/909;min-height:0;overflow:hidden;border:0!important;border-radius:16px;width:240px!important;padding:26px 30px 140px 42px;align-content:center;gap:10px}
+.plaque.real .p-tap,.plaque.real .p-hint{display:none}
+.escolha .esc-prev .plaque.real{margin-bottom:-218px}
+.modelos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.modelos button{display:grid;gap:8px;justify-items:center;padding:10px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--muted);font:600 14px/1.2 var(--body);cursor:pointer;text-align:center}
+.modelos button[aria-pressed="true"]{border-color:var(--gold);color:var(--fg);background:rgba(124,58,237,.12)}
+.modelos .thumb{width:64px;aspect-ratio:3/4;border-radius:8px;background:linear-gradient(160deg,#1d1d22,#0b0b0d);border:1px solid #34333a}
+.modelos .thumb.foto{background:url(../placa-mesa.jpg) center/cover;border:0}
+.conf-f .hint{font-size:13px;color:var(--muted);margin:0}
+.plaque .p-name,.plaque .p-title{transition:color .2s}
+#cPlaca .p-name,#cPlaca .p-title{overflow-wrap:anywhere;max-width:100%}
+/* placa escolhida no formulário */
+.escolha{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:14px;border-radius:14px;border:1px solid var(--gold);background:rgba(124,58,237,.08)}
+.escolha .esc-prev{width:96px;overflow:hidden}
+.escolha .esc-prev .plaque{transform:scale(.36);transform-origin:top left;width:240px;margin-bottom:-206px;margin-right:-150px;box-shadow:none}
+.escolha b{display:block;color:var(--fg);font-size:15px}
+.escolha p{margin:2px 0 10px;color:var(--muted);font-size:14px}
+.escolha .btn{padding:10px 16px;font-size:14px}
+/* instagram em destaque */
+.contact-list .insta-card{display:flex;gap:16px;align-items:center;padding:20px;text-decoration:none;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.contact-list .insta-card:hover{border-color:#d6249f;background:var(--card-2)}
+.contact-list .insta-card:active{transform:scale(.99)}
+.insta-logo{width:64px;height:64px;border-radius:18px;flex:none;display:grid;place-items:center;color:#fff;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+.insta-logo svg{width:34px;height:34px}
+.insta-txt{display:grid;gap:2px;flex:1;min-width:0}
+.insta-call{font-family:"Dancing Script",cursive;font-weight:700;font-size:20px;line-height:1.2;color:var(--fg)}
+.insta-at{font-family:"Bebas Neue",var(--display);font-size:38px;font-weight:400;letter-spacing:.04em;line-height:1;background:linear-gradient(180deg,var(--gold-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:2px}
+@media (max-width:400px){.insta-at{font-size:32px}.insta-call{font-size:18px}}
+.insta-sub{font-size:15px;font-weight:600;background:linear-gradient(90deg,#d6249f,#fd5949);-webkit-background-clip:text;background-clip:text;color:transparent}
+.insta-go{width:24px;height:24px;flex:none;color:var(--muted)}
+/* floating whatsapp */
+.conf{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.conf{align-items:start}
+.conf-prev{position:sticky;top:84px}
+@media (max-width:860px){.conf{grid-template-columns:1fr;gap:20px}.conf-prev{position:static;min-height:0;padding:24px 20px}.conf-prev .plaque{width:min(240px,66vw)}}
+.conf-form{display:grid;gap:16px}
+.conf-f{border:0;margin:0;padding:0;display:grid;gap:8px}
+.conf-f legend{font-size:14px;font-weight:600;color:var(--muted);padding:0;margin-bottom:8px}
+.chips-s{display:flex;flex-wrap:wrap;gap:8px}
+.chips-s button{font:600 14px/1 var(--body);padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted);cursor:pointer}
+.chips-s button[aria-pressed="true"]{border-color:var(--gold);color:var(--fg);background:rgba(124,58,237,.12)}
+.sws{display:flex;flex-wrap:wrap;gap:10px}
+.sws button{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);cursor:pointer;padding:0}
+.sws button[aria-pressed="true"]{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--gold)}
+.conf-prev{min-height:420px;transition:background .2s}
+.conf-prev .plaque{transition:background .2s,color .2s}
+.wa-float{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;background:#25d366;color:#05210f;display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.45);text-decoration:none}
+.wa-float svg{width:30px;height:30px}
+
+/* ===== TEMA DE TESTE: fundo branco, detalhes limão, preto e roxo ===== */
+.btn-gold,.cta{background:var(--lima)!important;color:#0c0c0e!important;border:1px solid #0c0c0e!important;box-shadow:3px 3px 0 #0c0c0e!important}
+.hero h1 em,h1 em,h2 em{color:#0c0c0e!important;-webkit-text-fill-color:#0c0c0e;background:linear-gradient(transparent 58%,var(--lima) 58%,var(--lima) 92%,transparent 92%)!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;padding:0 .08em}
+.gold,.insta-at{color:#7c3aed!important;-webkit-text-fill-color:#7c3aed;background:none!important}
+.tag,.lk.gerido .lk-tag{background:var(--lima)!important;color:#0c0c0e!important;border:1px solid #0c0c0e}
+.mat.featured{border:2px solid #0c0c0e!important;background:linear-gradient(180deg,rgba(198,255,26,.22),#fff 45%)!important}
+.tabs button[aria-selected="true"]{background:#0c0c0e!important;color:var(--lima)!important;border-color:#0c0c0e!important}
+.step .n{color:#7c3aed!important}
+.hero::before{background:radial-gradient(closest-side,rgba(198,255,26,.35),transparent 70%)!important}
+.plaque,.ntag,.phone,.thumb{--fg:#f3efe6;--muted:#a9a397}
+footer{background:#0c0c0e!important;color:#f3efe6}
+footer a,footer p{color:#cfcfc8}
+.teste-aviso{position:fixed;left:50%;transform:translateX(-50%);top:calc(74px + env(safe-area-inset-top,0px));z-index:40;background:#7c3aed;color:#fff;font:700 13px/1 var(--body);padding:7px 12px;white-space:nowrap;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+</style>
+</head>
+<body>
+<div class="teste-aviso">Versão de teste · fundo branco</div>
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="D&amp;V Placas NFC, início">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#17171b" stroke="#2b2a30"/><path d="M24 22a14 14 0 0 1 0 20M31 17a21 21 0 0 1 0 30M38 12a28 28 0 0 1 0 40" fill="none" stroke="#7c3aed" stroke-width="5" stroke-linecap="round"/></svg>
+      <span>D&amp;V <small>Placas NFC</small></span>
+    </a>
+    <nav aria-label="Secções"><ul>
+      <li><a href="#usos">Utilizações</a></li>
+      <li><a href="#tags">Tags</a></li>
+      <li><a href="#personalizacao">Personalização</a></li>
+      <li><a href="#criar">Criar</a></li>
+      <li><a href="#sugestoes">Sugestões</a></li>
+      <li><a href="#como">Como funciona</a></li>
+      <li><a href="#materiais">Materiais</a></li>
+      <li><a href="#faq">Perguntas</a></li>
+    </ul></nav>
+    <a class="btn btn-gold" href="#orcamento">Encomendar</a>
+  </div>
+</header>
+
+<main id="inicio">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Placas NFC personalizadas</p>
+      <h1>Um toque.<br><em>Tudo ligado.</em></h1>
+      <p class="lead">Placas impressas em 3D com o nome, as cores e os links do seu negócio. Um toque com o telemóvel leva o cliente às avaliações, às redes sociais, ao menu ou ao Wi-Fi. Sem apps e sem apontar câmaras.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#criar">Criar a minha placa</a>
+        <a class="btn" href="#sugestoes">Ver modelos</a>
+      </div>
+      <ul class="hero-facts">
+        <li>Funciona em iPhone e Android</li>
+        <li>Prova digital em 24 horas</li>
+        <li>Envio para todo o país</li>
+      </ul>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="plaque">
+        <div class="p-name">O seu negócio</div>
+        <div class="p-stars">★★★★★</div>
+        <div class="p-title">Avalie-nos</div>
+        <div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div>
+        <div class="p-hint">Encoste o telemóvel</div>
+      </div>
+      <div class="phone"><div class="ring"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="usos" class="band">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Utilizações</p><h2>O que a sua placa pode fazer</h2><p class="lead">Cada placa abre o destino que escolher. Toque numa opção para começar a sua placa: o pedido fica logo preenchido e pode mudar a cor e o estilo quando quiser.</p></div>
+    <div class="grid3">
+      <button type="button" class="card use" data-uso="google"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></div><h3>Avaliações Google</h3><p>O cliente encosta o telemóvel e abre logo a página para deixar as estrelas. Mais avaliações, mais clientes novos.</p><span class="go">Criar esta placa →</span></button>
+      <button type="button" class="card use" data-uso="insta"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></div><h3>Instagram e TikTok</h3><p>Novos seguidores em segundos, sem ter de soletrar o nome da conta.</p><span class="go">Criar esta placa →</span></button>
+      <button type="button" class="card use" data-uso="wifi"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></svg></div><h3>Wi-Fi</h3><p>Os clientes ligam-se à rede sem perguntar a palavra-passe ao balcão.</p><span class="go">Criar esta placa →</span></button>
+      <button type="button" class="card use" data-uso="menu"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 3h12v18H6zM9 8h6M9 12h6M9 16h3"/></svg></div><h3>Menu digital</h3><p>O menu atualizado abre no telemóvel de cada mesa. Mudou um preço? Muda o link, não a placa.</p><span class="go">Criar esta placa →</span></button>
+      <button type="button" class="card use" data-uso="cartao"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16a3 3 0 0 1 6 0M14 10h4M14 13h3"/></svg></div><h3>Cartão de visita</h3><p>Guarda o seu contacto no telemóvel do cliente com um toque.</p><span class="go">Criar esta placa →</span></button>
+      <button type="button" class="card use" data-uso="pagar"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></div><h3>Pagamentos e links</h3><p>MB WAY, site, WhatsApp ou marcações: o link que for mais útil ao seu cliente.</p><span class="go">Criar esta placa →</span></button>
+      <button type="button" class="card use" data-uso="relatorio"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Relatório de toques</h3><p>Com o link gerido, recebe por mês quantas vezes a placa foi usada e como evoluíram as suas avaliações.</p><span class="go">Criar esta placa →</span></button>
+      <button type="button" class="card use" data-uso="direto"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Link direto</h3><p>A placa abre diretamente a sua página e fica bloqueada para ninguém a alterar. Simples e para sempre.</p><span class="go">Criar esta placa →</span></button>
+      <button type="button" class="card use" data-uso="gerido"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></div><h3>Link gerido</h3><p>Pode mudar o destino quando quiser sem trocar de placa. E a placa nunca deixa de funcionar.</p><span class="go">Criar esta placa →</span></button>
+    </div>
+  </div>
+</section>
+
+<section id="materiais">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Materiais</p><h2>Escolha a resistência certa</h2><p class="lead">Todas as placas levam um chip NFC compatível com qualquer telemóvel recente, já programado com o seu link.</p></div>
+    <div class="grid2">
+      <article class="card mat featured"><span class="tag">Mais pedido</span><h3>PLA</h3><div class="price">desde <b>19 €</b></div><ul><li>Cores vivas e acabamento mate</li><li>Leve e económico</li><li>Ideal para balcões e interiores</li></ul><a class="btn btn-gold" href="#orcamento" data-material="PLA">Escolher PLA</a><a href="../produtos/placa-mesa-pla.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
+      <article class="card mat"><h3>PETG</h3><div class="price">desde <b>24 €</b></div><ul><li>A opção mais robusta</li><li>Resistente a impactos, humidade e calor</li><li>Para uso intenso todos os dias</li></ul><a class="btn" href="#orcamento" data-material="PETG">Escolher PETG</a><a href="../produtos/placa-mesa-petg.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
+    </div>
+    <p class="note">Preços por placa. Descontos para várias placas no mesmo pedido.</p>
+  </div>
+</section>
+
+<section id="personalizacao" class="band">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Personalização</p><h2>A placa com a cara do seu negócio</h2></div>
+    <div class="tabs" role="tablist" aria-label="Opções de personalização" data-tabs="pers">
+      <button role="tab" aria-selected="true" data-tab="p-empresa">Nome da empresa</button>
+      <button role="tab" aria-selected="false" data-tab="p-cor">Cor</button>
+      <button role="tab" aria-selected="false" data-tab="p-nome">Texto e slogan</button>
+      <button role="tab" aria-selected="false" data-tab="p-links">Links</button>
+    </div>
+    <div class="panel" role="tabpanel" id="p-empresa">
+      <div><h3>O nome como o quer ver</h3><ul><li>Nome da empresa exatamente como o escreve</li><li>Slogan opcional por baixo</li><li>Letras em relevo, na cor que escolher</li><li>Várias placas com nomes diferentes no mesmo pedido</li></ul></div>
+      <div class="mini"><div class="plaque"><div class="p-name">Barbearia Central</div><div class="p-title" style="font-size:24px">Desde 1998</div><div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div></div></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p-cor" hidden>
+      <div><h3>Cores que combinam com o espaço</h3><ul><li>Base e letras em cores diferentes</li><li>Acabamento mate, que não reflete a luz</li><li>Podemos aproximar as cores da sua marca</li></ul><p class="note" style="margin:16px 0 0">Toque nas cores para experimentar:</p><div class="sw-row"><span>Cor da placa</span><div class="swatches" style="margin:0" id="pcBase" role="group" aria-label="Cor da placa"><button type="button" class="sw" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" class="sw" aria-label="Branco" title="Branco" aria-pressed="true" data-c="#f3efe6" style="background:#f3efe6"></button><button type="button" class="sw" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" class="sw" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" class="sw" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#2a52d6" style="background:#2a52d6"></button><button type="button" class="sw" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#2e7d4f" style="background:#2e7d4f"></button><button type="button" class="sw" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#b4233a" style="background:#b4233a"></button><button type="button" class="sw" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#8a8a8a" style="background:#8a8a8a"></button></div></div><div class="sw-row"><span>Cor das letras</span><div class="swatches" style="margin:0" id="pcTxt" role="group" aria-label="Cor das letras"><button type="button" class="sw" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" class="sw" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f3efe6" style="background:#f3efe6"></button><button type="button" class="sw" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" class="sw" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" class="sw" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#2a52d6" style="background:#2a52d6"></button><button type="button" class="sw" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#2e7d4f" style="background:#2e7d4f"></button><button type="button" class="sw" aria-label="Vermelho" title="Vermelho" aria-pressed="true" data-c="#b4233a" style="background:#b4233a"></button><button type="button" class="sw" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#8a8a8a" style="background:#8a8a8a"></button></div></div></div>
+      <div class="mini"><div class="plaque" id="pcPlaca"><div class="p-name">Salão Rosa</div><div class="p-stars">★★★★★</div><div class="p-title" style="font-size:26px">Avalie-nos</div><div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div></div></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p-nome" hidden>
+      <div><h3>A mensagem certa para o cliente</h3><ul><li>"Avalie-nos", "Siga-nos", "Wi-Fi grátis" ou outra frase sua</li><li>Ícones do Google, Instagram, WhatsApp ou Wi-Fi</li><li>Indicação "Encoste o telemóvel" para quem nunca usou NFC</li></ul></div>
+      <div class="mini"><div class="plaque"><div class="p-name">Café do Largo</div><div class="p-title">Wi-Fi grátis</div><div class="p-hint">Encoste o telemóvel</div></div></div>
+    </div>
+    <div class="panel links2" role="tabpanel" id="p-links" hidden>
+      <article class="card lk">
+        <span class="lk-tag">Definitivo</span>
+        <h3>Link direto</h3>
+        <ul>
+          <li>A placa abre logo a sua página, sem passar por nenhum outro endereço.</li>
+          <li>Depois de gravado, o link fica bloqueado: ninguém o pode alterar.</li>
+          <li>Não depende de nós nem de nenhum serviço. Funciona para sempre.</li>
+          <li>Se um dia o link mudar, é preciso uma placa nova.</li>
+        </ul>
+        <p class="ideal"><b>Ideal para:</b> avaliações Google, Wi-Fi ou cartão de visita, que quase nunca mudam.</p>
+      </article>
+      <article class="card lk gerido">
+        <span style="display:flex;gap:8px;flex-wrap:wrap"><span class="lk-tag">Pode mudar</span><span class="lk-tag lk-mais">Mais pedido</span></span>
+        <h3>Link gerido</h3>
+        <ul>
+          <li>A placa abre um endereço nosso, que leva o cliente para a sua página.</li>
+          <li>Mudou de Instagram, de menu ou de promoção? Mudamos o destino e a mesma placa passa a abrir o novo link.</li>
+          <li>Relatório mensal de quantas vezes a placa foi tocada (só a data e a hora, sem dados de quem toca).</li>
+          <li>Garantia: o link gerido nunca é desligado, por isso a placa nunca deixa de funcionar.</li>
+        </ul>
+        <p class="ideal"><b>Ideal para:</b> menus, promoções, redes sociais e para quem quer ver os números.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="criar">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Oficina</p><h2>Crie a sua placa agora</h2><p class="lead">Escreva o nome, escolha a frase, a posição, as letras e as cores. A placa muda à medida que escolhe. No fim, veja o resultado e envie-nos o pedido com um toque.</p></div>
+    <div class="conf">
+      <form class="card conf-form" id="conf" onsubmit="return false">
+        <fieldset class="conf-f"><legend>Modelo da placa</legend><div class="modelos" id="cModelo">
+          <button type="button" data-v="mesa" aria-pressed="true"><span class="thumb foto"></span>Placa de mesa<br><small style="font-weight:500">preta texturada, com símbolo NFC</small></button>
+          <button type="button" data-v="livre" aria-pressed="false"><span class="thumb"></span>À medida<br><small style="font-weight:500">escolhe a cor da placa</small></button>
+        </div></fieldset>
+        <label for="cNome">Nome do negócio<input id="cNome" maxlength="28" value="O seu negócio"></label>
+        <fieldset class="conf-f"><legend>O que a placa abre</legend><div class="chips-s" id="cDest"><button type="button" aria-pressed="true" data-v="google">Avaliações</button><button type="button" aria-pressed="false" data-v="insta">Instagram</button><button type="button" aria-pressed="false" data-v="wifi">Wi-Fi</button><button type="button" aria-pressed="false" data-v="menu">Menu</button><button type="button" aria-pressed="false" data-v="whats">WhatsApp</button><button type="button" aria-pressed="false" data-v="cartao">Cartão de visita</button><button type="button" aria-pressed="false" data-v="pagar">Pagamentos</button></div></fieldset>
+        <label for="cFrase">Frase principal<input id="cFrase" maxlength="24" value="Avalie-nos"></label>
+        <div class="chips-s" id="cFrases" aria-label="Frases sugeridas"></div>
+        <fieldset class="conf-f"><legend>Posição do nome</legend><div class="chips-s" id="cPos"><button type="button" aria-pressed="true" data-v="cima">Em cima</button><button type="button" aria-pressed="false" data-v="centro">Ao centro</button><button type="button" aria-pressed="false" data-v="baixo">Em baixo</button></div></fieldset>
+        <fieldset class="conf-f"><legend>Letra do nome da empresa</legend><div class="chips-s" id="cFonteNome"></div></fieldset>
+        <fieldset class="conf-f"><legend>Letra da frase</legend><div class="chips-s" id="cFonteFrase"></div></fieldset>
+        <fieldset class="conf-f" id="fsBase"><legend>Cor da placa</legend><div class="sws" id="cBase"><button type="button" aria-label="Preto" title="Preto" aria-pressed="true" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f1ede4" style="background:#f1ede4"></button><button type="button" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#5e5e62" style="background:#5e5e62"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#1f3a8a" style="background:#1f3a8a"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#1f5a3a" style="background:#1f5a3a"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#8f1d2e" style="background:#8f1d2e"></button><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#c9a24f" style="background:#c9a24f"></button></div></fieldset>
+        <fieldset class="conf-f"><legend>Cor das letras</legend><div class="sws" id="cTxt"><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="true" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f7f4ee" style="background:#f7f4ee"></button><button type="button" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#111114" style="background:#111114"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#c0263f" style="background:#c0263f"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#3b6cf0" style="background:#3b6cf0"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#3fa46a" style="background:#3fa46a"></button><button type="button" aria-label="Prateado" title="Prateado" aria-pressed="false" data-c="#c7c9cc" style="background:#c7c9cc"></button></div></fieldset>
+        <fieldset class="conf-f"><legend>Material</legend><div class="chips-s" id="cMat"><button type="button" aria-pressed="true" data-v="PLA">PLA · desde 19 €</button><button type="button" aria-pressed="false" data-v="PETG">PETG · desde 24 €</button></div></fieldset>
+        <fieldset class="conf-f"><legend>Tipo de link</legend><div class="chips-s" id="cLink"><button type="button" aria-pressed="true" data-v="direto">Direto (definitivo)</button><button type="button" aria-pressed="false" data-v="gerido">Gerido (pode mudar) · Mais pedido</button></div><p class="hint" id="cLinkHint"></p></fieldset>
+      </form>
+      <div class="mini conf-prev" aria-live="polite"><div class="plaque" id="cPlaca"><div class="p-name" id="pvNome">O seu negócio</div><div class="p-stars" id="pvStars">★★★★★</div><div class="p-title" id="pvFrase">Avalie-nos</div><div class="p-tap" id="pvTap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div><div class="p-hint" id="pvHint">Encoste o telemóvel</div></div><p class="note" style="text-align:center;margin:16px 0 0">Pré-visualização aproximada. Recebe a prova final em 24 horas.</p><button class="btn btn-gold" type="button" id="cQuero" style="margin-top:16px">Quero esta placa</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="sugestoes">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Sugestões</p><h2>Modelos prontos para começar</h2><p class="lead">Escolha um modelo e adaptamos ao seu nome e às suas cores.</p></div>
+    <div class="tabs" role="tablist" aria-label="Modelos sugeridos" data-tabs="sugg">
+      <button role="tab" aria-selected="true" data-tab="s-google">Avaliações Google</button>
+      <button role="tab" aria-selected="false" data-tab="s-insta">Instagram e redes</button>
+      <button role="tab" aria-selected="false" data-tab="s-barb">Barbearias</button>
+      <button role="tab" aria-selected="false" data-tab="s-rest">Restaurantes</button>
+    </div>
+    <div class="panel" role="tabpanel" id="s-google">
+      <div class="mini"><div class="plaque"><div class="p-name">O seu negócio</div><div class="p-stars">★★★★★</div><div class="p-title">Avalie-nos</div><div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div></div></div>
+      <div><h3>Placa de avaliações</h3><p class="lead" style="font-size:16px">Cinco estrelas douradas e a mensagem "Avalie-nos". O cliente toca e abre logo o formulário de avaliação do Google.</p><div class="sugg-meta"><span><b>Abre:</b> avaliação no Google</span><span><b>Cores:</b> preto mate com letras douradas</span><span><b>Ideal para:</b> qualquer negócio com clientes ao balcão</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="google">Quero esta</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="s-insta" hidden>
+      <div class="mini"><div class="plaque"><div class="p-name">@onegocio</div><div class="p-title">Siga-nos</div><div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/></svg></div></div></div>
+      <div><h3>Placa de redes sociais</h3><p class="lead" style="font-size:16px">Para ganhar seguidores no Instagram ou no TikTok enquanto o cliente espera.</p><div class="sugg-meta"><span><b>Abre:</b> Instagram, TikTok ou uma página com todos os links</span><span><b>Ideal para:</b> lojas, estúdios, unhas e estética</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="insta">Quero esta</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="s-barb" hidden>
+      <div class="mini"><div class="plaque"><div class="p-name">Barbearia</div><div class="p-title" style="font-size:26px">Marque o próximo corte</div><div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div></div></div>
+      <div><h3>Kit barbearia</h3><p class="lead" style="font-size:16px">Uma placa no espelho para marcações pelo WhatsApp e outra no balcão para avaliações.</p><div class="sugg-meta"><span><b>Abre:</b> WhatsApp de marcações + avaliações Google</span><span><b>Material sugerido:</b> PETG, resiste à humidade</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="whats" data-frase="Marque o próximo corte" data-nome="Barbearia" data-mat="PETG">Quero esta</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="s-rest" hidden>
+      <div class="mini"><div class="plaque"><div class="p-name">Mesa 4</div><div class="p-title">Menu &amp; Wi-Fi</div><div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div></div></div>
+      <div><h3>Kit restaurante</h3><p class="lead" style="font-size:16px">Uma placa por mesa com o menu digital e o Wi-Fi, e uma à saída para as avaliações.</p><div class="sugg-meta"><span><b>Abre:</b> menu, Wi-Fi e avaliações</span><span><b>Material sugerido:</b> PETG, resiste a líquidos e limpezas</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="menu" data-frase="Menu &amp; Wi-Fi" data-mat="PETG">Quero esta</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="tags" class="band">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Tags NFC</p><h2>Tags pequenas, para levar para todo o lado</h2><p class="lead">Do tamanho de um porta-chaves, impressas em 3D com o nome e as cores que escolher. Quem encontrar a tag encosta o telemóvel e vê logo a informação que decidiu mostrar.</p></div>
+    <div class="tabs" role="tablist" aria-label="Tipos de tags" data-tabs="tags">
+      <button role="tab" aria-selected="true" data-tab="t-animais">Animais</button>
+      <button role="tab" aria-selected="false" data-tab="t-criancas">Crianças</button>
+      <button role="tab" aria-selected="false" data-tab="t-negocios">Negócios</button>
+    </div>
+    <div class="panel" role="tabpanel" id="t-animais">
+      <div class="mini"><div class="ntag"><span class="ntag-furo"></span><span class="ntag-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6" cy="9" rx="2" ry="2.6"/><ellipse cx="10" cy="5.5" rx="2" ry="2.6"/><ellipse cx="14" cy="5.5" rx="2" ry="2.6"/><ellipse cx="18" cy="9" rx="2" ry="2.6"/><path d="M12 11c-3 0-6 4-6 6.5 0 2 2 2.5 3 2s2-.8 3-.8 2 .3 3 .8 3 0 3-2c0-2.5-3-6.5-6-6.5z"/></svg></span><span class="ntag-t">Bolinhas</span><span class="ntag-nfc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></span></div></div>
+      <div><h3>Tag para a coleira</h3><p class="lead" style="font-size:16px">Se o seu animal se perder, quem o encontrar encosta o telemóvel à tag e vê logo como o contactar.</p><ul><li>Nome do animal e o seu telefone ou WhatsApp</li><li>Notas úteis: alergias, medicação, veterinário</li><li>Com link gerido, atualiza os dados sem trocar a tag</li><li>Leve e resistente à água (PETG)</li></ul><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-tag="Tag para animais (coleira)">Quero esta tag</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="t-criancas" hidden>
+      <div class="mini"><div class="ntag ntag-r"><span class="ntag-furo"></span><span class="ntag-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></span><span class="ntag-t">Contacto</span><span class="ntag-nfc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></span></div></div>
+      <div><h3>Tag de contacto para crianças</h3><p class="lead" style="font-size:16px">Para a mochila, o casaco ou a pulseira em passeios, praias e eventos. Se a criança se perder, quem a ajudar liga logo aos pais.</p><ul><li>Mostra só o contacto dos pais e o que escolher</li><li>Recomendamos não pôr o nome completo nem a morada da criança</li><li>Pode juntar informação importante, como alergias</li><li>Com link gerido, muda os contactos quando quiser</li></ul><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-tag="Tag de contacto para crianças">Quero esta tag</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="t-negocios" hidden>
+      <div class="mini"><div class="ntag ntag-k"><span class="ntag-furo"></span><span class="ntag-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span><span class="ntag-t">A sua marca</span><span class="ntag-nfc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></span></div></div>
+      <div><h3>Tag porta-chaves para negócios</h3><p class="lead" style="font-size:16px">Um cartão de visita que nunca se perde, ou um brinde para os seus clientes com a sua marca.</p><ul><li>Abre o seu contacto, Instagram, avaliações ou site</li><li>Ideal para oferecer a clientes e equipas</li><li>Com o logótipo e as cores da sua marca</li><li>Preços especiais por quantidade</li></ul><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-tag="Tags porta-chaves para negócios">Quero estas tags</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="como">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Como funciona</p><h2>Do pedido à entrega em quatro passos</h2></div>
+    <ol class="steps" style="list-style:none;margin:0;padding:0">
+      <li class="card step"><span class="n">01</span><h3>Escolha</h3><p>Material, formato e cores. Se tiver dúvidas, ajudamos a decidir.</p></li>
+      <li class="card step"><span class="n">02</span><h3>Personalize</h3><p>Nome, slogan, cor e o link que a placa vai abrir.</p></li>
+      <li class="card step"><span class="n">03</span><h3>Aprove</h3><p>Recebe uma prova digital em 24 horas. Só produzimos depois do seu OK.</p></li>
+      <li class="card step"><span class="n">04</span><h3>Receba</h3><p>Entrega em mão na zona de Lisboa ou envio por CTT para todo o país, já programada e testada.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Perguntas frequentes</p><h2>Antes de encomendar</h2></div>
+    <div class="faq">
+      <details><summary>Funciona com todos os telemóveis?</summary><p>Funciona com todos os iPhone desde o XS e com quase todos os Android com NFC, que vem ligado por defeito na maioria. Basta encostar o telemóvel desbloqueado à placa.</p></details>
+      <details><summary>O cliente precisa de instalar alguma app?</summary><p>Não. O telemóvel abre o link sozinho, como se o cliente tocasse num link. Não precisa de app nem de câmara.</p></details>
+      <details><summary>E se eu mudar de Instagram, de menu ou de link?</summary><p>Com o link gerido, mudamos o destino e a mesma placa passa a abrir o novo link, sem a trocar. Com o link direto, a placa fica bloqueada no link original.</p></details>
+      <details><summary>A placa deixa de funcionar se eu não pagar nada por mês?</summary><p>Não. A placa funciona sempre, com link direto ou gerido. O relatório mensal de toques é um serviço opcional e à parte.</p></details>
+      <details><summary>Quanto tempo demora?</summary><p>Recebe a prova digital em 24 horas. Depois da aprovação, a produção demora normalmente 2 a 4 dias úteis, mais o tempo de envio.</p></details>
+      <details><summary>Posso ter um QR code na mesma placa?</summary><p>Pode. Juntamos um QR code com o mesmo link, para quem tem telemóveis mais antigos.</p></details>
+      <details><summary>Como pago?</summary><p>Por MB WAY ou transferência bancária, depois de aprovar a prova digital.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="orcamento" class="band">
+  <div class="wrap quote">
+    <div>
+      <p class="eyebrow">Orçamento</p>
+      <h2>Peça o seu orçamento</h2>
+      <p class="lead">Respondemos em 24 horas, por telefone, WhatsApp ou Instagram. Sem compromisso.</p>
+      <div class="contact-list">
+        <a class="card insta-card" href="https://instagram.com/dv_placasnfc" target="_blank" rel="noopener" aria-label="Seguir a D&amp;V Placas NFC no Instagram">
+          <span class="insta-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+          <span class="insta-txt"><span class="insta-call">Fale com a nossa equipa agora mesmo:</span><span class="insta-at">D&amp;V PLACAS NFC</span><span class="insta-sub">Siga-nos no Instagram</span></span>
+          <svg class="insta-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+        <a class="card" data-wa href="#" target="_blank" rel="noopener" hidden><span class="ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></span><span><b>Falar no WhatsApp</b><p>A forma mais rápida de pedir orçamento</p></span></a>
+        <div class="card"><span class="ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg></span><span><b>Entregas</b><p>Em mão na zona de Lisboa · CTT para todo o país</p></span></div>
+      </div>
+    </div>
+    <form class="card" id="pedido" novalidate>
+      <div class="escolha" id="escolha" hidden aria-live="polite"><div class="esc-prev" id="ePrev" aria-hidden="true"></div><div><b>A sua placa</b><p id="eTxt"></p><a class="btn" href="#criar" id="eMudar">Mudar cor e modelo</a></div></div>
+      <div class="row2">
+        <label for="fNome">O seu nome<input id="fNome" name="nome" autocomplete="name" required maxlength="120"></label>
+        <label for="fNeg">Nome do negócio<input id="fNeg" name="negocio" autocomplete="organization" maxlength="160"></label>
+      </div>
+      <div class="row2">
+        <label for="fTel">Telemóvel / WhatsApp<input id="fTel" name="telefone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="912 345 678" maxlength="20"></label>
+        <label for="fEmail">Email (opcional)<input id="fEmail" name="email" type="email" inputmode="email" autocomplete="email" maxlength="160"></label>
+      </div>
+      <fieldset style="border:0;margin:0;padding:0;display:grid;gap:8px"><legend style="font-size:14px;font-weight:600;color:var(--muted);padding:0;margin-bottom:6px">Material</legend>
+        <div class="seg" style="grid-template-columns:repeat(2,1fr)">
+          <label><input type="radio" name="material" value="PLA" checked><span>PLA<small>desde 19 €</small></span></label>
+          <label><input type="radio" name="material" value="PETG"><span>PETG<small>desde 24 €</small></span></label>
+        </div>
+      </fieldset>
+      <label for="fQtd">Quantas placas?<input id="fQtd" name="quantidade" type="number" min="1" max="500" value="1" inputmode="numeric"></label>
+      <label for="fMsg">O que quer que a placa faça?<textarea id="fMsg" name="mensagem" maxlength="2000" placeholder="Ex.: avaliações Google no balcão e Wi-Fi nas mesas"></textarea></label>
+      <div class="hp" aria-hidden="true"><label for="fSite">Site<input id="fSite" name="site" tabindex="-1" autocomplete="off"></label></div>
+      <label class="consent" for="fOk"><input id="fOk" type="checkbox" required> <span>Aceito que a D&amp;V use estes dados para responder ao meu pedido, como explicado na <a href="../privacidade.html">política de privacidade</a>.</span></label>
+      <div class="form-msg" id="formMsg" role="status" hidden></div>
+      <button class="btn btn-gold" type="submit" id="fBtn" style="justify-self:start">Enviar pedido</button>
+      <div class="pagar" id="pagamento">
+        <div class="pagar-head"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Pagamento seguro</b></div>
+        <p>Só paga depois de aprovar a prova digital da sua placa. Enviamos-lhe um link de pagamento seguro e pode pagar com:</p>
+        <ul class="pagar-metodos" aria-label="Formas de pagamento aceites">
+          <li class="pm"><span class="pm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18h2"/></svg></span><span><b>MB WAY</b><small>Confirma no telemóvel</small></span></li>
+          <li class="pm"><span class="pm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h4M7 14h10M15 10h2"/></svg></span><span><b>Multibanco</b><small>Referência para pagar</small></span></li>
+          <li class="pm"><span class="pm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg></span><span><b>Cartão</b><small>Visa e Mastercard</small></span></li>
+          <li class="pm"><span class="pm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a1 1 0 0 1-1-1z"/><path d="M4 7l11-3v3M16 13.5h.01"/></svg></span><span><b>Apple Pay</b><small>e Google Pay</small></span></li>
+        </ul>
+        <ol class="pagar-passos">
+          <li><b>1</b>Envia o pedido</li>
+          <li><b>2</b>Recebe a prova em 24 h</li>
+          <li><b>3</b>Aprova e paga pelo link</li>
+          <li><b>4</b>Produzimos e enviamos</li>
+        </ol>
+        <p class="pagar-nota">Pagamentos processados pela Stripe, com ligação encriptada. Não guardamos os dados do seu cartão. Fatura enviada com cada encomenda.</p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="ano">2026</span> D&amp;V Placas NFC · Placas NFC personalizadas, impressas em 3D em Portugal</span>
+    <span style="display:flex;gap:18px;flex-wrap:wrap"><a href="../produtos/placa-mesa-pla.html">Produtos</a><a href="https://instagram.com/dv_placasnfc" target="_blank" rel="noopener">Instagram</a><a href="../privacidade.html">Política de privacidade</a></span>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa href="#" target="_blank" rel="noopener" aria-label="Falar connosco no WhatsApp" hidden><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+
+<script src="../config.js"></script>
+<script>
+(function () {
+  "use strict";
+  var C = window.SITE_CONFIG || {};
+  document.getElementById("ano").textContent = new Date().getFullYear();
+
+  /* WhatsApp: os botões só aparecem com o número configurado. */
+  var waNum = String(C.whatsapp || "").replace(/\D/g, "");
+  if (waNum.length === 9) waNum = "351" + waNum;
+  function waLink(text) { return "https://wa.me/" + waNum + "?text=" + encodeURIComponent(text); }
+  if (waNum.length >= 11) {
+    document.querySelectorAll("[data-wa]").forEach(function (a) {
+      a.href = waLink("Olá! Vi o vosso site e gostava de um orçamento para placas NFC.");
+      a.hidden = false;
+    });
+  }
+
+  /* Contagem anónima para o funil do Radar: só o tipo de ação, a origem (ex.: instagram.com) e a hora.
+     Sem cookies, sem IP, sem dados de quem visita. */
+  var origem = (function () {
+    try {
+      var u = new URLSearchParams(location.search).get("utm_source");
+      if (u) return u;
+      var r = document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, "") : "";
+      return r && r !== location.hostname ? r : "direto";
+    } catch (e) { return ""; }
+  })();
+  function conta(tipo) {
+    if (!C.supabaseUrl || !C.supabaseAnonKey) return;
+    try {
+      fetch(C.supabaseUrl + "/rest/v1/rpc/registar_evento_site", {
+        method: "POST", keepalive: true,
+        headers: { "Content-Type": "application/json", apikey: C.supabaseAnonKey, Authorization: "Bearer " + C.supabaseAnonKey },
+        body: JSON.stringify({ p_tipo: tipo, p_origem: origem })
+      }).catch(function () {});
+    } catch (e) {}
+  }
+  conta("visita");
+  var jaContou = {};
+  function contaUmaVez(tipo) { if (!jaContou[tipo]) { jaContou[tipo] = 1; conta(tipo); } }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a,button");
+    if (!a) return;
+    if (a.hasAttribute("data-wa") || /wa\.me/.test(a.href || "")) contaUmaVez("whatsapp");
+    else if (/instagram\.com/.test(a.href || "")) contaUmaVez("instagram");
+    else if (a.id === "cQuero") contaUmaVez("configurador");
+  });
+  document.addEventListener("focusin", function (e) {
+    if (e.target.closest && e.target.closest("#pedido")) contaUmaVez("formulario");
+  });
+
+  /* Separadores (personalização e sugestões). */
+  document.querySelectorAll("[data-tabs]").forEach(function (bar) {
+    var tabs = bar.querySelectorAll("[role=tab]");
+    function show(btn) {
+      tabs.forEach(function (t) {
+        var on = t === btn;
+        t.setAttribute("aria-selected", on);
+        var p = document.getElementById(t.dataset.tab);
+        if (p) p.hidden = !on;
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { show(t); });
+      t.addEventListener("keydown", function (e) {
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+        var n = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+        n.focus(); show(n);
+      });
+    });
+  });
+
+  /* Oficina de criação + placa escolhida no formulário.
+     Para acrescentar estilos de letra, junte uma linha em FONTES; frases sugeridas em FRASES. */
+  var form = document.getElementById("pedido");
+  var $ = function (id) { return document.getElementById(id); };
+  /* k = ajuste de tamanho; up = maiúsculas no nome; ls = espaço entre letras. */
+  var FONTES = {
+    moderno: { nome: "Moderno", f: "var(--display)", w: 800, ls: "-.01em", k: 1, up: false },
+    classico: { nome: "Clássico", f: "'Playfair Display',Georgia,serif", w: 700, ls: "0", k: 1, up: false },
+    luxo: { nome: "Luxo", f: "'Cinzel',Georgia,serif", w: 600, ls: ".06em", k: .9, up: true },
+    elegante: { nome: "Elegante", f: "'Cormorant Garamond',Georgia,serif", w: 600, ls: ".02em", k: 1.15, up: false },
+    manuscrito: { nome: "Manuscrito", f: "'Great Vibes',cursive", w: 400, ls: "0", k: 1.45, up: false },
+    caligrafia: { nome: "Caligrafia", f: "'Dancing Script',cursive", w: 700, ls: "0", k: 1.2, up: false },
+    assinatura: { nome: "Assinatura", f: "'Parisienne',cursive", w: 400, ls: "0", k: 1.3, up: false },
+    minimalista: { nome: "Minimalista", f: "'Montserrat',sans-serif", w: 300, ls: ".14em", k: .85, up: true },
+    geometrico: { nome: "Geométrico", f: "'Josefin Sans',sans-serif", w: 600, ls: ".08em", k: .95, up: true },
+    impacto: { nome: "Impacto", f: "'Bebas Neue',sans-serif", w: 400, ls: ".04em", k: 1.25, up: true },
+    retro: { nome: "Retro", f: "'Abril Fatface',Georgia,serif", w: 400, ls: "0", k: 1, up: false },
+    arredondado: { nome: "Arredondado", f: "'Nunito',sans-serif", w: 800, ls: "0", k: 1, up: false }
+  };
+  var DESTINOS = { google: "avaliações Google", insta: "Instagram", wifi: "Wi-Fi", menu: "menu digital", whats: "WhatsApp", cartao: "cartão de visita", pagar: "pagamentos" };
+  var FRASES = {
+    google: ["Avalie-nos", "Deixe a sua avaliação", "Gostou? Avalie-nos"],
+    insta: ["Siga-nos", "Siga-nos no Instagram", "Junte-se a nós"],
+    wifi: ["Wi-Fi grátis", "Ligue-se ao Wi-Fi"],
+    menu: ["Veja o menu", "Menu digital", "Menu & Wi-Fi"],
+    whats: ["Fale connosco", "Marque já", "Marque o próximo corte"],
+    cartao: ["Guarde o contacto", "O nosso contacto"],
+    pagar: ["Pague aqui", "MB WAY"]
+  };
+  var USOS = {
+    google: { dest: "google" }, insta: { dest: "insta" }, wifi: { dest: "wifi" }, menu: { dest: "menu" }, whats: { dest: "whats" },
+    cartao: { dest: "cartao" }, pagar: { dest: "pagar" },
+    relatorio: { dest: "google", link: "gerido" }, direto: { link: "direto" }, gerido: { link: "gerido" }
+  };
+  var LINK_HINT = {
+    direto: "Abre logo a sua página e fica bloqueado para sempre.",
+    gerido: "Pode mudar o destino sem trocar a placa e recebe o relatório de toques."
+  };
+  var st = { modelo: "mesa", dest: "google", pos: "cima", fonteNome: "moderno", fonteFrase: "moderno", base: "#0c0c0e", txt: "#d4ad5b", mat: "PLA", link: "direto" };
+  var escolhida = false;
+
+  function lum(hex) { var n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255; }
+  function nomeCor(gid, c) { var b = $(gid).querySelector('[data-c="' + c + '"]'); return b ? b.getAttribute("aria-label").toLowerCase() : c; }
+  function marcar(gid, attr, v) { $(gid).querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute(attr) === v); }); }
+
+  /* Pinta uma placa (usado na oficina e na secção de cores). */
+  function pintar(pl, base, txt) {
+    var clara = lum(base) > 0.6;
+    pl.style.background = "linear-gradient(160deg," + base + "," + base + ")";
+    pl.style.borderColor = clara ? "#d8d1c3" : "#34333a";
+    var frase = clara ? "#111114" : "#f7f4ee";
+    pl.querySelectorAll(".p-name,.p-stars").forEach(function (e) { e.style.color = txt; });
+    pl.querySelectorAll(".p-title").forEach(function (e) { e.style.color = frase; });
+    pl.querySelectorAll(".p-tap").forEach(function (e) { e.style.borderColor = txt; e.style.color = txt; });
+    pl.querySelectorAll(".p-hint").forEach(function (e) { e.style.color = clara ? "#5e5a52" : "#a9a397"; });
+  }
+
+  function frasesSugeridas() {
+    $("cFrases").innerHTML = (FRASES[st.dest] || []).map(function (f) {
+      return '<button type="button" data-f="' + f.replace(/"/g, "&quot;") + '" aria-pressed="' + ($("cFrase").value.trim() === f) + '">' + f.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "</button>";
+    }).join("");
+  }
+
+  function draw() {
+    var pl = $("cPlaca"), F = FONTES[st.fonteNome], G = FONTES[st.fonteFrase];
+    pl.style.transform = "none";
+    var real = st.modelo === "mesa";
+    pl.classList.toggle("real", real); $("fsBase").hidden = real;
+    pintar(pl, real ? "#0c0c0e" : st.base, st.txt);
+    if (real) pl.style.background = "";
+    $("pvNome").textContent = $("cNome").value.trim() || "O seu negócio";
+    $("pvFrase").textContent = $("cFrase").value.trim() || " ";
+    $("pvNome").style.fontFamily = F.f; $("pvNome").style.fontWeight = F.w;
+    $("pvFrase").style.fontFamily = G.f; $("pvFrase").style.fontWeight = G.w;
+    /* O nome da empresa é o destaque da placa: maior, ajustado ao comprimento. */
+    var n = $("pvNome"), len = n.textContent.length;
+    var esc = st.modelo === "mesa" ? 0.78 : 1;
+    n.style.fontSize = Math.round((len <= 9 ? 34 : len <= 14 ? 28 : len <= 20 ? 22 : 18) * F.k * esc) + "px";
+    n.style.letterSpacing = F.up ? F.ls : "0"; n.style.textTransform = F.up ? "uppercase" : "none";
+    n.style.lineHeight = "1.1";
+    $("pvFrase").style.letterSpacing = G.up ? G.ls : "0";
+    $("pvFrase").style.textTransform = G.up ? "uppercase" : "none";
+    $("pvFrase").style.fontSize = Math.round(($("pvFrase").textContent.length > 14 ? 17 : 21) * G.k * esc) + "px";
+    $("pvStars").style.fontSize = st.modelo === "mesa" ? "17px" : "";
+    $("pvStars").hidden = st.dest !== "google";
+    var ordem = { cima: [0, 1, 2, 3, 4], centro: [2, 0, 1, 3, 4], baixo: [4, 0, 1, 2, 3] }[st.pos];
+    ["pvNome", "pvStars", "pvFrase", "pvTap", "pvHint"].forEach(function (id, i) { $(id).style.order = ordem[i]; });
+    $("cLinkHint").textContent = LINK_HINT[st.link];
+    frasesSugeridas();
+    if (escolhida) resumo();
+  }
+
+  function textoPlaca() {
+    return "Placa “" + ($("cNome").value.trim() || "O seu negócio") + "” com a frase “" + ($("cFrase").value.trim() || "-") + "”, a abrir " + DESTINOS[st.dest] +
+      ". Nome " + { cima: "em cima", centro: "ao centro", baixo: "em baixo" }[st.pos] + ", letra do nome " + FONTES[st.fonteNome].nome.toLowerCase() + ", letra da frase " + FONTES[st.fonteFrase].nome.toLowerCase() +
+      ". " + (st.modelo === "mesa" ? "Modelo: placa de mesa preta texturada" : "Cor da placa: " + nomeCor("cBase", st.base)) + ", letras: " + nomeCor("cTxt", st.txt) + ". Material " + st.mat + ", link " + st.link + ".";
+  }
+
+  /* O desenho vai com o pedido para o Radar mostrar a placa exatamente como o cliente a criou. */
+  function desenho() {
+    return { v: 1, modelo: st.modelo, nome: ($("cNome").value.trim() || "O seu negócio").slice(0, 40), frase: $("cFrase").value.trim().slice(0, 40), dest: st.dest, pos: st.pos,
+      fn: st.fonteNome, ff: st.fonteFrase, base: st.modelo === "mesa" ? "#0c0c0e" : st.base, txt: st.txt, mat: st.mat, link: st.link };
+  }
+
+  /* Mostra no formulário a placa escolhida (pré-visualização pequena + resumo). */
+  function resumo() {
+    escolhida = true;
+    var c = $("cPlaca").cloneNode(true);
+    c.removeAttribute("id"); c.style.transform = "scale(.36)"; c.querySelectorAll("[id]").forEach(function (e) { e.removeAttribute("id"); });
+    $("ePrev").innerHTML = ""; $("ePrev").appendChild(c);
+    $("eTxt").textContent = textoPlaca();
+    $("escolha").hidden = false;
+    var r = form.querySelector('input[name=material][value="' + st.mat + '"]'); if (r) r.checked = true;
+    var nome = $("cNome").value.trim();
+    if (!$("fNeg").value && nome && nome !== "O seu negócio" && nome !== "Barbearia") $("fNeg").value = nome;
+    $("fMsg").placeholder = "Mais alguma coisa? Ex.: quero também uma para as mesas";
+  }
+
+  function irPara(id, foco) {
+    $(id).scrollIntoView({ behavior: "smooth" });
+    if (foco) setTimeout(function () { $(foco).focus({ preventScroll: true }); }, 600);
+  }
+
+  function aplicar(cfg) {
+    if (cfg.dest && cfg.dest !== st.dest) {
+      var antigas = FRASES[st.dest] || [], atual = $("cFrase").value.trim();
+      st.dest = cfg.dest;
+      if (!atual || antigas.indexOf(atual) >= 0) $("cFrase").value = FRASES[st.dest][0];
+    }
+    if (cfg.frase) $("cFrase").value = cfg.frase;
+    if (cfg.nome && ($("cNome").value.trim() === "O seu negócio" || !$("cNome").value.trim())) $("cNome").value = cfg.nome;
+    if (cfg.link) st.link = cfg.link;
+    if (cfg.mat) st.mat = cfg.mat;
+    marcar("cDest", "data-v", st.dest); marcar("cLink", "data-v", st.link); marcar("cMat", "data-v", st.mat);
+    draw();
+
+  }
+
+  /* Estilos de letra a partir de FONTES. */
+  function botoesFontes(sel) { return Object.keys(FONTES).map(function (k) {
+    var F = FONTES[k];
+    return '<button type="button" data-v="' + k + '" aria-pressed="' + (k === sel) + '" style="font-family:' + F.f.replace(/"/g, "'") + ';font-weight:' + F.w + ';font-size:' + Math.round(15 * F.k) + 'px' + (F.up ? ';text-transform:uppercase;letter-spacing:.06em' : "") + '">' + F.nome + "</button>";
+  }).join(""); }
+  $("cFonteNome").innerHTML = botoesFontes(st.fonteNome);
+  $("cFonteFrase").innerHTML = botoesFontes(st.fonteFrase);
+
+  function grupo(gid, chave, attr) {
+    $(gid).addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      var v = b.getAttribute(attr);
+      if (chave === "dest") { aplicar({ dest: v }); return; }
+      st[chave] = v; marcar(gid, attr, v); draw();
+    });
+  }
+  grupo("cModelo", "modelo", "data-v"); grupo("cDest", "dest", "data-v"); grupo("cPos", "pos", "data-v"); grupo("cFonteNome", "fonteNome", "data-v"); grupo("cFonteFrase", "fonteFrase", "data-v");
+  grupo("cBase", "base", "data-c"); grupo("cTxt", "txt", "data-c"); grupo("cMat", "mat", "data-v"); grupo("cLink", "link", "data-v");
+  $("cFrases").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; $("cFrase").value = b.dataset.f; draw(); });
+  $("cNome").addEventListener("input", draw); $("cFrase").addEventListener("input", draw);
+  $("cQuero").addEventListener("click", function () { resumo(); irPara("pedido", "fNome"); });
+
+  /* Cartões de utilizações e modelos sugeridos: preenchem a placa e levam ao formulário. */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("[data-uso]");
+    if (a) {
+      e.preventDefault();
+      var cfg = Object.assign({}, USOS[a.dataset.uso] || {});
+      if (a.dataset.frase) cfg.frase = a.dataset.frase;
+      if (a.dataset.nome) cfg.nome = a.dataset.nome;
+      if (a.dataset.mat) cfg.mat = a.dataset.mat;
+      aplicar(cfg); resumo(); irPara("pedido", "fNome");
+      return;
+    }
+    var tg = e.target.closest("[data-tag]");
+    if (tg) {
+      e.preventDefault();
+      var msg = $("fMsg"), linha = "Quero: " + tg.dataset.tag + ".";
+      if (msg.value.indexOf(linha) < 0) msg.value = (linha + (msg.value ? "\n" + msg.value : ""));
+      escolhida = false; $("escolha").hidden = true;
+      irPara("pedido", "fNome");
+      return;
+    }
+    var m = e.target.closest("[data-material]");
+    if (m) {
+      var r = form.querySelector('input[name=material][value="' + m.dataset.material + '"]'); if (r) r.checked = true;
+      st.mat = m.dataset.material; marcar("cMat", "data-v", st.mat); if (escolhida) resumo();
+    }
+  });
+  form.addEventListener("change", function (e) {
+    if (e.target.name === "material") { st.mat = e.target.value; marcar("cMat", "data-v", st.mat); if (escolhida) $("eTxt").textContent = textoPlaca(); }
+  });
+
+  /* Secção "Cor": as bolinhas mudam a placa de exemplo. */
+  (function () {
+    var pc = { base: "#f3efe6", txt: "#b4233a" };
+    function pinta() { pintar($("pcPlaca"), pc.base, pc.txt); $("pcPlaca").style.transform = "none"; }
+    [["pcBase", "base"], ["pcTxt", "txt"]].forEach(function (g) {
+      $(g[0]).addEventListener("click", function (e) {
+        var b = e.target.closest("button"); if (!b) return;
+        pc[g[1]] = b.dataset.c; marcar(g[0], "data-c", b.dataset.c); pinta();
+      });
+    });
+    pinta();
+  })();
+
+  draw();
+
+  /* Vindo das páginas de produto: ?material=PETG ou ?tag=animais já preenchem a escolha. */
+  (function () {
+    try {
+      var q = new URLSearchParams(location.search), mat = q.get("material"), tag = q.get("tag");
+      if (mat === "PLA" || mat === "PETG") {
+        st.mat = mat; marcar("cMat", "data-v", mat);
+        var r = form.querySelector('input[name=material][value="' + mat + '"]'); if (r) r.checked = true;
+      }
+      var TAGS = { animais: "Tag para animais (coleira)", criancas: "Tag de contacto para crianças", negocios: "Tags porta-chaves para negócios" };
+      if (TAGS[tag]) $("fMsg").value = "Quero: " + TAGS[tag] + ".";
+    } catch (e) {}
+  })();
+
+  /* Envio do pedido: guarda no Supabase (função enviar_pedido) e mostra alternativa por WhatsApp. */
+  var msg = document.getElementById("formMsg"), btn = document.getElementById("fBtn");
+  function aviso(t, ok) { msg.textContent = t; msg.className = "form-msg " + (ok ? "ok" : "err"); msg.hidden = false; }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var d = new FormData(form);
+    if (d.get("site")) return; // armadilha para robôs
+    var nome = String(d.get("nome") || "").trim(), tel = String(d.get("telefone") || "").trim();
+    if (nome.length < 2) { aviso("Escreva o seu nome.", false); document.getElementById("fNome").focus(); return; }
+    if (tel.replace(/\D/g, "").length < 9) { aviso("Escreva um telemóvel com 9 números.", false); document.getElementById("fTel").focus(); return; }
+    if (!document.getElementById("fOk").checked) { aviso("Para enviarmos o orçamento, aceite a política de privacidade.", false); return; }
+    var body = {
+      p_nome: nome, p_telefone: tel, p_email: String(d.get("email") || "").trim(), p_negocio: String(d.get("negocio") || "").trim(),
+      p_material: String(d.get("material") || ""), p_quantidade: parseInt(d.get("quantidade"), 10) || 1,
+      p_mensagem: ((escolhida ? textoPlaca() + "\n" : "") + String(d.get("mensagem") || "").trim()).trim().slice(0, 2000),
+      p_desenho: escolhida ? desenho() : null
+    };
+    var resumo = "Olá! Pedido de orçamento:\n" + (body.p_negocio ? "Negócio: " + body.p_negocio + "\n" : "") + "Material: " + body.p_material + "\nPlacas: " + body.p_quantidade + (body.p_mensagem ? "\n" + body.p_mensagem : "");
+    btn.disabled = true; btn.textContent = "A enviar…";
+    fetch(C.supabaseUrl + "/rest/v1/rpc/enviar_pedido_v2", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", apikey: C.supabaseAnonKey, Authorization: "Bearer " + C.supabaseAnonKey },
+      body: JSON.stringify(body)
+    })
+      .then(function (r) { return r.ok ? r.json() : false; })
+      .then(function (ok) {
+        if (ok === true) {
+          aviso("Pedido enviado. Respondemos em 24 horas com a prova digital. Depois de aprovar, recebe o link para pagar por MB WAY, Multibanco ou cartão. Obrigado!", true);
+          form.reset();
+          escolhida = false; $("escolha").hidden = true;
+        } else {
+          aviso("Não conseguimos registar o pedido. Confirme os dados ou fale connosco pelo WhatsApp.", false);
+        }
+      })
+      .catch(function () { aviso("Sem ligação à internet. Tente outra vez ou fale connosco pelo WhatsApp.", false); })
+      .finally(function () {
+        btn.disabled = false; btn.textContent = "Enviar pedido";
+        if (waNum.length >= 11 && !msg.querySelector("a")) {
+          var a = document.createElement("a");
+          a.href = waLink(resumo); a.target = "_blank"; a.rel = "noopener"; a.className = "btn btn-wa"; a.style.marginTop = "12px"; a.style.display = "flex";
+          a.textContent = "Enviar também pelo WhatsApp";
+          msg.appendChild(a);
+        }
+      });
+  });
+})();
+</script>
+</body>
+</html>
