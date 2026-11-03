@@ -393,6 +393,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       <li><a href="#tags">Tags</a></li>
       <li><a href="#criar">Criar</a></li>
       <li><a href="#materiais">Preços</a></li>
+      <li><a href="#pro">Plano Pro</a></li>
     </ul></nav>
     <a class="btn btn-gold" href="#orcamento">Encomendar</a>
   </div>
@@ -575,6 +576,16 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       <article class="card mat"><h3>PETG</h3><div class="price">desde <b>24 €</b></div><ul><li>A opção mais robusta</li><li>Resistente a impactos, humidade e calor</li><li>Para uso intenso todos os dias</li></ul><a class="btn" href="#orcamento" data-material="PETG">Escolher PETG</a><a href="produtos/placa-mesa-petg.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
     </div>
     <p class="note">Preços por placa. Descontos para várias placas no mesmo pedido.</p>
+  </div>
+</section>
+
+<section id="pro">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Plano Pro</p><h2>Veja a sua placa a trabalhar</h2><p class="lead">Com o link gerido e o Plano Pro, recebe um painel privado com os toques na placa, as horas de mais movimento e a evolução das suas avaliações Google. Experimente aqui com dados de exemplo.</p></div>
+    <div class="pro-demo-wrap" style="max-width:720px">
+      <div id="proDemo"></div>
+      <p class="note" style="margin-top:14px;font-size:13px;color:var(--muted)">Contamos apenas a data e a hora de cada toque. Nunca guardamos dados de quem toca na placa.</p>
+    </div>
   </div>
 </section>
 
@@ -1219,6 +1230,11 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
     if (Math.abs(dx) > 50) vai(dx < 0 ? 1 : -1);
   });
 })();
+</script>
+<script src="js/pro.js"></script>
+<script>
+(function(){var el=document.getElementById("proDemo");if(!el||!window.DVPro)return;
+DVPro.demo(el,{nome:"Café Aurora",ctaTexto:"Quero o Plano Pro",cta:function(){var m=document.getElementById("fMsg");if(m&&!m.value)m.value="Quero saber mais sobre o Plano Pro (painel com toques e avaliações Google).";var o=document.getElementById("orcamento");if(o)o.scrollIntoView({behavior:"smooth"});setTimeout(function(){var n=document.getElementById("fNome");if(n)n.focus({preventScroll:true})},700)}});})();
 </script>
 </body>
 </html>

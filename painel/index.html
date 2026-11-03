@@ -63,9 +63,10 @@ section h2{font-family:"Sora",sans-serif;font-size:17px;margin:0 0 12px}
 <div class="wrap">
   <div class="top"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#17171b" stroke="#2b2a30"/><path d="M24 22a14 14 0 0 1 0 20M31 17a21 21 0 0 1 0 30M38 12a28 28 0 0 1 0 40" fill="none" stroke="#d4ad5b" stroke-width="5" stroke-linecap="round"/></svg><span>Painel D&amp;V <small>Placas NFC</small></span></div>
   <main id="app" aria-live="polite"><h1>A carregar…</h1><div class="grid"><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div></div></main>
-  <p class="foot">Painel incluído na sua placa, sem mensalidades · <a href="../">D&amp;V Placas NFC</a></p>
+  <p class="foot">Painel grátis incluído na sua placa · <a href="../">D&amp;V Placas NFC</a></p>
 </div>
 <script src="../config.js"></script>
+<script src="../js/pro.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 (function () {
@@ -115,14 +116,14 @@ section h2{font-family:"Sora",sans-serif;font-size:17px;margin:0 0 12px}
     if (d.pro && d.gerido) {
       var meses = []; for (var i = 5; i >= 0; i--) meses.push(mesKey(new Date(hoje.getFullYear(), hoje.getMonth() - i, 1)));
       var max = Math.max.apply(null, meses.map(function (m) { return porMes[m] || 0; }).concat([1]));
+      if (d.periodos) h += "<section class='card'><h2>Toques na placa</h2>" + DVPro.kpis(d.periodos) + "</section>";
+      h += "<section class='card'><h2>Quando tocam mais? <small class='muted' style='font-weight:500;font-size:12px'>últimos 90 dias</small></h2><div id='mapaReal'></div></section>";
       h += "<section class='card'><h2>Toques por mês</h2><div class='bars'>" + meses.map(function (m) { var v = porMes[m] || 0; return "<div class='bar'><b>" + v + "</b><i style='height:" + Math.max(2, v / max * 100) + "%'></i><span>" + mesNome(m) + "</span></div>"; }).join("") + "</div></section>";
     } else if (d.pro) {
       h += "<div class='tip'>A contagem de toques está disponível com o <b>link gerido</b>. Fale connosco para ativar.</div>";
     } else {
-      h += "<section class='card pro'><div class='pro-tag'>PLANO PRO</div><h2>🔒 Quantos clientes tocam na sua placa?</h2>" +
-        "<div class='bars locked' aria-hidden='true'>" + [30, 55, 42, 70, 61, 85].map(function (v) { return "<div class='bar'><b>?</b><i style='height:" + v + "%'></i><span>&nbsp;</span></div>"; }).join("") + "</div>" +
-        "<ul class='pro-lista'><li>Toques na placa, mês a mês</li><li>Mudar o destino da placa sempre que quiser (menu, promoções, campanhas)</li><li>Relatório mensal enviado por nós</li></ul>" +
-        "<a class='btn gold' href='" + pedirPro + "' target='_blank' rel='noopener'>Ativar o Plano Pro</a></section>";
+      h += "<section class='card pro'><div class='pro-tag'>PLANO PRO</div><h2>Experimente o Plano Pro</h2><p class='sub' style='margin-bottom:14px'>Veja com dados de exemplo o que este painel mostra com o Plano Pro: quantos clientes tocam na sua placa, a que horas e como crescem as avaliações.</p><div id='proDemo'></div>" +
+        "<a class='btn gold' style='margin-top:14px' href='" + pedirPro + "' target='_blank' rel='noopener'>Ativar o Plano Pro</a></section>";
     }
 
     if (aval.length > 1 || base != null) {
@@ -142,6 +143,8 @@ section h2{font-family:"Sora",sans-serif;font-size:17px;margin:0 0 12px}
     }
     h += "<div class='tip'>📲 <b>Guarde este painel no telemóvel:</b> no iPhone toque em Partilhar → <i>Adicionar ao ecrã principal</i>; no Android, menu ⋮ → <i>Adicionar ao ecrã principal</i>.</div>";
     app.innerHTML = h;
+    var mr = document.getElementById("mapaReal"); if (mr) DVPro.mapa(mr, d.mapa || [], { periodo: "em 90 dias" });
+    var pdm = document.getElementById("proDemo"); if (pdm) DVPro.demo(pdm, { nome: "Café Aurora", cta: function () { window.open(pedirPro, "_blank", "noopener"); }, ctaTexto: "Ativar o Plano Pro" });
 
     var cp = document.getElementById("copiar");
     if (cp) cp.addEventListener("click", function () {

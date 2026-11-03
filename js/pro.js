@@ -1,0 +1,219 @@
+/* D&V Placas NFC — Plano Pro: mapa de calor dos toques, infográficos e visita guiada.
+ * Usado no site (demonstração) e no Painel do Cliente (dados reais ou demonstração).
+ * Os toques guardam só a data e a hora: nada sobre quem toca. */
+(function () {
+  var DIAS = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"];
+  var DIAS_L = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"];
+  var MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+
+  var css = `
+.pro-ui{--pg:var(--gold,#d4ad5b);--pg2:var(--gold-2,var(--gold2,#f0d38d));--pc:var(--card,#17171b);--pc2:var(--card-2,var(--card2,#1e1e23));--pl:var(--line,#2b2a30);--pm:var(--muted,#a9a397);--pf:var(--fg,#f3efe6);color:var(--pf)}
+.pro-ui *{box-sizing:border-box}
+.pro-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;border:1px solid var(--pl);border-radius:16px;background:var(--pc)}
+.pro-tabs button{border:0;border-radius:12px;padding:12px 8px;background:transparent;color:var(--pm);font:700 15px/1.2 inherit;cursor:pointer;display:grid;gap:2px}
+.pro-tabs button small{font-weight:500;font-size:12px}
+.pro-tabs button[aria-selected=true]{background:linear-gradient(180deg,var(--pg2),var(--pg));color:#1a1408}
+.pro-win{margin-top:14px;border:1px solid var(--pl);border-radius:22px;background:#111114;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.pro-bar{display:flex;align-items:center;gap:7px;padding:11px 16px;border-bottom:1px solid var(--pl);font-size:12.5px;color:var(--pm)}
+.pro-bar i{width:9px;height:9px;border-radius:50%;background:#2f2e35}.pro-bar span{margin-left:6px}
+.pro-bar .ex{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--pg);border:1px solid var(--pg);border-radius:999px;padding:2px 8px}
+.pro-body{padding:14px;display:grid;gap:12px}
+.pro-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pro-kpi{background:var(--pc);border:1px solid var(--pl);border-radius:14px;padding:12px}
+.pro-kpi .l{font-size:12px;color:var(--pm)}.pro-kpi .n{font-family:"Sora",sans-serif;font-weight:800;font-size:26px;line-height:1.15;margin-top:2px}
+.pro-kpi .d{font-size:12px;font-weight:600;margin-top:2px}.pro-up{color:#7fd3a0}.pro-down{color:#ff8f8f}.pro-eq{color:var(--pm)}
+.pro-box{background:var(--pc);border:1px solid var(--pl);border-radius:16px;padding:14px}
+.pro-box h4{margin:0;font-family:"Sora",sans-serif;font-size:15px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.pro-box h4 small{font-family:inherit;font-weight:500;font-size:12px;color:var(--pm)}
+.pro-heat{display:grid;grid-template-columns:30px repeat(var(--cols),minmax(0,1fr));gap:3px;margin-top:12px;font-size:11px;color:var(--pm)}
+.pro-heat .dl{display:flex;align-items:center}
+.pro-heat button{aspect-ratio:1;border:0;border-radius:4px;padding:0;cursor:pointer;background:#242329;outline-offset:1px}
+.pro-heat button[aria-pressed=true]{outline:2px solid var(--pf)}
+.pro-hx{display:grid;grid-template-columns:30px repeat(var(--cols),minmax(0,1fr));gap:3px;font-size:10.5px;color:var(--pm);margin-top:4px}
+.pro-hx span{text-align:left;white-space:nowrap}
+.pro-leg{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--pm);margin-top:10px}.pro-leg i{width:14px;height:10px;border-radius:3px}
+.pro-det{margin-top:10px;font-weight:700;color:var(--pg);font-size:14px;min-height:20px}
+.pro-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--pl)}
+.pro-sum div{font-size:12px;color:var(--pm)}.pro-sum b{display:block;color:var(--pf);font-size:15px;margin-top:2px}
+.pro-bars{display:flex;align-items:flex-end;gap:8px;height:130px;margin-top:12px}
+.pro-bars div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px;height:100%}
+.pro-bars i{display:block;width:100%;border-radius:7px 7px 3px 3px;background:linear-gradient(180deg,var(--pg2),var(--pg));min-height:3px;transition:height .5s}
+.pro-bars i.antes{background:#3a3940}
+.pro-bars b{font-size:12px}.pro-bars span{font-size:11px;color:var(--pm)}
+.pro-line{width:100%;height:auto;margin-top:10px;display:block}
+.pro-kv{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.pro-kv div{background:var(--pc2);border-radius:12px;padding:10px 12px;font-size:12px;color:var(--pm)}.pro-kv b{display:block;font-family:"Sora",sans-serif;font-size:22px;color:var(--pf)}
+.pro-dest{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pro-dest button{border:1px solid var(--pl);background:var(--pc2);color:var(--pf);border-radius:999px;padding:8px 12px;font:600 13px/1 inherit;cursor:pointer}
+.pro-dest button[aria-pressed=true]{border-color:var(--pg);color:var(--pg);background:rgba(212,173,91,.10)}
+.pro-phone{margin:12px auto 0;width:180px;border-radius:26px;border:6px solid #2a2a30;background:#0b0b0d;padding:14px 12px;text-align:center;min-height:200px;display:grid;align-content:center;gap:8px}
+.pro-phone .ic{font-size:30px}.pro-phone b{font-size:14px}.pro-phone small{font-size:11px;color:var(--pm)}
+.pro-wa{margin-top:12px;background:#0b141a;border-radius:14px;padding:12px}
+.pro-wa p{margin:0;background:#1f2c33;border-radius:10px 10px 10px 2px;padding:10px 12px;font-size:13px;line-height:1.5;color:#e9edef;max-width:92%}
+.pro-wa p small{display:block;text-align:right;color:#8696a0;font-size:10.5px;margin-top:4px}
+.pro-tour{margin-top:16px;border:1px solid var(--pg);border-radius:20px;padding:16px;background:linear-gradient(180deg,rgba(212,173,91,.10),var(--pc) 70%)}
+.pro-tour .k{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pg)}
+.pro-tour h4{margin:6px 0 4px;font-family:"Sora",sans-serif;font-size:18px}
+.pro-tour p{margin:0;color:var(--pm);font-size:14px}
+.pro-dots{display:flex;gap:6px;margin-top:12px}.pro-dots i{height:6px;flex:1;border-radius:6px;background:var(--pl)}.pro-dots i.on{background:var(--pg)}
+.pro-nav{display:flex;gap:8px;margin-top:12px}
+.pro-nav button{flex:1;padding:12px;border-radius:12px;border:1px solid var(--pl);background:var(--pc2);color:var(--pf);font:700 14px/1 inherit;cursor:pointer}
+.pro-nav button.go{background:linear-gradient(180deg,var(--pg2),var(--pg));color:#1a1408;border-color:transparent}
+.pro-nav button:disabled{opacity:.4;cursor:default}
+.pro-foco{box-shadow:0 0 0 2px var(--pg),0 0 30px rgba(212,173,91,.25);transition:box-shadow .3s}
+@media (max-width:420px){.pro-kpi .n{font-size:22px}.pro-heat{gap:2px}.pro-hx{gap:2px}}
+@media (prefers-reduced-motion:reduce){.pro-bars i{transition:none}}
+`;
+  function addCss() { if (document.getElementById("pro-css")) return; var s = document.createElement("style"); s.id = "pro-css"; s.textContent = css; document.head.appendChild(s); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function fmt(n) { return Number(n || 0).toLocaleString("pt-PT"); }
+  function delta(a, b, txt) {
+    if (!b) return a ? "<span class='pro-up'>▲ novo</span>" : "<span class='pro-eq'>–</span>";
+    var p = Math.round((a - b) / b * 100);
+    return "<span class='" + (p > 0 ? "pro-up" : p < 0 ? "pro-down" : "pro-eq") + "'>" + (p > 0 ? "▲ +" : p < 0 ? "▼ " : "") + p + "%" + (txt ? " " + txt : "") + "</span>";
+  }
+  var COR = ["#242329", "#3b3427", "#6b5a2f", "#a8893f", "#d4ad5b", "#f0d38d"];
+  function cor(v, max) { if (!v) return COR[0]; var i = Math.ceil(v / max * 5); return COR[Math.max(1, Math.min(5, i))]; }
+
+  /* Mapa de calor: cells = [[dia 0-6, hora 0-23, n], ...] */
+  function mapa(el, cells, opt) {
+    addCss(); opt = opt || {}; el.classList.add("pro-ui");
+    var g = {}, max = 1, porDia = [0, 0, 0, 0, 0, 0, 0], porHora = {}, tot = 0, hMin = 8, hMax = 21;
+    (cells || []).forEach(function (c) {
+      var d = +c[0], h = +c[1], n = +c[2]; g[d + "-" + h] = (g[d + "-" + h] || 0) + n;
+      porDia[d] += n; porHora[h] = (porHora[h] || 0) + n; tot += n;
+      if (n) { hMin = Math.min(hMin, h); hMax = Math.max(hMax, h); }
+    });
+    Object.keys(g).forEach(function (k) { max = Math.max(max, g[k]); });
+    var cols = hMax - hMin + 1, h = "";
+    h += "<div class='pro-heat' style='--cols:" + cols + "' role='grid' aria-label='Toques por dia da semana e hora'>";
+    for (var d = 0; d < 7; d++) {
+      h += "<span class='dl'>" + DIAS[d] + "</span>";
+      for (var x = hMin; x <= hMax; x++) { var v = g[d + "-" + x] || 0; h += "<button type='button' data-d='" + d + "' data-h='" + x + "' data-v='" + v + "' style='background:" + cor(v, max) + "' aria-label='" + DIAS_L[d] + ", " + x + "h: " + v + " toques'></button>"; }
+    }
+    h += "</div><div class='pro-hx' style='--cols:" + cols + "'><span></span>";
+    for (var y = hMin; y <= hMax; y++) h += "<span>" + ((y - hMin) % 4 === 0 ? y + "h" : "") + "</span>";
+    h += "</div><div class='pro-leg'>Menos " + COR.map(function (c) { return "<i style='background:" + c + "'></i>"; }).join("") + " Mais</div>";
+    h += "<div class='pro-det' aria-live='polite'>" + (tot ? "Toque num quadrado para ver esse momento." : "Ainda sem toques suficientes para o mapa.") + "</div>";
+    var dTop = porDia.indexOf(Math.max.apply(null, porDia)), hTop = null, hv = -1;
+    Object.keys(porHora).forEach(function (k) { if (porHora[k] > hv) { hv = porHora[k]; hTop = +k; } });
+    var best = null, bv = 0; Object.keys(g).forEach(function (k) { if (g[k] > bv) { bv = g[k]; best = k; } });
+    if (tot) {
+      var bb = best.split("-");
+      h += "<div class='pro-sum'><div>Dia mais forte<b>" + DIAS_L[dTop] + "</b></div><div>Hora de pico<b>" + hTop + "h–" + (hTop + 1) + "h</b></div><div>Melhor momento<b>" + DIAS[+bb[0]] + " " + bb[1] + "h</b></div></div>";
+    }
+    el.innerHTML = h;
+    var det = el.querySelector(".pro-det"), media = opt.semanas || 13;
+    el.querySelector(".pro-heat").addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      el.querySelectorAll(".pro-heat button[aria-pressed=true]").forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      var v = +b.dataset.v, hh = +b.dataset.h;
+      det.textContent = DIAS_L[+b.dataset.d] + ", " + hh + "h–" + (hh + 1) + "h: " + fmt(v) + " toques" + (opt.periodo ? " " + opt.periodo : "") + (v ? " · cerca de " + Math.max(1, Math.round(v / media)) + " por semana" : "");
+    });
+  }
+
+  function kpis(p) {
+    return "<div class='pro-kpis'><div class='pro-kpi'><div class='l'>Hoje</div><div class='n'>" + fmt(p.hoje) + "</div><div class='d'>" +
+      (p.hoje - p.ontem >= 0 ? "<span class='pro-up'>▲ +" + (p.hoje - p.ontem) + " vs ontem</span>" : "<span class='pro-down'>▼ " + (p.hoje - p.ontem) + " vs ontem</span>") + "</div></div>" +
+      "<div class='pro-kpi'><div class='l'>7 dias</div><div class='n'>" + fmt(p.sem) + "</div><div class='d'>" + delta(p.sem, p.semAnt) + "</div></div>" +
+      "<div class='pro-kpi'><div class='l'>30 dias</div><div class='n'>" + fmt(p.mes) + "</div><div class='d'>" + delta(p.mes, p.mesAnt) + "</div></div></div>";
+  }
+  function barras(lista, antesAte) {
+    var max = Math.max.apply(null, lista.map(function (x) { return x.n; }).concat([1]));
+    return "<div class='pro-bars'>" + lista.map(function (x, i) { return "<div><b>" + fmt(x.n) + "</b><i class='" + (antesAte != null && i < antesAte ? "antes" : "") + "' style='height:" + Math.max(3, Math.round(x.n / max * 100)) + "%'></i><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>";
+  }
+  function linha(pts, marca) {
+    var W = 320, H = 120, P = 10, mx = Math.max.apply(null, pts), mn = Math.min.apply(null, pts);
+    var xy = pts.map(function (v, i) { return [P + i * (W - 2 * P) / (pts.length - 1), H - P - (mx === mn ? .5 : (v - mn) / (mx - mn)) * (H - 2 * P - 14)]; });
+    var d = xy.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+    var mxp = xy[marca] ? xy[marca][0] : null;
+    return "<svg class='pro-line' viewBox='0 0 " + W + " " + H + "' role='img' aria-label='Evolução das avaliações'><defs><linearGradient id='pg' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#d4ad5b' stop-opacity='.35'/><stop offset='1' stop-color='#d4ad5b' stop-opacity='0'/></linearGradient></defs>" +
+      (mxp != null ? "<line x1='" + mxp + "' y1='4' x2='" + mxp + "' y2='" + (H - 4) + "' stroke='#a9a397' stroke-dasharray='3 4'/><text x='" + (mxp + 5) + "' y='14' fill='#a9a397' font-size='10'>placa instalada</text>" : "") +
+      "<path d='" + d + " L" + xy[xy.length - 1][0] + " " + (H - 2) + " L" + xy[0][0] + " " + (H - 2) + " Z' fill='url(#pg)'/><path d='" + d + "' fill='none' stroke='#f0d38d' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/>" +
+      xy.map(function (p, i) { return i === xy.length - 1 ? "<circle cx='" + p[0] + "' cy='" + p[1] + "' r='4.5' fill='#f0d38d'/>" : ""; }).join("") + "</svg>";
+  }
+
+  /* Dados de exemplo: um café com mais movimento ao almoço e ao fim da tarde, sábado forte, domingo fraco. */
+  function exemplo() {
+    var cells = [], peso = [0.8, 0.85, 0.9, 1, 1.15, 1.35, 0.45];
+    for (var d = 0; d < 7; d++) for (var h = 8; h <= 21; h++) {
+      var base = 1 + 9 * Math.exp(-Math.pow(h - 12.5, 2) / 2.2) + 6 * Math.exp(-Math.pow(h - 19, 2) / 2.5) + (h < 10 ? 2 : 0);
+      var ruido = ((d * 7 + h * 13) % 5) - 2;
+      cells.push([d, h, Math.max(0, Math.round(base * peso[d] + ruido * 0.6))]);
+    }
+    var meses = [], hoje = new Date();
+    [64, 71, 118, 176, 204, 238].forEach(function (n, i) { var m = new Date(hoje.getFullYear(), hoje.getMonth() - 5 + i, 1); meses.push({ l: MESES[m.getMonth()], n: n }); });
+    return { cells: cells, per: { hoje: 11, ontem: 8, sem: 61, semAnt: 53, mes: 238, mesAnt: 204 }, meses: meses, aval: [23, 24, 24, 25, 31, 38, 44, 52, 61], marca: 3, notaAntes: 4.3, notaAgora: 4.6 };
+  }
+
+  var DESTINOS = [["🌟", "Avaliações Google", "Formulário de avaliação aberto"], ["🍽️", "Menu do dia", "Ementa de hoje, sempre atualizada"], ["🎁", "Promoção", "Café + pastel de nata por 2 €"], ["📸", "Instagram", "Perfil aberto, pronto a seguir"]];
+  var PASSOS = [
+    ["kpis", "Veja quantos clientes tocam", "Cada toque na placa é contado. Compare hoje com ontem e esta semana com a anterior."],
+    ["mapa", "Descubra as horas fortes", "O mapa mostra os dias e as horas com mais toques. Toque num quadrado para ver esse momento."],
+    ["meses", "Acompanhe mês a mês", "Veja a placa a trabalhar ao longo do tempo, sem fazer contas."],
+    ["google", "Compare antes e depois da placa", "As avaliações e a nota do Google são lidas automaticamente todas as semanas."],
+    ["destino", "Mude o destino quando quiser", "Com o link gerido, a mesma placa pode abrir as avaliações, o menu do dia ou uma promoção. Sem trocar a placa."],
+    ["relatorio", "Receba o resumo no WhatsApp", "Todos os meses recebe um resumo simples com os números do seu negócio."]
+  ];
+
+  /* Demonstração completa (site e painel no plano grátis). */
+  function demo(el, opt) {
+    addCss(); opt = opt || {};
+    var ex = exemplo(), nome = opt.nome || "Café Aurora", tab = "toques", passo = -1, dest = 0;
+    el.classList.add("pro-ui");
+    el.innerHTML = "<div class='pro-tabs' role='tablist'><button role='tab' data-t='toques' aria-selected='true'>Toques na placa<small>quando e quantas vezes</small></button><button role='tab' data-t='google' aria-selected='false'>Google<small>avaliações e nota</small></button></div>" +
+      "<div class='pro-win'><div class='pro-bar'><i></i><i></i><i></i><span>Painel D&amp;V · " + esc(nome) + "</span><b class='ex'>Exemplo</b></div><div class='pro-body'></div></div>" +
+      (opt.tour === false ? "" : "<div class='pro-tour'></div>");
+    var body = el.querySelector(".pro-body"), tour = el.querySelector(".pro-tour");
+    function wa() {
+      return "<div class='pro-box' data-p='relatorio'><h4>Resumo mensal <small>no seu WhatsApp</small></h4><div class='pro-wa'><p>Olá! Resumo de " + ex.meses[5].l + " da " + esc(nome) + ":<br>• " + ex.meses[5].n + " toques na placa (+" + Math.round((ex.meses[5].n - ex.meses[4].n) / ex.meses[4].n * 100) + "%)<br>• Dia mais forte: sábado, 12h–13h<br>• " + ex.aval[ex.aval.length - 1] + " avaliações no Google (+" + (ex.aval[ex.aval.length - 1] - ex.aval[ex.marca]) + " desde a placa)<br>Bom mês! D&amp;V Placas NFC<small>09:00</small></p></div></div>";
+    }
+    function desenhar() {
+      el.querySelectorAll(".pro-tabs button").forEach(function (b) { b.setAttribute("aria-selected", String(b.dataset.t === tab)); });
+      var h = "";
+      if (tab === "toques") {
+        h += "<div data-p='kpis'>" + kpis(ex.per) + "</div>";
+        h += "<div class='pro-box' data-p='mapa'><h4>Quando tocam mais? <small>últimos 90 dias</small></h4><div class='pro-map'></div></div>";
+        h += "<div class='pro-box' data-p='meses'><h4>Toques por mês <small>últimos 6 meses</small></h4>" + barras(ex.meses) + "</div>";
+        h += "<div class='pro-box' data-p='destino'><h4>Destino da placa <small>mude quando quiser</small></h4><div class='pro-dest'>" + DESTINOS.map(function (x, i) { return "<button type='button' data-dest='" + i + "' aria-pressed='" + (i === dest) + "'>" + x[0] + " " + x[1] + "</button>"; }).join("") + "</div><div class='pro-phone'><div class='ic'>" + DESTINOS[dest][0] + "</div><b>" + DESTINOS[dest][1] + "</b><small>" + DESTINOS[dest][2] + "</small></div></div>";
+        h += wa();
+      } else {
+        var a = ex.aval, ant = a[ex.marca], ag = a[a.length - 1];
+        h += "<div class='pro-box' data-p='google'><h4>Avaliações no Google <small>leitura semanal automática</small></h4>" + linha(a, ex.marca) +
+          "<div class='pro-kv'><div>Antes da placa<b>" + ant + "</b></div><div>Agora<b>" + ag + " <span class='pro-up' style='font-size:14px'>+" + (ag - ant) + "</span></b></div><div>Nota antes<b>" + String(ex.notaAntes).replace(".", ",") + " ★</b></div><div>Nota agora<b style='color:var(--pg)'>" + String(ex.notaAgora).replace(".", ",") + " ★</b></div></div></div>";
+        h += "<div class='pro-box'><h4>Avaliações novas por mês</h4>" + barras([{ l: "antes", n: 1 }, { l: "1.º mês", n: 6 }, { l: "2.º mês", n: 7 }, { l: "3.º mês", n: 8 }, { l: "4.º mês", n: 9 }], 1) + "</div>";
+        h += wa();
+      }
+      body.innerHTML = h;
+      var m = body.querySelector(".pro-map"); if (m) mapa(m, ex.cells, { periodo: "em 90 dias" });
+      focar();
+    }
+    function focar() {
+      body.querySelectorAll(".pro-foco").forEach(function (x) { x.classList.remove("pro-foco"); });
+      if (passo < 0) return;
+      var t = body.querySelector("[data-p='" + PASSOS[passo][0] + "']");
+      if (t) { t.classList.add("pro-foco"); if (opt.scroll !== false) t.scrollIntoView({ behavior: "smooth", block: "center" }); }
+    }
+    function tourHtml() {
+      if (!tour) return;
+      if (passo < 0) { tour.innerHTML = "<div class='k'>Experimente o Plano Pro</div><h4>Uma visita guiada em " + PASSOS.length + " passos</h4><p>Veja, com dados de exemplo, tudo o que o painel mostra ao dono do negócio.</p><div class='pro-nav'><button type='button' class='go' data-go='1'>Começar a visita</button></div>"; return; }
+      var p = PASSOS[passo];
+      tour.innerHTML = "<div class='k'>Passo " + (passo + 1) + " de " + PASSOS.length + "</div><h4>" + p[1] + "</h4><p>" + p[2] + "</p><div class='pro-dots'>" + PASSOS.map(function (_, i) { return "<i class='" + (i <= passo ? "on" : "") + "'></i>"; }).join("") + "</div>" +
+        "<div class='pro-nav'><button type='button' data-go='-1'" + (passo === 0 ? " disabled" : "") + ">Anterior</button>" + (passo < PASSOS.length - 1 ? "<button type='button' class='go' data-go='1'>Seguinte</button>" : (opt.cta ? "<button type='button' class='go' data-cta='1'>" + esc(opt.ctaTexto || "Quero o Plano Pro") + "</button>" : "<button type='button' class='go' data-go='reset'>Ver outra vez</button>")) + "</div>";
+    }
+    el.addEventListener("click", function (e) {
+      var t = e.target.closest("[data-t]"); if (t) { tab = t.dataset.t; desenhar(); return; }
+      var ds = e.target.closest("[data-dest]"); if (ds) { dest = +ds.dataset.dest; desenhar(); return; }
+      var c = e.target.closest("[data-cta]"); if (c && opt.cta) { opt.cta(); return; }
+      var g = e.target.closest("[data-go]"); if (!g) return;
+      if (g.dataset.go === "reset") passo = -1; else passo = Math.max(0, Math.min(PASSOS.length - 1, passo + +g.dataset.go));
+      var precisa = passo >= 0 && PASSOS[passo][0] === "google" ? "google" : passo >= 0 && PASSOS[passo][0] !== "relatorio" ? "toques" : tab;
+      if (precisa !== tab) { tab = precisa; desenhar(); } else focar();
+      tourHtml();
+    });
+    desenhar(); tourHtml();
+  }
+
+  window.DVPro = { mapa: mapa, kpis: function (p) { addCss(); return "<div class='pro-ui'>" + kpis(p) + "</div>"; }, barras: function (l) { addCss(); return barras(l); }, demo: demo };
+})();
