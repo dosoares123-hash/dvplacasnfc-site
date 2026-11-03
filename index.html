@@ -332,6 +332,25 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 #cPlaca .p-logo:hover,#cPlaca .p-img:hover,#cPlaca .arrastar{outline-color:var(--gold)}
 #cPlaca .arrastar{cursor:grabbing}
 .plaque.sem-nome .p-name{visibility:hidden}
+.est{display:grid;gap:6px}
+.est-r{display:grid;grid-template-columns:1fr 1.2fr 44px;gap:10px;align-items:center;font-size:14px;padding:6px 10px;border:1px solid var(--line);border-radius:12px;background:var(--card-2)}
+.est-r.off{opacity:.5}
+.est-on{display:flex;gap:8px;align-items:center;cursor:pointer}
+.est-on input{accent-color:var(--gold);width:17px;height:17px}
+.est-r input[type=range]{accent-color:var(--gold);width:100%}
+.est-v{font-size:12px;color:var(--muted);text-align:right}
+.est-sub{font-size:13px;color:var(--muted)}
+#semNomeL{display:none!important}
+#cPlaca{overflow:hidden;display:block;position:relative}
+#cPlaca.real{padding:0}
+#cPlaca>.p-name,#cPlaca>.p-stars,#cPlaca>.p-title,#cPlaca>.p-tap,#cPlaca>.p-hint{position:absolute;left:50%;top:50%;margin:0;text-align:center;z-index:3;cursor:grab;touch-action:none;user-select:none;outline:1px dashed transparent;outline-offset:4px;border-radius:4px;white-space:nowrap}
+#cPlaca>.p-name{white-space:normal;width:86%}
+#cPlaca>.p-tap{display:grid;border-radius:50%}
+#cPlaca>[hidden]{display:none!important}
+#cPlaca>.p-name:hover,#cPlaca>.p-stars:hover,#cPlaca>.p-title:hover,#cPlaca>.p-tap:hover,#cPlaca>.p-hint:hover,#cPlaca .arrastar{outline-color:var(--gold)}
+#cPlaca .p-logo,#cPlaca .p-img{z-index:1}
+.esc-prev .plaque{overflow:hidden;display:block;position:relative}
+.esc-prev .plaque>*{position:absolute}
 .conf-form{display:grid;gap:16px}
 .conf-f{border:0;margin:0;padding:0;display:grid;gap:8px}
 .conf-f legend{font-size:14px;font-weight:600;color:var(--muted);padding:0;margin-bottom:8px}
@@ -522,7 +541,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
         <fieldset class="conf-f"><legend>O que a placa abre</legend><div class="chips-s" id="cDest"><button type="button" aria-pressed="true" data-v="google">Avaliações</button><button type="button" aria-pressed="false" data-v="insta">Instagram</button><button type="button" aria-pressed="false" data-v="wifi">Wi-Fi</button><button type="button" aria-pressed="false" data-v="menu">Menu</button><button type="button" aria-pressed="false" data-v="whats">WhatsApp</button><button type="button" aria-pressed="false" data-v="cartao">Cartão de visita</button><button type="button" aria-pressed="false" data-v="pagar">Pagamentos</button></div></fieldset>
         <label for="cFrase">Frase principal<input id="cFrase" maxlength="24" value="Avalie-nos"></label>
         <div class="chips-s" id="cFrases" aria-label="Frases sugeridas"></div>
-        <fieldset class="conf-f"><legend>Posição do nome</legend><div class="chips-s" id="cPos"><button type="button" aria-pressed="true" data-v="cima">Em cima</button><button type="button" aria-pressed="false" data-v="centro">Ao centro</button><button type="button" aria-pressed="false" data-v="baixo">Em baixo</button></div></fieldset>
+        <fieldset class="conf-f"><legend>Mini estúdio</legend><p class="hint" style="margin:0">Arraste qualquer elemento na placa para o mudar de sítio. Desligue o que não quer e ajuste o tamanho das letras.</p><span class="est-sub">Arrumação rápida</span><div class="chips-s" id="cPos"><button type="button" aria-pressed="true" data-v="cima">Em cima</button><button type="button" aria-pressed="false" data-v="centro">Ao centro</button><button type="button" aria-pressed="false" data-v="baixo">Em baixo</button></div><div class="est"><div class="est-r" data-el="name"><label class="est-on"><input type="checkbox" checked data-on="name"> Nome do negócio</label><input type="range" min="50" max="200" value="100" data-sz="name" aria-label="Tamanho: Nome do negócio"><span class="est-v" data-v="name">100%</span></div><div class="est-r" data-el="stars"><label class="est-on"><input type="checkbox" checked data-on="stars"> Estrelas</label><input type="range" min="50" max="200" value="100" data-sz="stars" aria-label="Tamanho: Estrelas"><span class="est-v" data-v="stars">100%</span></div><div class="est-r" data-el="frase"><label class="est-on"><input type="checkbox" checked data-on="frase"> Frase</label><input type="range" min="50" max="200" value="100" data-sz="frase" aria-label="Tamanho: Frase"><span class="est-v" data-v="frase">100%</span></div><div class="est-r" data-el="tap"><label class="est-on"><input type="checkbox" checked data-on="tap"> Ícone NFC</label><input type="range" min="50" max="200" value="100" data-sz="tap" aria-label="Tamanho: Ícone NFC"><span class="est-v" data-v="tap">100%</span></div><div class="est-r" data-el="hint"><label class="est-on"><input type="checkbox" checked data-on="hint"> «Encoste o telemóvel»</label><input type="range" min="50" max="200" value="100" data-sz="hint" aria-label="Tamanho: «Encoste o telemóvel»"><span class="est-v" data-v="hint">100%</span></div></div><button type="button" class="upl-c" id="estRepor" style="justify-self:start">Repor arrumação</button></fieldset>
         <fieldset class="conf-f"><legend>Letra do nome da empresa</legend><div class="chips-s" id="cFonteNome"></div></fieldset>
         <fieldset class="conf-f"><legend>Letra da frase</legend><div class="chips-s" id="cFonteFrase"></div></fieldset>
         <fieldset class="conf-f" id="fsBase"><legend>Cor da placa</legend><div class="sws" id="cBase"><button type="button" aria-label="Preto" title="Preto" aria-pressed="true" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f1ede4" style="background:#f1ede4"></button><button type="button" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#5e5e62" style="background:#5e5e62"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#1f3a8a" style="background:#1f3a8a"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#1f5a3a" style="background:#1f5a3a"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#8f1d2e" style="background:#8f1d2e"></button><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#c9a24f" style="background:#c9a24f"></button></div></fieldset>
@@ -791,7 +810,8 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   function desenho() {
     return { v: 1, modelo: st.modelo, nome: ($("cNome").value.trim() || "O seu negócio").slice(0, 40), frase: $("cFrase").value.trim().slice(0, 40), dest: st.dest, pos: st.pos,
       fn: st.fonteNome, ff: st.fonteFrase, base: st.modelo === "mesa" ? "#0c0c0e" : st.base, txt: st.txt, mat: st.mat, link: st.link,
-      semNome: !!($("cSemNome") && $("cSemNome").checked), montagem: montagem() };
+      semNome: !!($("cSemNome") && $("cSemNome").checked), montagem: montagem(),
+      estudio: typeof TL !== "undefined" ? Object.keys(TL).reduce(function (o, k) { o[k] = { on: VIS[k], x: Math.round(TL[k].x), y: Math.round(TL[k].y), t: ESC[k] }; return o; }, {}) : null };
   }
   function montagem() {
     if (typeof FICH === "undefined") return null;
@@ -984,6 +1004,74 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   });
   $("cSemNome").addEventListener("change", function () { $("cPlaca").classList.toggle("sem-nome", this.checked); if (escolhida) resumo(); });
   $("pvLogo").setAttribute("aria-label", "Logótipo: arraste para mudar de sítio"); $("pvImg").setAttribute("aria-label", "Imagem: arraste para mudar de sítio");
+
+  /* Mini estúdio: cada texto da placa pode ser ligado/desligado, arrastado e redimensionado. */
+  var TXT = { name: "pvNome", stars: "pvStars", frase: "pvFrase", tap: "pvTap", hint: "pvHint" };
+  var VIS = { name: true, stars: true, frase: true, tap: true, hint: true };
+  var TL = {}, ESC = { name: 100, stars: 100, frase: 100, tap: 100, hint: 100 }, chaveAnt = "", destAnt = null;
+  function arrumar() {
+    var real = st.modelo === "mesa", topo = 0;
+    var temL = FICH.logo && !$("pvLogo").hidden, temI = FICH.imagem && !$("pvImg").hidden;
+    if (real) {
+      var base = { cima: { name: 22, stars: 33, frase: 41 }, centro: { stars: 22, frase: 30, name: 41 }, baixo: { stars: 20, frase: 28, name: 40 } }[st.pos];
+      if (temL && temI) { LAY.logo = { x: 50, y: 10, w: 24 }; LAY.imagem = { x: 50, y: 25, w: 26 }; }
+      else if (temL) { LAY.logo = { x: 50, y: 14, w: 32 }; }
+      else if (temI) { LAY.imagem = { x: 50, y: 16, w: 32 }; }
+      var off = temL && temI ? 18 : (temL || temI) ? 10 : 0;
+      TL = { name: base.name + off, stars: base.stars + off, frase: base.frase + off, tap: 80, hint: 90 };
+    } else {
+      var P = { cima: { name: 16, stars: 31, frase: 43, tap: 65, hint: 84 }, centro: { stars: 16, frase: 28, name: 44, tap: 65, hint: 84 }, baixo: { stars: 16, frase: 30, tap: 52, hint: 68, name: 85 } }[st.pos];
+      if (temL && temI) { LAY.logo = { x: 50, y: 11, w: 30 }; LAY.imagem = { x: 50, y: 31, w: 42 }; topo = 1; }
+      else if (temL) { LAY.logo = { x: 50, y: 14, w: 40 }; topo = 2; }
+      else if (temI) { LAY.imagem = { x: 50, y: 18, w: 50 }; topo = 2; }
+      if (topo === 1) P = { name: 50, stars: 58, frase: 65, tap: 80, hint: 95 };
+      if (topo === 2) P = { name: 34, stars: 46, frase: 56, tap: 74, hint: 89 };
+      TL = P;
+    }
+    Object.keys(TL).forEach(function (k) { TL[k] = { x: 50, y: TL[k] }; });
+    ["logo", "imagem"].forEach(function (k) { if (FICH[k]) posicionar(k); });
+  }
+  function estudio() {
+    var chave = st.modelo + st.pos + (FICH.logo ? 1 : 0) + (FICH.imagem ? 1 : 0);
+    if (chave !== chaveAnt) { chaveAnt = chave; arrumar(); }
+    if (destAnt !== st.dest) { if (destAnt !== null) VIS.stars = st.dest === "google"; else VIS.stars = st.dest === "google"; destAnt = st.dest; }
+    var real = st.modelo === "mesa";
+    Object.keys(TXT).forEach(function (k) {
+      var e = $(TXT[k]), semEl = real && (k === "tap" || k === "hint");
+      e.hidden = !VIS[k] || semEl;
+      e.style.order = ""; e.style.left = TL[k].x + "%"; e.style.top = TL[k].y + "%";
+      e.style.transform = "translate(-50%,-50%) scale(" + ESC[k] / 100 + ")";
+      var row = document.querySelector('.est-r[data-el="' + k + '"]');
+      row.classList.toggle("off", !VIS[k]); row.hidden = semEl;
+      row.querySelector("[data-on]").checked = VIS[k];
+    });
+    $("cSemNome").checked = !VIS.name; $("cPlaca").classList.remove("sem-nome");
+  }
+  var _draw = draw; draw = function () { _draw(); estudio(); };
+  document.querySelectorAll("[data-on]").forEach(function (c) { c.addEventListener("change", function () { VIS[c.dataset.on] = c.checked; draw(); }); });
+  document.querySelectorAll("[data-sz]").forEach(function (r) { r.addEventListener("input", function () { ESC[r.dataset.sz] = +r.value; document.querySelector('[data-v="' + r.dataset.sz + '"]').textContent = r.value + "%"; draw(); }); });
+  $("estRepor").addEventListener("click", function () {
+    Object.keys(ESC).forEach(function (k) { ESC[k] = 100; var r = document.querySelector('[data-sz="' + k + '"]'); r.value = 100; document.querySelector('[data-v="' + k + '"]').textContent = "100%"; VIS[k] = true; });
+    VIS.stars = st.dest === "google"; chaveAnt = ""; draw();
+  });
+  Object.keys(TXT).forEach(function (k) {
+    var e = $(TXT[k]);
+    e.addEventListener("pointerdown", function (ev) {
+      ev.preventDefault(); var pl = $("cPlaca").getBoundingClientRect(), r = e.getBoundingClientRect();
+      var dx = ev.clientX - (r.left + r.width / 2), dy = ev.clientY - (r.top + r.height / 2);
+      e.setPointerCapture(ev.pointerId); e.classList.add("arrastar");
+      function mover(m) {
+        TL[k].x = Math.max(0, Math.min(100, (m.clientX - dx - pl.left) / pl.width * 100));
+        TL[k].y = Math.max(0, Math.min(100, (m.clientY - dy - pl.top) / pl.height * 100));
+        e.style.left = TL[k].x + "%"; e.style.top = TL[k].y + "%";
+      }
+      function largar() { e.classList.remove("arrastar"); e.removeEventListener("pointermove", mover); e.removeEventListener("pointerup", largar); e.removeEventListener("pointercancel", largar); if (escolhida) resumo(); }
+      e.addEventListener("pointermove", mover); e.addEventListener("pointerup", largar); e.addEventListener("pointercancel", largar);
+    });
+  });
+  /* Ao carregar ou tirar logótipo/imagem, a placa volta a arrumar-se para nada ficar por cima. */
+  ["cLogo", "cImg", "cLogoX", "cImgX"].forEach(function (id) { $(id).addEventListener(id.slice(-1) === "X" ? "click" : "change", function () { setTimeout(draw, 0); }); });
+  draw();
   function uuid() {
     if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) { var r = Math.random() * 16 | 0; return (c === "x" ? r : (r & 3 | 8)).toString(16); });
