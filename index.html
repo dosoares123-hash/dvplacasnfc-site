@@ -294,6 +294,32 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 .conf{align-items:start}
 .conf-prev{position:sticky;top:84px}
 @media (max-width:860px){.conf{grid-template-columns:1fr;gap:20px}.conf-prev{position:static;min-height:0;padding:24px 20px}.conf-prev .plaque{width:min(240px,66vw)}}
+.upl{display:flex;gap:8px;align-items:stretch}
+.upl-b{flex:1;display:flex;gap:12px;align-items:center;padding:10px 12px;border:1px dashed var(--line);border-radius:14px;background:var(--card-2);cursor:pointer;min-width:0}
+.upl-b:hover,.upl-b:focus-within{border-color:var(--gold)}
+.upl-b input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.upl-ic{flex:none;width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);color:var(--gold);font:600 22px/1 var(--display);overflow:hidden}
+.upl-ic img{width:100%;height:100%;object-fit:contain;background:#fff}
+.upl-t{display:grid;gap:2px;min-width:0}
+.upl-t b{font-size:14px}
+.upl-t small{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.upl-b.tem{border-style:solid;border-color:var(--gold)}
+.upl-x{flex:none;width:44px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--fg);font-size:20px;cursor:pointer}
+.upl-x[hidden]{display:none}
+.plaque .p-logo{order:-2;max-width:60%;max-height:52px;object-fit:contain}
+.plaque .p-img{order:-1;max-width:70%;max-height:64px;object-fit:contain;border-radius:6px}
+.plaque .p-logo[hidden],.plaque .p-img[hidden]{display:none}
+.upl-aj{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
+.upl-aj[hidden],.upl-chk[hidden]{display:none}
+.upl-aj input{accent-color:var(--gold);width:100%}
+.upl-c{font:600 12px/1 var(--body);padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
+.upl-chk{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--fg)}
+.upl-chk input{accent-color:var(--gold);width:18px;height:18px}
+#cPlaca .p-logo,#cPlaca .p-img,.esc-prev .p-logo,.esc-prev .p-img{position:absolute;transform:translate(-50%,-50%);max-width:none;max-height:none;height:auto;z-index:2;user-select:none;-webkit-user-drag:none}
+#cPlaca .p-logo,#cPlaca .p-img{cursor:grab;touch-action:none;outline:1px dashed transparent;outline-offset:3px;border-radius:4px}
+#cPlaca .p-logo:hover,#cPlaca .p-img:hover,#cPlaca .arrastar{outline-color:var(--gold)}
+#cPlaca .arrastar{cursor:grabbing}
+.plaque.sem-nome .p-name{visibility:hidden}
 .conf-form{display:grid;gap:16px}
 .conf-f{border:0;margin:0;padding:0;display:grid;gap:8px}
 .conf-f legend{font-size:14px;font-weight:600;color:var(--muted);padding:0;margin-bottom:8px}
@@ -455,10 +481,24 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
         <fieldset class="conf-f"><legend>Letra da frase</legend><div class="chips-s" id="cFonteFrase"></div></fieldset>
         <fieldset class="conf-f" id="fsBase"><legend>Cor da placa</legend><div class="sws" id="cBase"><button type="button" aria-label="Preto" title="Preto" aria-pressed="true" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f1ede4" style="background:#f1ede4"></button><button type="button" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#5e5e62" style="background:#5e5e62"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#1f3a8a" style="background:#1f3a8a"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#1f5a3a" style="background:#1f5a3a"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#8f1d2e" style="background:#8f1d2e"></button><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#c9a24f" style="background:#c9a24f"></button></div></fieldset>
         <fieldset class="conf-f"><legend>Cor das letras</legend><div class="sws" id="cTxt"><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="true" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f7f4ee" style="background:#f7f4ee"></button><button type="button" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#111114" style="background:#111114"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#c0263f" style="background:#c0263f"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#3b6cf0" style="background:#3b6cf0"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#3fa46a" style="background:#3fa46a"></button><button type="button" aria-label="Prateado" title="Prateado" aria-pressed="false" data-c="#c7c9cc" style="background:#c7c9cc"></button></div></fieldset>
+        <fieldset class="conf-f"><legend>Logótipo e imagem <small style="font-weight:500;color:var(--muted)">(opcional)</small></legend>
+          <div class="upl">
+            <label class="upl-b" for="cLogo"><input type="file" id="cLogo" accept="image/png,image/jpeg,image/webp,image/svg+xml,application/pdf"><span class="upl-ic" aria-hidden="true">+</span><span class="upl-t"><b>Logótipo</b><small id="cLogoN">PNG, JPG, SVG ou PDF · até 5 MB</small></span></label>
+            <button type="button" class="upl-x" id="cLogoX" aria-label="Tirar o logótipo" hidden>×</button>
+          </div>
+          <div class="upl">
+            <label class="upl-b" for="cImg"><input type="file" id="cImg" accept="image/png,image/jpeg,image/webp,image/svg+xml,application/pdf"><span class="upl-ic" aria-hidden="true">+</span><span class="upl-t"><b>Imagem para a placa</b><small id="cImgN">Uma foto ou desenho · até 5 MB</small></span></label>
+            <button type="button" class="upl-x" id="cImgX" aria-label="Tirar a imagem" hidden>×</button>
+          </div>
+          <div class="upl-aj" id="ajLogo" hidden><span>Tamanho do logótipo</span><input type="range" id="tLogo" min="12" max="95" value="40" aria-label="Tamanho do logótipo"><button type="button" class="upl-c" data-centrar="logo">Centrar</button></div>
+          <div class="upl-aj" id="ajImg" hidden><span>Tamanho da imagem</span><input type="range" id="tImg" min="12" max="100" value="50" aria-label="Tamanho da imagem"><button type="button" class="upl-c" data-centrar="imagem">Centrar</button></div>
+          <label class="upl-chk" id="semNomeL" hidden><input type="checkbox" id="cSemNome"> Usar só o logótipo (esconder o nome escrito)</label>
+          <p class="hint" id="uplHint">Recebe a prova digital com o seu logótipo antes de produzirmos. Os ficheiros só são vistos por nós.</p>
+        </fieldset>
         <fieldset class="conf-f"><legend>Material</legend><div class="chips-s" id="cMat"><button type="button" aria-pressed="true" data-v="PLA">PLA · desde 19 €</button><button type="button" aria-pressed="false" data-v="PETG">PETG · desde 24 €</button></div></fieldset>
         <fieldset class="conf-f"><legend>Tipo de link</legend><div class="chips-s" id="cLink"><button type="button" aria-pressed="true" data-v="direto">Direto (definitivo)</button><button type="button" aria-pressed="false" data-v="gerido">Gerido (pode mudar) · Mais pedido</button></div><p class="hint" id="cLinkHint"></p></fieldset>
       </form>
-      <div class="mini conf-prev" aria-live="polite"><div class="plaque" id="cPlaca"><div class="p-name" id="pvNome">O seu negócio</div><div class="p-stars" id="pvStars">★★★★★</div><div class="p-title" id="pvFrase">Avalie-nos</div><div class="p-tap" id="pvTap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div><div class="p-hint" id="pvHint">Encoste o telemóvel</div></div><p class="note" style="text-align:center;margin:16px 0 0">Pré-visualização aproximada. Recebe a prova final em 24 horas.</p><button class="btn btn-gold" type="button" id="cQuero" style="margin-top:16px">Quero esta placa</button></div>
+      <div class="mini conf-prev" aria-live="polite"><div class="plaque" id="cPlaca"><img class="p-logo" id="pvLogo" alt="" hidden><img class="p-img" id="pvImg" alt="" hidden><div class="p-name" id="pvNome">O seu negócio</div><div class="p-stars" id="pvStars">★★★★★</div><div class="p-title" id="pvFrase">Avalie-nos</div><div class="p-tap" id="pvTap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div><div class="p-hint" id="pvHint">Encoste o telemóvel</div></div><p class="note" style="text-align:center;margin:16px 0 0">Pré-visualização aproximada. Recebe a prova final em 24 horas.</p><button class="btn btn-gold" type="button" id="cQuero" style="margin-top:16px">Quero esta placa</button></div>
     </div>
   </div>
 </section>
@@ -793,13 +833,19 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   function textoPlaca() {
     return "Placa “" + ($("cNome").value.trim() || "O seu negócio") + "” com a frase “" + ($("cFrase").value.trim() || "-") + "”, a abrir " + DESTINOS[st.dest] +
       ". Nome " + { cima: "em cima", centro: "ao centro", baixo: "em baixo" }[st.pos] + ", letra do nome " + FONTES[st.fonteNome].nome.toLowerCase() + ", letra da frase " + FONTES[st.fonteFrase].nome.toLowerCase() +
-      ". " + (st.modelo === "mesa" ? "Modelo: placa de mesa preta texturada" : "Cor da placa: " + nomeCor("cBase", st.base)) + ", letras: " + nomeCor("cTxt", st.txt) + ". Material " + st.mat + ", link " + st.link + ".";
+      ". " + (st.modelo === "mesa" ? "Modelo: placa de mesa preta texturada" : "Cor da placa: " + nomeCor("cBase", st.base)) + ", letras: " + nomeCor("cTxt", st.txt) + ". Material " + st.mat + ", link " + st.link + "." + (typeof FICH !== "undefined" && (FICH.logo || FICH.imagem) ? " Com " + [FICH.logo ? "logótipo" : "", FICH.imagem ? "imagem" : ""].filter(Boolean).join(" e ") + ($("cSemNome").checked ? ", sem o nome escrito" : "") + "." : "");
   }
 
   /* O desenho vai com o pedido para o Radar mostrar a placa exatamente como o cliente a criou. */
   function desenho() {
     return { v: 1, modelo: st.modelo, nome: ($("cNome").value.trim() || "O seu negócio").slice(0, 40), frase: $("cFrase").value.trim().slice(0, 40), dest: st.dest, pos: st.pos,
-      fn: st.fonteNome, ff: st.fonteFrase, base: st.modelo === "mesa" ? "#0c0c0e" : st.base, txt: st.txt, mat: st.mat, link: st.link };
+      fn: st.fonteNome, ff: st.fonteFrase, base: st.modelo === "mesa" ? "#0c0c0e" : st.base, txt: st.txt, mat: st.mat, link: st.link,
+      semNome: !!($("cSemNome") && $("cSemNome").checked), montagem: montagem() };
+  }
+  function montagem() {
+    if (typeof FICH === "undefined") return null;
+    var m = {}; ["logo", "imagem"].forEach(function (k) { if (FICH[k] && !$(EL[k]).hidden) m[k] = { x: Math.round(LAY[k].x), y: Math.round(LAY[k].y), w: Math.round(LAY[k].w) }; });
+    return Object.keys(m).length ? m : null;
   }
 
   /* Mostra no formulário a placa escolhida (pré-visualização pequena + resumo). */
@@ -917,6 +963,93 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
     } catch (e) {}
   })();
 
+  /* Logótipo e imagem: pré-visualização na placa e envio para o Supabase Storage (pasta privada). */
+  var FICH = { logo: null, imagem: null }, MAXF = 5 * 1024 * 1024;
+  var TIPOS = { "image/png": "png", "image/jpeg": "jpg", "image/webp": "webp", "image/svg+xml": "svg", "application/pdf": "pdf" };
+  function ligarFicheiro(chave, inp, nomeEl, xBtn, pv, textoBase) {
+    var lab = inp.closest(".upl-b"), ic = lab.querySelector(".upl-ic"), url = null;
+    function limpar() {
+      FICH[chave] = null; inp.value = ""; if (url) URL.revokeObjectURL(url); url = null;
+      $(nomeEl).textContent = textoBase; ic.textContent = "+"; lab.classList.remove("tem"); $(xBtn).hidden = true;
+      $(pv).hidden = true; $(pv).removeAttribute("src"); if (typeof LAY !== "undefined") LAY[chave] = JSON.parse(JSON.stringify(PADRAO[chave])); if (escolhida) resumo();
+    }
+    inp.addEventListener("change", function () {
+      var f = inp.files && inp.files[0]; if (!f) return;
+      if (!TIPOS[f.type]) { limpar(); $(nomeEl).textContent = "Formato não aceite. Use PNG, JPG, SVG ou PDF."; return; }
+      if (f.size > MAXF) { limpar(); $(nomeEl).textContent = "Ficheiro maior que 5 MB. Escolha um mais pequeno."; return; }
+      FICH[chave] = f; if (url) URL.revokeObjectURL(url);
+      $(nomeEl).textContent = f.name; lab.classList.add("tem"); $(xBtn).hidden = false;
+      if (f.type === "application/pdf") { url = null; ic.textContent = "PDF"; ic.style.fontSize = "12px"; $(pv).hidden = true; }
+      else { url = URL.createObjectURL(f); ic.innerHTML = ""; var im = document.createElement("img"); im.src = url; im.alt = ""; ic.appendChild(im); $(pv).src = url; $(pv).hidden = false; }
+      if (escolhida) resumo();
+    });
+    $(xBtn).addEventListener("click", limpar);
+    return limpar;
+  }
+  var limparLogo = ligarFicheiro("logo", $("cLogo"), "cLogoN", "cLogoX", "pvLogo", "PNG, JPG, SVG ou PDF · até 5 MB");
+  var limparImg = ligarFicheiro("imagem", $("cImg"), "cImgN", "cImgX", "pvImg", "Uma foto ou desenho · até 5 MB");
+  /* Montar a placa: o cliente arrasta o logótipo e a imagem e escolhe o tamanho. Posições em % da placa. */
+  var LAY = { logo: { x: 50, y: 17, w: 40 }, imagem: { x: 50, y: 50, w: 50 } };
+  var PADRAO = JSON.parse(JSON.stringify(LAY));
+  var EL = { logo: "pvLogo", imagem: "pvImg" }, AJ = { logo: ["ajLogo", "tLogo"], imagem: ["ajImg", "tImg"] };
+  function posicionar(k) {
+    var e = $(EL[k]), L = LAY[k]; e.style.left = L.x + "%"; e.style.top = L.y + "%"; e.style.width = L.w + "%";
+    $(AJ[k][0]).hidden = !FICH[k] || e.hidden; $(AJ[k][1]).value = L.w;
+    $("semNomeL").hidden = !FICH.logo || $("pvLogo").hidden;
+    if (!FICH.logo) { $("cSemNome").checked = false; $("cPlaca").classList.remove("sem-nome"); }
+    $("uplHint").textContent = (FICH.logo || FICH.imagem) && !($("pvLogo").hidden && $("pvImg").hidden)
+      ? "Arraste o logótipo ou a imagem na placa para os pôr onde quiser. Recebe a prova digital antes de produzirmos."
+      : "Recebe a prova digital com o seu logótipo antes de produzirmos. Os ficheiros só são vistos por nós.";
+  }
+  ["logo", "imagem"].forEach(function (k) {
+    var e = $(EL[k]);
+    $(AJ[k][1]).addEventListener("input", function () { LAY[k].w = +this.value; posicionar(k); if (escolhida) resumo(); });
+    new MutationObserver(function () { posicionar(k); }).observe(e, { attributes: true, attributeFilter: ["hidden", "src"] });
+    e.addEventListener("pointerdown", function (ev) {
+      ev.preventDefault(); var pl = $("cPlaca").getBoundingClientRect(), r = e.getBoundingClientRect();
+      var dx = ev.clientX - (r.left + r.width / 2), dy = ev.clientY - (r.top + r.height / 2);
+      e.setPointerCapture(ev.pointerId); e.classList.add("arrastar");
+      function mover(m) {
+        LAY[k].x = Math.max(0, Math.min(100, (m.clientX - dx - pl.left) / pl.width * 100));
+        LAY[k].y = Math.max(0, Math.min(100, (m.clientY - dy - pl.top) / pl.height * 100));
+        posicionar(k);
+      }
+      function largar() { e.classList.remove("arrastar"); e.removeEventListener("pointermove", mover); e.removeEventListener("pointerup", largar); e.removeEventListener("pointercancel", largar); if (escolhida) resumo(); }
+      e.addEventListener("pointermove", mover); e.addEventListener("pointerup", largar); e.addEventListener("pointercancel", largar);
+    });
+    /* Teclado: setas mexem, + e - mudam o tamanho. */
+    e.tabIndex = 0;
+    e.addEventListener("keydown", function (ev) {
+      var L = LAY[k], d = ev.shiftKey ? 5 : 1, ok = true;
+      if (ev.key === "ArrowLeft") L.x = Math.max(0, L.x - d); else if (ev.key === "ArrowRight") L.x = Math.min(100, L.x + d);
+      else if (ev.key === "ArrowUp") L.y = Math.max(0, L.y - d); else if (ev.key === "ArrowDown") L.y = Math.min(100, L.y + d);
+      else if (ev.key === "+" || ev.key === "=") L.w = Math.min(100, L.w + 2); else if (ev.key === "-") L.w = Math.max(12, L.w - 2); else ok = false;
+      if (ok) { ev.preventDefault(); posicionar(k); }
+    });
+    posicionar(k);
+  });
+  document.querySelectorAll("[data-centrar]").forEach(function (b) {
+    b.addEventListener("click", function () { var k = b.dataset.centrar; LAY[k].x = 50; LAY[k].y = PADRAO[k].y; posicionar(k); if (escolhida) resumo(); });
+  });
+  $("cSemNome").addEventListener("change", function () { $("cPlaca").classList.toggle("sem-nome", this.checked); if (escolhida) resumo(); });
+  $("pvLogo").setAttribute("aria-label", "Logótipo: arraste para mudar de sítio"); $("pvImg").setAttribute("aria-label", "Imagem: arraste para mudar de sítio");
+  function uuid() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) { var r = Math.random() * 16 | 0; return (c === "x" ? r : (r & 3 | 8)).toString(16); });
+  }
+  /* Carrega os ficheiros escolhidos; devolve { logo: "site/…/logo.png", imagem: … } ou null se não houver nenhum. */
+  function carregarFicheiros() {
+    var chaves = ["logo", "imagem"].filter(function (k) { return FICH[k]; });
+    if (!chaves.length) return Promise.resolve(null);
+    var pasta = "site/" + uuid() + "/", out = {};
+    return Promise.all(chaves.map(function (k) {
+      var f = FICH[k], caminho = pasta + k + "." + TIPOS[f.type];
+      return fetch(C.supabaseUrl + "/storage/v1/object/pedidos-ficheiros/" + caminho, {
+        method: "POST", headers: { apikey: C.supabaseAnonKey, Authorization: "Bearer " + C.supabaseAnonKey, "Content-Type": f.type, "x-upsert": "false" }, body: f
+      }).then(function (r) { if (!r.ok) throw new Error("upload"); out[k] = caminho; });
+    })).then(function () { return out; });
+  }
+
   /* Envio do pedido: guarda no Supabase (função enviar_pedido) e mostra alternativa por WhatsApp. */
   var msg = document.getElementById("formMsg"), btn = document.getElementById("fBtn");
   function aviso(t, ok) { msg.textContent = t; msg.className = "form-msg " + (ok ? "ok" : "err"); msg.hidden = false; }
@@ -934,18 +1067,33 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       p_mensagem: ((escolhida ? textoPlaca() + "\n" : "") + String(d.get("mensagem") || "").trim()).trim().slice(0, 2000),
       p_desenho: escolhida ? desenho() : null
     };
+    var resumo_fx = "";
     var resumo = "Olá! Pedido de orçamento:\n" + (body.p_negocio ? "Negócio: " + body.p_negocio + "\n" : "") + "Material: " + body.p_material + "\nPlacas: " + body.p_quantidade + (body.p_mensagem ? "\n" + body.p_mensagem : "");
-    btn.disabled = true; btn.textContent = "A enviar…";
-    fetch(C.supabaseUrl + "/rest/v1/rpc/enviar_pedido_v2", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", apikey: C.supabaseAnonKey, Authorization: "Bearer " + C.supabaseAnonKey },
-      body: JSON.stringify(body)
-    })
+    btn.disabled = true; btn.textContent = (FICH.logo || FICH.imagem) ? "A enviar ficheiros…" : "A enviar…";
+    carregarFicheiros()
+      .catch(function () { return { erro: true }; })
+      .then(function (fx) {
+        if (fx && !fx.erro) {
+          body.p_desenho = Object.assign(body.p_desenho || {}, { ficheiros: fx });
+          var linhas = []; if (fx.logo) linhas.push("Logótipo enviado"); if (fx.imagem) linhas.push("Imagem para a placa enviada");
+          body.p_mensagem = (body.p_mensagem + "\n" + linhas.join(". ") + " (Supabase › Storage › pedidos-ficheiros › " + (fx.logo || fx.imagem).split("/").slice(0, 2).join("/") + ").").trim().slice(0, 2000);
+          resumo_fx = " Logótipo/imagem: enviados pelo site.";
+        } else if (fx && fx.erro) {
+          body.p_mensagem = (body.p_mensagem + "\nO cliente escolheu logótipo/imagem, mas o envio do ficheiro falhou. Pedir pelo WhatsApp.").trim().slice(0, 2000);
+          resumo_fx = " Vou enviar o logótipo/imagem por aqui.";
+        }
+        btn.textContent = "A enviar…";
+        return fetch(C.supabaseUrl + "/rest/v1/rpc/enviar_pedido_v2", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", apikey: C.supabaseAnonKey, Authorization: "Bearer " + C.supabaseAnonKey },
+          body: JSON.stringify(body)
+        });
+      })
       .then(function (r) { return r.ok ? r.json() : false; })
       .then(function (ok) {
         if (ok === true) {
           aviso("Pedido enviado. Respondemos em 24 horas com a prova digital. Depois de aprovar, recebe o link para pagar por MB WAY, Multibanco ou cartão. Obrigado!", true);
-          form.reset();
+          form.reset(); limparLogo(); limparImg();
           escolhida = false; $("escolha").hidden = true;
         } else {
           aviso("Não conseguimos registar o pedido. Confirme os dados ou fale connosco pelo WhatsApp.", false);
@@ -956,7 +1104,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
         btn.disabled = false; btn.textContent = "Enviar pedido";
         if (waNum.length >= 11 && !msg.querySelector("a")) {
           var a = document.createElement("a");
-          a.href = waLink(resumo); a.target = "_blank"; a.rel = "noopener"; a.className = "btn btn-wa"; a.style.marginTop = "12px"; a.style.display = "flex";
+          a.href = waLink(resumo + resumo_fx); a.target = "_blank"; a.rel = "noopener"; a.className = "btn btn-wa"; a.style.marginTop = "12px"; a.style.display = "flex";
           a.textContent = "Enviar também pelo WhatsApp";
           msg.appendChild(a);
         }
