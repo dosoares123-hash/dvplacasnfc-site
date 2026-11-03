@@ -43,7 +43,8 @@ img{max-width:100%;display:block}
 [hidden]{display:none!important}
 a{color:inherit}
 .wrap{max-width:var(--max);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-section{padding-block:88px;scroll-margin-top:60px}
+section{padding-block:72px;scroll-margin-top:60px}
+@media (max-width:640px){section{padding-block:52px}.sec-head{margin-bottom:28px}}
 section.band{background:var(--band);border-block:1px solid var(--line)}
 h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.1;margin:0;text-wrap:balance}
 h2{font-size:clamp(28px,4.4vw,44px);font-weight:700}
@@ -184,7 +185,8 @@ header.top{position:sticky;top:0;z-index:20;background:rgba(12,12,14,.86);backdr
 .step .n{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;color:var(--gold);letter-spacing:-.04em}
 .step p{margin:0;color:var(--muted);font-size:15px}
 /* faq */
-.faq{display:grid;gap:10px;max-width:820px}
+.faq{display:grid;gap:10px;grid-template-columns:1fr 1fr;align-items:start}
+@media (max-width:800px){.faq{grid-template-columns:1fr}}
 .faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 20px}
 .faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;display:flex;justify-content:space-between;gap:16px}
 .faq summary::-webkit-details-marker{display:none}
@@ -353,15 +355,13 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       <span>D&amp;V <small>Placas NFC</small></span>
     </a>
     <nav aria-label="Secções"><ul>
-      <li><a href="#usos">Utilizações</a></li>
+      <li><a href="#como">Como funciona</a></li>
+      <li><a href="#faq">Perguntas</a></li>
+      <li><a href="#sugestoes">Por negócio</a></li>
       <li><a href="#modelos">Modelos</a></li>
       <li><a href="#tags">Tags</a></li>
-      <li><a href="#personalizacao">Personalização</a></li>
       <li><a href="#criar">Criar</a></li>
-      <li><a href="#sugestoes">Sugestões</a></li>
-      <li><a href="#como">Como funciona</a></li>
-      <li><a href="#materiais">Materiais</a></li>
-      <li><a href="#faq">Perguntas</a></li>
+      <li><a href="#materiais">Preços</a></li>
     </ul></nav>
     <a class="btn btn-gold" href="#orcamento">Encomendar</a>
   </div>
@@ -397,123 +397,34 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   </div>
 </section>
 
-<section id="usos" class="band">
+<section id="como" class="band">
   <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Utilizações</p><h2>O que a sua placa pode fazer</h2><p class="lead">Cada placa abre o destino que escolher. Toque numa opção para começar a sua placa: o pedido fica logo preenchido e pode mudar a cor e o estilo quando quiser.</p></div>
-    <div class="grid3">
-      <button type="button" class="card use" data-uso="google"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></div><h3>Avaliações Google</h3><p>O cliente encosta o telemóvel e abre logo a página para deixar as estrelas. Mais avaliações, mais clientes novos.</p><span class="go">Criar esta placa →</span></button>
-      <button type="button" class="card use" data-uso="insta"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></div><h3>Instagram e TikTok</h3><p>Novos seguidores em segundos, sem ter de soletrar o nome da conta.</p><span class="go">Criar esta placa →</span></button>
-      <button type="button" class="card use" data-uso="wifi"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></svg></div><h3>Wi-Fi</h3><p>Os clientes ligam-se à rede sem perguntar a palavra-passe ao balcão.</p><span class="go">Criar esta placa →</span></button>
-      <button type="button" class="card use" data-uso="menu"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 3h12v18H6zM9 8h6M9 12h6M9 16h3"/></svg></div><h3>Menu digital</h3><p>O menu atualizado abre no telemóvel de cada mesa. Mudou um preço? Muda o link, não a placa.</p><span class="go">Criar esta placa →</span></button>
-      <button type="button" class="card use" data-uso="cartao"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16a3 3 0 0 1 6 0M14 10h4M14 13h3"/></svg></div><h3>Cartão de visita</h3><p>Guarda o seu contacto no telemóvel do cliente com um toque.</p><span class="go">Criar esta placa →</span></button>
-      <button type="button" class="card use" data-uso="pagar"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></div><h3>Pagamentos e links</h3><p>MB WAY, site, WhatsApp ou marcações: o link que for mais útil ao seu cliente.</p><span class="go">Criar esta placa →</span></button>
-      <button type="button" class="card use" data-uso="relatorio"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Relatório de toques</h3><p>Com o link gerido, recebe por mês quantas vezes a placa foi usada e como evoluíram as suas avaliações.</p><span class="go">Criar esta placa →</span></button>
-      <button type="button" class="card use" data-uso="direto"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Link direto</h3><p>A placa abre diretamente a sua página e fica bloqueada para ninguém a alterar. Simples e para sempre.</p><span class="go">Criar esta placa →</span></button>
-      <button type="button" class="card use" data-uso="gerido"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></div><h3>Link gerido</h3><p>Pode mudar o destino quando quiser sem trocar de placa. E a placa nunca deixa de funcionar.</p><span class="go">Criar esta placa →</span></button>
+    <div class="sec-head"><p class="eyebrow">Como funciona</p><h2>Do pedido à entrega em quatro passos</h2></div>
+    <ol class="steps" style="list-style:none;margin:0;padding:0">
+      <li class="card step"><span class="n">01</span><h3>Escolha</h3><p>Material, formato e cores. Se tiver dúvidas, ajudamos a decidir.</p></li>
+      <li class="card step"><span class="n">02</span><h3>Personalize</h3><p>Nome, slogan, cor e o link que a placa vai abrir.</p></li>
+      <li class="card step"><span class="n">03</span><h3>Aprove</h3><p>Recebe uma prova digital em 24 horas. Só produzimos depois do seu OK.</p></li>
+      <li class="card step"><span class="n">04</span><h3>Receba</h3><p>Entrega em mão na zona de Lisboa ou envio por CTT para todo o país, já programada e testada.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Perguntas frequentes</p><h2>Antes de encomendar</h2><p class="lead">As dúvidas mais comuns, respondidas em poucas linhas.</p></div>
+    <div class="faq">
+      <details><summary>Funciona com todos os telemóveis?</summary><p>Funciona com todos os iPhone desde o XS e com quase todos os Android com NFC, que vem ligado por defeito na maioria. Basta encostar o telemóvel desbloqueado à placa.</p></details>
+      <details><summary>O cliente precisa de instalar alguma app?</summary><p>Não. O telemóvel abre o link sozinho, como se o cliente tocasse num link. Não precisa de app nem de câmara.</p></details>
+      <details><summary>E se eu mudar de Instagram, de menu ou de link?</summary><p>Com o link gerido, mudamos o destino e a mesma placa passa a abrir o novo link, sem a trocar. Com o link direto, a placa fica bloqueada no link original.</p></details>
+      <details><summary>A placa deixa de funcionar se eu não pagar nada por mês?</summary><p>Não. A placa funciona sempre, com link direto ou gerido. O relatório mensal de toques é um serviço opcional e à parte.</p></details>
+      <details><summary>Quanto tempo demora?</summary><p>Recebe a prova digital em 24 horas. Depois da aprovação, a produção demora normalmente 2 a 4 dias úteis, mais o tempo de envio.</p></details>
+      <details><summary>Posso pôr o meu logótipo?</summary><p>Pode. Na secção «Criar» carrega o logótipo ou uma imagem e monta-os na placa. Recebe a prova digital antes de produzirmos.</p></details>
+      <details><summary>Como pago?</summary><p>Por MB WAY, Multibanco ou cartão, depois de aprovar a prova digital. Recebe o link de pagamento com a prova.</p></details>
     </div>
   </div>
 </section>
 
-<section id="materiais">
-  <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Materiais</p><h2>Escolha a resistência certa</h2><p class="lead">Todas as placas levam um chip NFC compatível com qualquer telemóvel recente, já programado com o seu link.</p></div>
-    <div class="grid2">
-      <article class="card mat featured"><span class="tag">Mais pedido</span><h3>PLA</h3><div class="price">desde <b>19 €</b></div><ul><li>Cores vivas e acabamento mate</li><li>Leve e económico</li><li>Ideal para balcões e interiores</li></ul><a class="btn btn-gold" href="#orcamento" data-material="PLA">Escolher PLA</a><a href="produtos/placa-mesa-pla.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
-      <article class="card mat"><h3>PETG</h3><div class="price">desde <b>24 €</b></div><ul><li>A opção mais robusta</li><li>Resistente a impactos, humidade e calor</li><li>Para uso intenso todos os dias</li></ul><a class="btn" href="#orcamento" data-material="PETG">Escolher PETG</a><a href="produtos/placa-mesa-petg.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
-    </div>
-    <p class="note">Preços por placa. Descontos para várias placas no mesmo pedido.</p>
-  </div>
-</section>
-
-<section id="personalizacao" class="band">
-  <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Personalização</p><h2>A placa com a cara do seu negócio</h2></div>
-    <div class="tabs" role="tablist" aria-label="Opções de personalização" data-tabs="pers">
-      <button role="tab" aria-selected="true" data-tab="p-empresa">Nome da empresa</button>
-      <button role="tab" aria-selected="false" data-tab="p-cor">Cor</button>
-      <button role="tab" aria-selected="false" data-tab="p-nome">Texto e slogan</button>
-      <button role="tab" aria-selected="false" data-tab="p-links">Links</button>
-    </div>
-    <div class="panel" role="tabpanel" id="p-empresa">
-      <div><h3>O nome como o quer ver</h3><ul><li>Nome da empresa exatamente como o escreve</li><li>Slogan opcional por baixo</li><li>Letras em relevo, na cor que escolher</li><li>Várias placas com nomes diferentes no mesmo pedido</li></ul></div>
-      <div class="mini"><div class="plaque"><div class="p-name">Barbearia Central</div><div class="p-title" style="font-size:24px">Desde 1998</div><div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div></div></div>
-    </div>
-    <div class="panel" role="tabpanel" id="p-cor" hidden>
-      <div><h3>Cores que combinam com o espaço</h3><ul><li>Base e letras em cores diferentes</li><li>Acabamento mate, que não reflete a luz</li><li>Podemos aproximar as cores da sua marca</li></ul><p class="note" style="margin:16px 0 0">Toque nas cores para experimentar:</p><div class="sw-row"><span>Cor da placa</span><div class="swatches" style="margin:0" id="pcBase" role="group" aria-label="Cor da placa"><button type="button" class="sw" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" class="sw" aria-label="Branco" title="Branco" aria-pressed="true" data-c="#f3efe6" style="background:#f3efe6"></button><button type="button" class="sw" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" class="sw" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" class="sw" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#2a52d6" style="background:#2a52d6"></button><button type="button" class="sw" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#2e7d4f" style="background:#2e7d4f"></button><button type="button" class="sw" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#b4233a" style="background:#b4233a"></button><button type="button" class="sw" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#8a8a8a" style="background:#8a8a8a"></button></div></div><div class="sw-row"><span>Cor das letras</span><div class="swatches" style="margin:0" id="pcTxt" role="group" aria-label="Cor das letras"><button type="button" class="sw" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" class="sw" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f3efe6" style="background:#f3efe6"></button><button type="button" class="sw" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" class="sw" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" class="sw" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#2a52d6" style="background:#2a52d6"></button><button type="button" class="sw" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#2e7d4f" style="background:#2e7d4f"></button><button type="button" class="sw" aria-label="Vermelho" title="Vermelho" aria-pressed="true" data-c="#b4233a" style="background:#b4233a"></button><button type="button" class="sw" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#8a8a8a" style="background:#8a8a8a"></button></div></div></div>
-      <div class="mini"><div class="plaque" id="pcPlaca"><div class="p-name">Salão Rosa</div><div class="p-stars">★★★★★</div><div class="p-title" style="font-size:26px">Avalie-nos</div><div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div></div></div>
-    </div>
-    <div class="panel" role="tabpanel" id="p-nome" hidden>
-      <div><h3>A mensagem certa para o cliente</h3><ul><li>"Avalie-nos", "Siga-nos", "Wi-Fi grátis" ou outra frase sua</li><li>Ícones do Google, Instagram, WhatsApp ou Wi-Fi</li><li>Indicação "Encoste o telemóvel" para quem nunca usou NFC</li></ul></div>
-      <div class="mini"><div class="plaque"><div class="p-name">Café do Largo</div><div class="p-title">Wi-Fi grátis</div><div class="p-hint">Encoste o telemóvel</div></div></div>
-    </div>
-    <div class="panel links2" role="tabpanel" id="p-links" hidden>
-      <article class="card lk">
-        <span class="lk-tag">Definitivo</span>
-        <h3>Link direto</h3>
-        <ul>
-          <li>A placa abre logo a sua página, sem passar por nenhum outro endereço.</li>
-          <li>Depois de gravado, o link fica bloqueado: ninguém o pode alterar.</li>
-          <li>Não depende de nós nem de nenhum serviço. Funciona para sempre.</li>
-          <li>Se um dia o link mudar, é preciso uma placa nova.</li>
-        </ul>
-        <p class="ideal"><b>Ideal para:</b> avaliações Google, Wi-Fi ou cartão de visita, que quase nunca mudam.</p>
-      </article>
-      <article class="card lk gerido">
-        <span style="display:flex;gap:8px;flex-wrap:wrap"><span class="lk-tag">Pode mudar</span><span class="lk-tag lk-mais">Mais pedido</span></span>
-        <h3>Link gerido</h3>
-        <ul>
-          <li>A placa abre um endereço nosso, que leva o cliente para a sua página.</li>
-          <li>Mudou de Instagram, de menu ou de promoção? Mudamos o destino e a mesma placa passa a abrir o novo link.</li>
-          <li>Relatório mensal de quantas vezes a placa foi tocada (só a data e a hora, sem dados de quem toca).</li>
-          <li>Garantia: o link gerido nunca é desligado, por isso a placa nunca deixa de funcionar.</li>
-        </ul>
-        <p class="ideal"><b>Ideal para:</b> menus, promoções, redes sociais e para quem quer ver os números.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="criar">
-  <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Oficina</p><h2>Crie a sua placa agora</h2><p class="lead">Escreva o nome, escolha a frase, a posição, as letras e as cores. A placa muda à medida que escolhe. No fim, veja o resultado e envie-nos o pedido com um toque.</p></div>
-    <div class="conf">
-      <form class="card conf-form" id="conf" onsubmit="return false">
-        <fieldset class="conf-f"><legend>Modelo da placa</legend><div class="modelos" id="cModelo">
-          <button type="button" data-v="mesa" aria-pressed="true"><span class="thumb foto"></span>Modelo placa padrão<br><small style="font-weight:500">preta texturada, com símbolo NFC</small></button>
-          <button type="button" data-v="livre" aria-pressed="false"><span class="thumb"></span>Exemplo<br><small style="font-weight:500">escolhe a cor da placa</small></button>
-        </div></fieldset>
-        <fieldset class="conf-f"><legend>Logótipo e imagem <small style="font-weight:500;color:var(--muted)">(opcional)</small></legend>
-          <div class="upl">
-            <label class="upl-b" for="cLogo"><input type="file" id="cLogo" accept="image/png,image/jpeg,image/webp,image/svg+xml,application/pdf"><span class="upl-ic" aria-hidden="true">+</span><span class="upl-t"><b>Logótipo</b><small id="cLogoN">PNG, JPG, SVG ou PDF · até 5 MB</small></span></label>
-            <button type="button" class="upl-x" id="cLogoX" aria-label="Tirar o logótipo" hidden>×</button>
-          </div>
-          <div class="upl">
-            <label class="upl-b" for="cImg"><input type="file" id="cImg" accept="image/png,image/jpeg,image/webp,image/svg+xml,application/pdf"><span class="upl-ic" aria-hidden="true">+</span><span class="upl-t"><b>Imagem para a placa</b><small id="cImgN">Uma foto ou desenho · até 5 MB</small></span></label>
-            <button type="button" class="upl-x" id="cImgX" aria-label="Tirar a imagem" hidden>×</button>
-          </div>
-          <div class="upl-aj" id="ajLogo" hidden><span>Tamanho do logótipo</span><input type="range" id="tLogo" min="12" max="95" value="40" aria-label="Tamanho do logótipo"><button type="button" class="upl-c" data-centrar="logo">Centrar</button></div>
-          <div class="upl-aj" id="ajImg" hidden><span>Tamanho da imagem</span><input type="range" id="tImg" min="12" max="100" value="50" aria-label="Tamanho da imagem"><button type="button" class="upl-c" data-centrar="imagem">Centrar</button></div>
-          <label class="upl-chk" id="semNomeL" hidden><input type="checkbox" id="cSemNome"> Usar só o logótipo (esconder o nome escrito)</label>
-          <p class="hint" id="uplHint">Recebe a prova digital com o seu logótipo antes de produzirmos. Os ficheiros só são vistos por nós.</p>
-        </fieldset>
-        <label for="cNome">Nome do negócio<input id="cNome" maxlength="28" value="O seu negócio"></label>
-        <fieldset class="conf-f"><legend>O que a placa abre</legend><div class="chips-s" id="cDest"><button type="button" aria-pressed="true" data-v="google">Avaliações</button><button type="button" aria-pressed="false" data-v="insta">Instagram</button><button type="button" aria-pressed="false" data-v="wifi">Wi-Fi</button><button type="button" aria-pressed="false" data-v="menu">Menu</button><button type="button" aria-pressed="false" data-v="whats">WhatsApp</button><button type="button" aria-pressed="false" data-v="cartao">Cartão de visita</button><button type="button" aria-pressed="false" data-v="pagar">Pagamentos</button></div></fieldset>
-        <label for="cFrase">Frase principal<input id="cFrase" maxlength="24" value="Avalie-nos"></label>
-        <div class="chips-s" id="cFrases" aria-label="Frases sugeridas"></div>
-        <fieldset class="conf-f"><legend>Posição do nome</legend><div class="chips-s" id="cPos"><button type="button" aria-pressed="true" data-v="cima">Em cima</button><button type="button" aria-pressed="false" data-v="centro">Ao centro</button><button type="button" aria-pressed="false" data-v="baixo">Em baixo</button></div></fieldset>
-        <fieldset class="conf-f"><legend>Letra do nome da empresa</legend><div class="chips-s" id="cFonteNome"></div></fieldset>
-        <fieldset class="conf-f"><legend>Letra da frase</legend><div class="chips-s" id="cFonteFrase"></div></fieldset>
-        <fieldset class="conf-f" id="fsBase"><legend>Cor da placa</legend><div class="sws" id="cBase"><button type="button" aria-label="Preto" title="Preto" aria-pressed="true" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f1ede4" style="background:#f1ede4"></button><button type="button" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#5e5e62" style="background:#5e5e62"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#1f3a8a" style="background:#1f3a8a"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#1f5a3a" style="background:#1f5a3a"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#8f1d2e" style="background:#8f1d2e"></button><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#c9a24f" style="background:#c9a24f"></button></div></fieldset>
-        <fieldset class="conf-f"><legend>Cor das letras</legend><div class="sws" id="cTxt"><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="true" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f7f4ee" style="background:#f7f4ee"></button><button type="button" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#111114" style="background:#111114"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#c0263f" style="background:#c0263f"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#3b6cf0" style="background:#3b6cf0"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#3fa46a" style="background:#3fa46a"></button><button type="button" aria-label="Prateado" title="Prateado" aria-pressed="false" data-c="#c7c9cc" style="background:#c7c9cc"></button></div></fieldset>
-        <fieldset class="conf-f"><legend>Material</legend><div class="chips-s" id="cMat"><button type="button" aria-pressed="true" data-v="PLA">PLA · desde 19 €</button><button type="button" aria-pressed="false" data-v="PETG">PETG · desde 24 €</button></div></fieldset>
-        <fieldset class="conf-f"><legend>Tipo de link</legend><div class="chips-s" id="cLink"><button type="button" aria-pressed="true" data-v="direto">Direto (definitivo)</button><button type="button" aria-pressed="false" data-v="gerido">Gerido (pode mudar) · Mais pedido</button></div><p class="hint" id="cLinkHint"></p></fieldset>
-      </form>
-      <div class="mini conf-prev" aria-live="polite"><div class="plaque" id="cPlaca"><img class="p-logo" id="pvLogo" alt="" hidden><img class="p-img" id="pvImg" alt="" hidden><div class="p-name" id="pvNome">O seu negócio</div><div class="p-stars" id="pvStars">★★★★★</div><div class="p-title" id="pvFrase">Avalie-nos</div><div class="p-tap" id="pvTap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div><div class="p-hint" id="pvHint">Encoste o telemóvel</div></div><p class="note" style="text-align:center;margin:16px 0 0">Pré-visualização aproximada. Recebe a prova final em 24 horas.</p><button class="btn btn-gold" type="button" id="cQuero" style="margin-top:16px">Quero esta placa</button></div>
-    </div>
-  </div>
-</section>
-
-<section id="sugestoes">
+<section id="sugestoes" class="band">
   <div class="wrap">
     <div class="sec-head"><p class="eyebrow">Sugestões</p><h2>Modelos prontos para começar</h2><p class="lead">Escolha um modelo e adaptamos ao seu nome e às suas cores.</p></div>
     <div class="tabs" role="tablist" aria-label="Modelos sugeridos" data-tabs="sugg">
@@ -584,34 +495,58 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   </div>
 </section>
 
-<section id="como">
+<section id="criar">
   <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Como funciona</p><h2>Do pedido à entrega em quatro passos</h2></div>
-    <ol class="steps" style="list-style:none;margin:0;padding:0">
-      <li class="card step"><span class="n">01</span><h3>Escolha</h3><p>Material, formato e cores. Se tiver dúvidas, ajudamos a decidir.</p></li>
-      <li class="card step"><span class="n">02</span><h3>Personalize</h3><p>Nome, slogan, cor e o link que a placa vai abrir.</p></li>
-      <li class="card step"><span class="n">03</span><h3>Aprove</h3><p>Recebe uma prova digital em 24 horas. Só produzimos depois do seu OK.</p></li>
-      <li class="card step"><span class="n">04</span><h3>Receba</h3><p>Entrega em mão na zona de Lisboa ou envio por CTT para todo o país, já programada e testada.</p></li>
-    </ol>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Perguntas frequentes</p><h2>Antes de encomendar</h2></div>
-    <div class="faq">
-      <details><summary>Funciona com todos os telemóveis?</summary><p>Funciona com todos os iPhone desde o XS e com quase todos os Android com NFC, que vem ligado por defeito na maioria. Basta encostar o telemóvel desbloqueado à placa.</p></details>
-      <details><summary>O cliente precisa de instalar alguma app?</summary><p>Não. O telemóvel abre o link sozinho, como se o cliente tocasse num link. Não precisa de app nem de câmara.</p></details>
-      <details><summary>E se eu mudar de Instagram, de menu ou de link?</summary><p>Com o link gerido, mudamos o destino e a mesma placa passa a abrir o novo link, sem a trocar. Com o link direto, a placa fica bloqueada no link original.</p></details>
-      <details><summary>A placa deixa de funcionar se eu não pagar nada por mês?</summary><p>Não. A placa funciona sempre, com link direto ou gerido. O relatório mensal de toques é um serviço opcional e à parte.</p></details>
-      <details><summary>Quanto tempo demora?</summary><p>Recebe a prova digital em 24 horas. Depois da aprovação, a produção demora normalmente 2 a 4 dias úteis, mais o tempo de envio.</p></details>
-      <details><summary>Posso ter um QR code na mesma placa?</summary><p>Pode. Juntamos um QR code com o mesmo link, para quem tem telemóveis mais antigos.</p></details>
-      <details><summary>Como pago?</summary><p>Por MB WAY ou transferência bancária, depois de aprovar a prova digital.</p></details>
+    <div class="sec-head"><p class="eyebrow">Oficina</p><h2>Crie a sua placa agora</h2><p class="lead">Escreva o nome, escolha a frase, a posição, as letras e as cores. A placa muda à medida que escolhe. No fim, veja o resultado e envie-nos o pedido com um toque.</p></div>
+    <div class="conf">
+      <form class="card conf-form" id="conf" onsubmit="return false">
+        <fieldset class="conf-f"><legend>Modelo da placa</legend><div class="modelos" id="cModelo">
+          <button type="button" data-v="mesa" aria-pressed="true"><span class="thumb foto"></span>Modelo placa padrão<br><small style="font-weight:500">preta texturada, com símbolo NFC</small></button>
+          <button type="button" data-v="livre" aria-pressed="false"><span class="thumb"></span>Exemplo<br><small style="font-weight:500">escolhe a cor da placa</small></button>
+        </div></fieldset>
+        <fieldset class="conf-f"><legend>Logótipo e imagem <small style="font-weight:500;color:var(--muted)">(opcional)</small></legend>
+          <div class="upl">
+            <label class="upl-b" for="cLogo"><input type="file" id="cLogo" accept="image/png,image/jpeg,image/webp,image/svg+xml,application/pdf"><span class="upl-ic" aria-hidden="true">+</span><span class="upl-t"><b>Logótipo</b><small id="cLogoN">PNG, JPG, SVG ou PDF · até 5 MB</small></span></label>
+            <button type="button" class="upl-x" id="cLogoX" aria-label="Tirar o logótipo" hidden>×</button>
+          </div>
+          <div class="upl">
+            <label class="upl-b" for="cImg"><input type="file" id="cImg" accept="image/png,image/jpeg,image/webp,image/svg+xml,application/pdf"><span class="upl-ic" aria-hidden="true">+</span><span class="upl-t"><b>Imagem para a placa</b><small id="cImgN">Uma foto ou desenho · até 5 MB</small></span></label>
+            <button type="button" class="upl-x" id="cImgX" aria-label="Tirar a imagem" hidden>×</button>
+          </div>
+          <div class="upl-aj" id="ajLogo" hidden><span>Tamanho do logótipo</span><input type="range" id="tLogo" min="12" max="95" value="40" aria-label="Tamanho do logótipo"><button type="button" class="upl-c" data-centrar="logo">Centrar</button></div>
+          <div class="upl-aj" id="ajImg" hidden><span>Tamanho da imagem</span><input type="range" id="tImg" min="12" max="100" value="50" aria-label="Tamanho da imagem"><button type="button" class="upl-c" data-centrar="imagem">Centrar</button></div>
+          <label class="upl-chk" id="semNomeL" hidden><input type="checkbox" id="cSemNome"> Usar só o logótipo (esconder o nome escrito)</label>
+          <p class="hint" id="uplHint">Recebe a prova digital com o seu logótipo antes de produzirmos. Os ficheiros só são vistos por nós.</p>
+        </fieldset>
+        <label for="cNome">Nome do negócio<input id="cNome" maxlength="28" value="O seu negócio"></label>
+        <fieldset class="conf-f"><legend>O que a placa abre</legend><div class="chips-s" id="cDest"><button type="button" aria-pressed="true" data-v="google">Avaliações</button><button type="button" aria-pressed="false" data-v="insta">Instagram</button><button type="button" aria-pressed="false" data-v="wifi">Wi-Fi</button><button type="button" aria-pressed="false" data-v="menu">Menu</button><button type="button" aria-pressed="false" data-v="whats">WhatsApp</button><button type="button" aria-pressed="false" data-v="cartao">Cartão de visita</button><button type="button" aria-pressed="false" data-v="pagar">Pagamentos</button></div></fieldset>
+        <label for="cFrase">Frase principal<input id="cFrase" maxlength="24" value="Avalie-nos"></label>
+        <div class="chips-s" id="cFrases" aria-label="Frases sugeridas"></div>
+        <fieldset class="conf-f"><legend>Posição do nome</legend><div class="chips-s" id="cPos"><button type="button" aria-pressed="true" data-v="cima">Em cima</button><button type="button" aria-pressed="false" data-v="centro">Ao centro</button><button type="button" aria-pressed="false" data-v="baixo">Em baixo</button></div></fieldset>
+        <fieldset class="conf-f"><legend>Letra do nome da empresa</legend><div class="chips-s" id="cFonteNome"></div></fieldset>
+        <fieldset class="conf-f"><legend>Letra da frase</legend><div class="chips-s" id="cFonteFrase"></div></fieldset>
+        <fieldset class="conf-f" id="fsBase"><legend>Cor da placa</legend><div class="sws" id="cBase"><button type="button" aria-label="Preto" title="Preto" aria-pressed="true" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f1ede4" style="background:#f1ede4"></button><button type="button" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#5e5e62" style="background:#5e5e62"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#1f3a8a" style="background:#1f3a8a"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#1f5a3a" style="background:#1f5a3a"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#8f1d2e" style="background:#8f1d2e"></button><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#c9a24f" style="background:#c9a24f"></button></div></fieldset>
+        <fieldset class="conf-f"><legend>Cor das letras</legend><div class="sws" id="cTxt"><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="true" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f7f4ee" style="background:#f7f4ee"></button><button type="button" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#111114" style="background:#111114"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#c0263f" style="background:#c0263f"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#3b6cf0" style="background:#3b6cf0"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#3fa46a" style="background:#3fa46a"></button><button type="button" aria-label="Prateado" title="Prateado" aria-pressed="false" data-c="#c7c9cc" style="background:#c7c9cc"></button></div></fieldset>
+        <fieldset class="conf-f"><legend>Material</legend><div class="chips-s" id="cMat"><button type="button" aria-pressed="true" data-v="PLA">PLA · desde 19 €</button><button type="button" aria-pressed="false" data-v="PETG">PETG · desde 24 €</button></div></fieldset>
+        <fieldset class="conf-f"><legend>Tipo de link</legend><div class="chips-s" id="cLink"><button type="button" aria-pressed="true" data-v="direto">Direto (definitivo)</button><button type="button" aria-pressed="false" data-v="gerido">Gerido (pode mudar) · Mais pedido</button></div><p class="hint" id="cLinkHint"></p></fieldset>
+      </form>
+      <div class="mini conf-prev" aria-live="polite"><div class="plaque" id="cPlaca"><img class="p-logo" id="pvLogo" alt="" hidden><img class="p-img" id="pvImg" alt="" hidden><div class="p-name" id="pvNome">O seu negócio</div><div class="p-stars" id="pvStars">★★★★★</div><div class="p-title" id="pvFrase">Avalie-nos</div><div class="p-tap" id="pvTap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div><div class="p-hint" id="pvHint">Encoste o telemóvel</div></div><p class="note" style="text-align:center;margin:16px 0 0">Pré-visualização aproximada. Recebe a prova final em 24 horas.</p><button class="btn btn-gold" type="button" id="cQuero" style="margin-top:16px">Quero esta placa</button></div>
     </div>
   </div>
 </section>
 
-<section id="orcamento" class="band">
+<section id="materiais" class="band">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Materiais</p><h2>Escolha a resistência certa</h2><p class="lead">Todas as placas levam um chip NFC compatível com qualquer telemóvel recente, já programado com o seu link.</p></div>
+    <div class="grid2">
+      <article class="card mat featured"><span class="tag">Mais pedido</span><h3>PLA</h3><div class="price">desde <b>19 €</b></div><ul><li>Cores vivas e acabamento mate</li><li>Leve e económico</li><li>Ideal para balcões e interiores</li></ul><a class="btn btn-gold" href="#orcamento" data-material="PLA">Escolher PLA</a><a href="produtos/placa-mesa-pla.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
+      <article class="card mat"><h3>PETG</h3><div class="price">desde <b>24 €</b></div><ul><li>A opção mais robusta</li><li>Resistente a impactos, humidade e calor</li><li>Para uso intenso todos os dias</li></ul><a class="btn" href="#orcamento" data-material="PETG">Escolher PETG</a><a href="produtos/placa-mesa-petg.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
+    </div>
+    <p class="note">Preços por placa. Descontos para várias placas no mesmo pedido.</p>
+  </div>
+</section>
+
+<section id="orcamento">
   <div class="wrap quote">
     <div>
       <p class="eyebrow">Orçamento</p>
@@ -669,6 +604,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
     </form>
   </div>
 </section>
+
 </main>
 
 <footer>
@@ -951,7 +887,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
   });
 
   /* Secção "Cor": as bolinhas mudam a placa de exemplo. */
-  (function () {
+  if ($("pcPlaca")) (function () {
     var pc = { base: "#f3efe6", txt: "#b4233a" };
     function pinta() { pintar($("pcPlaca"), pc.base, pc.txt); $("pcPlaca").style.transform = "none"; }
     [["pcBase", "base"], ["pcTxt", "txt"]].forEach(function (g) {
