@@ -120,6 +120,12 @@ header.top{position:sticky;top:0;z-index:20;background:rgba(12,12,14,.86);backdr
 /* tabs */
 .galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
 .galeria[hidden]{display:none}
+.sugg-fotos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.sugg-fotos .gal-it:first-child{grid-column:1/-1}
+.sugg-fotos .gal-it:only-child{grid-column:1/-1}
+.sugg-fotos figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sugg-fotos .gal-it:not(:first-child)::before{display:none}
+
 .gal-it{position:relative}
 .gal-it::before{content:"Imagem meramente ilustrativa";position:absolute;left:8px;top:8px;z-index:1;font:500 11px/1 var(--body);letter-spacing:.02em;color:#f3efe6;background:rgba(12,12,14,.72);padding:6px 9px;border-radius:999px;pointer-events:none;white-space:nowrap}
 @media (max-width:520px){.gal-it::before{font-size:9px;padding:4px 7px;left:6px;top:6px}}
@@ -511,13 +517,14 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       <button role="tab" aria-selected="false" data-tab="s-insta">Instagram e redes</button>
       <button role="tab" aria-selected="false" data-tab="s-barb">Barbearias</button>
       <button role="tab" aria-selected="false" data-tab="s-rest">Restaurantes</button>
+      <button role="tab" aria-selected="false" data-tab="s-ofi">Oficinas</button>
     </div>
     <div class="panel" role="tabpanel" id="s-google">
-      <div class="mini"><div class="plaque"><div class="p-name">O seu negócio</div><div class="p-stars">★★★★★</div><div class="p-title">Avalie-nos</div><div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div></div></div>
+      <div class="galeria sugg-fotos"><figure class="gal-it"><img src="modelos/placa-salao-redes.webp" alt="Placa 3 em 1, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa 3 em 1</b><span>Instagram, Google e TikTok</span><a href="#orcamento" data-tag="Placa 3 em 1 Instagram, Google e TikTok (sugestões)">Quero este</a></figcaption></figure></div>
       <div><h3>Placa de avaliações</h3><p class="lead" style="font-size:16px">Cinco estrelas douradas e a mensagem "Avalie-nos". O cliente toca e abre logo o formulário de avaliação do Google.</p><div class="sugg-meta"><span><b>Abre:</b> avaliação no Google</span><span><b>Cores:</b> preto mate com letras douradas</span><span><b>Ideal para:</b> qualquer negócio com clientes ao balcão</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="google">Quero esta</a></div>
     </div>
     <div class="panel" role="tabpanel" id="s-insta" hidden>
-      <div class="mini"><div class="plaque"><div class="p-name">@onegocio</div><div class="p-title">Siga-nos</div><div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/></svg></div></div></div>
+      <div class="galeria sugg-fotos"><figure class="gal-it"><img src="modelos/placa-instagram-cafe.webp" alt="Placa de mesa Instagram, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa de mesa Instagram</b><span>seguidores e avaliações</span><a href="#orcamento" data-tag="Placa de mesa Instagram (sugestões)">Quero este</a></figcaption></figure><figure class="gal-it"><img src="modelos/placa-salao-redes.webp" alt="Placa 3 em 1, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa 3 em 1</b><span>Instagram, Google e TikTok</span><a href="#orcamento" data-tag="Placa 3 em 1 Instagram, Google e TikTok (sugestões)">Quero este</a></figcaption></figure></div>
       <div><h3>Placa de redes sociais</h3><p class="lead" style="font-size:16px">Para ganhar seguidores no Instagram ou no TikTok enquanto o cliente espera.</p><div class="sugg-meta"><span><b>Abre:</b> Instagram, TikTok ou uma página com todos os links</span><span><b>Ideal para:</b> lojas, estúdios, unhas e estética</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="insta">Quero esta</a></div>
     </div>
     <div class="panel" role="tabpanel" id="s-barb" hidden>
@@ -525,8 +532,12 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       <div><h3>Kit barbearia</h3><p class="lead" style="font-size:16px">Uma placa no espelho para marcações pelo WhatsApp e outra no balcão para avaliações.</p><div class="sugg-meta"><span><b>Abre:</b> WhatsApp de marcações + avaliações Google</span><span><b>Material sugerido:</b> PETG, resiste à humidade</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="whats" data-frase="Marque o próximo corte" data-nome="Barbearia" data-mat="PETG">Quero esta</a></div>
     </div>
     <div class="panel" role="tabpanel" id="s-rest" hidden>
-      <div class="mini"><div class="plaque"><div class="p-name">Mesa 4</div><div class="p-title">Menu &amp; Wi-Fi</div><div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div></div></div>
+      <div class="galeria sugg-fotos"><figure class="gal-it"><img src="modelos/placa-ementa-restaurante.webp" alt="Placa de mesa Ementa, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa de mesa Ementa</b><span>abre o menu digital</span><a href="#orcamento" data-tag="Placa de mesa Ementa (sugestões)">Quero este</a></figcaption></figure></div>
       <div><h3>Kit restaurante</h3><p class="lead" style="font-size:16px">Uma placa por mesa com o menu digital e o Wi-Fi, e uma à saída para as avaliações.</p><div class="sugg-meta"><span><b>Abre:</b> menu, Wi-Fi e avaliações</span><span><b>Material sugerido:</b> PETG, resiste a líquidos e limpezas</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="menu" data-frase="Menu &amp; Wi-Fi" data-mat="PETG">Quero esta</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="s-ofi" hidden>
+      <div class="galeria sugg-fotos"><figure class="gal-it"><img src="modelos/placa-oficina-redonda.webp" alt="Placa redonda WhatsApp, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa redonda WhatsApp</b><span>marcações e dúvidas</span><a href="#orcamento" data-tag="Placa redonda WhatsApp (sugestões)">Quero este</a></figcaption></figure><figure class="gal-it"><img src="modelos/placa-oficina-capacete.webp" alt="Placa em forma de capacete, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa em forma de capacete</b><span>com caveira em relevo</span><a href="#orcamento" data-tag="Placa em forma de capacete (sugestões)">Quero este</a></figcaption></figure><figure class="gal-it"><img src="modelos/placa-oficina-mota.webp" alt="Placa em forma de mota, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa em forma de mota</b><span>recorte à medida</span><a href="#orcamento" data-tag="Placa em forma de mota (sugestões)">Quero este</a></figcaption></figure></div>
+      <div><h3>Placa de contacto para oficinas</h3><p class="lead" style="font-size:16px">No balcão ou na parede da oficina: o cliente encosta o telemóvel e abre logo o WhatsApp para marcar uma revisão ou tirar dúvidas.</p><div class="sugg-meta"><span><b>Abre:</b> WhatsApp de marcações</span><span><b>Formatos:</b> redonda, capacete ou mota, recortada à medida</span><span><b>Material sugerido:</b> PETG, resiste a óleo e calor</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="whats" data-frase="Fale connosco" data-mat="PETG">Quero esta</a></div>
     </div>
   </div>
 </section>
