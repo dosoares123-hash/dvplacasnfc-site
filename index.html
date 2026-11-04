@@ -376,6 +376,7 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 .conf-prev .plaque{transition:background .2s,color .2s}
 .wa-float{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;background:#25d366;color:#05210f;display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.45);text-decoration:none}
 .wa-float svg{width:30px;height:30px}
+#proDemo .pro-tour{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 </style>
 </head>
 <body>
@@ -388,12 +389,12 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
     <nav aria-label="Secções"><ul>
       <li><a href="#como">Como funciona</a></li>
       <li><a href="#faq">Perguntas</a></li>
+      <li><a href="#pro">Plano Pro</a></li>
       <li><a href="#sugestoes">Por negócio</a></li>
       <li><a href="#modelos">Modelos</a></li>
       <li><a href="#tags">Tags</a></li>
       <li><a href="#criar">Criar</a></li>
       <li><a href="#materiais">Preços</a></li>
-      <li><a href="#pro">Plano Pro</a></li>
     </ul></nav>
     <a class="btn btn-gold" href="#orcamento">Encomendar</a>
   </div>
@@ -452,6 +453,16 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       <details><summary>Quanto tempo demora?</summary><p>Recebe a prova digital em 24 horas. Depois da aprovação, a produção demora normalmente 2 a 4 dias úteis, mais o tempo de envio.</p></details>
       <details><summary>Posso pôr o meu logótipo?</summary><p>Pode. Na secção «Criar» carrega o logótipo ou uma imagem e monta-os na placa. Recebe a prova digital antes de produzirmos.</p></details>
       <details><summary>Como pago?</summary><p>Por MB WAY, Multibanco ou cartão, depois de aprovar a prova digital. Recebe o link de pagamento com a prova.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="pro">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Plano Pro</p><h2>Veja como a sua placa trabalha</h2><p class="lead">Com o link gerido e o Plano Pro, recebe um painel privado com os toques na placa, as horas de mais movimento e a evolução das suas avaliações Google. Experimente aqui com dados de exemplo.</p></div>
+    <div class="pro-demo-wrap" style="max-width:720px">
+      <div id="proDemo"></div>
+      <p class="note" style="margin-top:14px;font-size:13px;color:var(--muted)">Contamos apenas a data e a hora de cada toque. Nunca guardamos dados de quem toca na placa.</p>
     </div>
   </div>
 </section>
@@ -576,16 +587,6 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       <article class="card mat"><h3>PETG</h3><div class="price">desde <b>24 €</b></div><ul><li>A opção mais robusta</li><li>Resistente a impactos, humidade e calor</li><li>Para uso intenso todos os dias</li></ul><a class="btn" href="#orcamento" data-material="PETG">Escolher PETG</a><a href="produtos/placa-mesa-petg.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
     </div>
     <p class="note">Preços por placa. Descontos para várias placas no mesmo pedido.</p>
-  </div>
-</section>
-
-<section id="pro">
-  <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Plano Pro</p><h2>Veja a sua placa a trabalhar</h2><p class="lead">Com o link gerido e o Plano Pro, recebe um painel privado com os toques na placa, as horas de mais movimento e a evolução das suas avaliações Google. Experimente aqui com dados de exemplo.</p></div>
-    <div class="pro-demo-wrap" style="max-width:720px">
-      <div id="proDemo"></div>
-      <p class="note" style="margin-top:14px;font-size:13px;color:var(--muted)">Contamos apenas a data e a hora de cada toque. Nunca guardamos dados de quem toca na placa.</p>
-    </div>
   </div>
 </section>
 

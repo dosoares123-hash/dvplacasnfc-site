@@ -51,7 +51,7 @@
 .pro-wa{margin-top:12px;background:#0b141a;border-radius:14px;padding:12px}
 .pro-wa p{margin:0;background:#1f2c33;border-radius:10px 10px 10px 2px;padding:10px 12px;font-size:13px;line-height:1.5;color:#e9edef;max-width:92%}
 .pro-wa p small{display:block;text-align:right;color:#8696a0;font-size:10.5px;margin-top:4px}
-.pro-tour{margin-top:16px;border:1px solid var(--pg);border-radius:20px;padding:16px;background:linear-gradient(180deg,rgba(212,173,91,.10),var(--pc) 70%)}
+.pro-tour{position:sticky;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:3;box-shadow:0 -10px 30px rgba(0,0,0,.45);background-color:#17171b;margin-top:16px;border:1px solid var(--pg);border-radius:20px;padding:16px;background:linear-gradient(180deg,#241f14,#17171b 70%)}
 .pro-tour .k{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pg)}
 .pro-tour h4{margin:6px 0 4px;font-family:"Sora",sans-serif;font-size:18px}
 .pro-tour p{margin:0;color:var(--pm);font-size:14px}
@@ -60,6 +60,7 @@
 .pro-nav button{flex:1;padding:12px;border-radius:12px;border:1px solid var(--pl);background:var(--pc2);color:var(--pf);font:700 14px/1 inherit;cursor:pointer}
 .pro-nav button.go{background:linear-gradient(180deg,var(--pg2),var(--pg));color:#1a1408;border-color:transparent}
 .pro-nav button:disabled{opacity:.4;cursor:default}
+.pro-ui [data-p]{scroll-margin-top:84px}
 .pro-foco{box-shadow:0 0 0 2px var(--pg),0 0 30px rgba(212,173,91,.25);transition:box-shadow .3s}
 @media (max-width:420px){.pro-kpi .n{font-size:22px}.pro-heat{gap:2px}.pro-hx{gap:2px}}
 @media (prefers-reduced-motion:reduce){.pro-bars i{transition:none}}
@@ -193,7 +194,7 @@
       body.querySelectorAll(".pro-foco").forEach(function (x) { x.classList.remove("pro-foco"); });
       if (passo < 0) return;
       var t = body.querySelector("[data-p='" + PASSOS[passo][0] + "']");
-      if (t) { t.classList.add("pro-foco"); if (opt.scroll !== false) t.scrollIntoView({ behavior: "smooth", block: "center" }); }
+      if (t) { t.classList.add("pro-foco"); if (opt.scroll !== false) t.scrollIntoView({ behavior: "smooth", block: "start" }); }
     }
     function tourHtml() {
       if (!tour) return;
