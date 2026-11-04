@@ -556,6 +556,17 @@ section.band{background:rgba(18,18,21,.78)}
 .preco-mais{font-size:14px;color:var(--muted);margin-top:8px}
 .preco-r .note{margin:6px 0 0;font-size:13px}
 @media (max-width:760px){.preco-d{grid-template-columns:1fr}.preco-l{padding:30px 24px}.preco-r{padding:32px 24px;border-left:0;border-top:1px solid rgba(212,173,91,.25)}}
+.mv-head h2{font-size:clamp(34px,5.6vw,58px)}
+.mv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:860px){.mv-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}.mv-grid::-webkit-scrollbar{display:none}.mv-it{scroll-snap-align:start}}
+.mv-it::before{display:none}
+.mv-it{position:relative;border-color:rgba(212,173,91,.35)!important;transition:transform .25s,box-shadow .25s}
+.mv-it:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.5),0 0 30px rgba(212,173,91,.15)}
+.mv-it img{aspect-ratio:3/4!important;object-fit:cover}
+.mv-it .mv-badge{color:#1a1408!important;opacity:1!important}
+.mv-badge{position:absolute;top:14px;right:14px;z-index:2;background:linear-gradient(180deg,#f0d38d,#d4ad5b);color:#1a1408;font:800 12.5px/1 var(--display);padding:8px 12px;border-radius:999px;box-shadow:0 0 18px rgba(212,173,91,.5)}
+.mv-preco{color:var(--muted);font-size:14px}.mv-preco b{color:var(--gold-2);font-family:var(--display);font-size:20px}
+.mv-note{margin-top:18px}.mv-note a{color:var(--gold)}
 </style>
 </head>
 <body>
@@ -566,6 +577,7 @@ section.band{background:rgba(18,18,21,.78)}
       <span>D&amp;V <small>Placas NFC</small></span>
     </a>
     <nav aria-label="Secções"><ul>
+      <li><a href="#maisvendidas">Mais vendidas</a></li>
       <li><a href="#como">Como funciona</a></li>
       <li><a href="#faq">Perguntas</a></li>
       <li><a href="#pro">Plano Pro</a></li>
@@ -613,6 +625,14 @@ section.band{background:rgba(18,18,21,.78)}
       </div>
       <div class="phone"><div class="ring"></div></div>
     </div>
+  </div>
+</section>
+
+<section id="maisvendidas" class="band">
+  <div class="wrap">
+    <div class="sec-head mv-head"><p class="eyebrow">Placas padrão</p><h2>As mais vendidas</h2><p class="lead">A placa de avaliações Google que os nossos clientes mais escolhem. Pronta a encomendar, em branco ou preto. O cliente encosta o telemóvel e abre logo a página para deixar as estrelas.</p></div>
+    <div class="mv-grid"><figure class="gal-it mv-it"><span class=mv-badge>★ Mais vendida</span><img src="modelos/padrao-google-1.webp" alt="Duas placas NFC de avaliações Google, uma branca e uma preta, num balcão de madeira" width="750" height="1000" loading="eager" decoding="async"><figcaption><b>Placa Google · branca ou preta</b><span>escolha a cor do seu balcão</span><span class="mv-preco">desde <b>19 €</b></span><a href="#orcamento" data-tag="Placa Google · branca ou preta (placas padrão)">Quero esta</a></figcaption></figure><figure class="gal-it mv-it"><img src="modelos/padrao-google-2.webp" alt="Placa NFC branca de avaliações Google em cima de um balcão" width="750" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa Google branca</b><span>logótipo Google em relevo e símbolo NFC</span><span class="mv-preco">desde <b>19 €</b></span><a href="#orcamento" data-tag="Placa Google branca (placas padrão)">Quero esta</a></figcaption></figure><figure class="gal-it mv-it"><img src="modelos/padrao-google-3.webp" alt="Placa NFC branca de avaliações Google vista de lado num balcão" width="750" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa Google branca de balcão</b><span>fica de pé, sem pilhas nem tomada</span><span class="mv-preco">desde <b>19 €</b></span><a href="#orcamento" data-tag="Placa Google branca de balcão (placas padrão)">Quero esta</a></figcaption></figure></div>
+    <p class="note mv-note">Fotos das nossas placas. Quer com o seu logótipo ou outras cores? <a href="#criar">Crie a sua placa aqui</a>.</p>
   </div>
 </section>
 
