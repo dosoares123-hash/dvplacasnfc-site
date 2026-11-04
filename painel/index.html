@@ -95,6 +95,7 @@ section h2{font-family:"Sora",sans-serif;font-size:17px;margin:0 0 12px}
     var aval = d.aval || [], ult = aval.length ? aval[aval.length - 1] : null;
     var base = d.base && d.base.n != null ? +d.base.n : null;
     var agora = ult ? +ult.n : null, nota = ult && ult.nota != null ? ult.nota : null;
+    var notaAntes = d.base && d.base.nota != null ? +d.base.nota : null; if (nota != null) nota = +nota;
     var novas = base != null && agora != null ? agora - base : null;
     var reviewUrl = d.placeId ? "https://search.google.com/local/writereview?placeid=" + encodeURIComponent(d.placeId) : "";
 
@@ -110,7 +111,7 @@ section h2{font-family:"Sora",sans-serif;font-size:17px;margin:0 0 12px}
       h += "<div class='kpi'><div class='l'>Toques desde o início</div><div class='n'>" + n(d.toquesTotal) + "</div><div class='d muted'>Clientes que tocaram na placa</div></div>";
     }
     h += "<div class='kpi" + (d.gerido ? "" : " gold") + "'><div class='l'>Avaliações Google</div><div class='n'>" + n(agora) + "</div><div class='d " + (novas > 0 ? "up" : "muted") + "'>" + (novas != null ? (novas > 0 ? "▲ +" + novas + " desde a placa" : "Antes: " + n(base)) : "A recolher dados") + "</div></div>";
-    h += "<div class='kpi'><div class='l'>Nota no Google</div><div class='n'>" + (nota != null ? String(nota).replace(".", ",") + " <span class='star'>★</span>" : "–") + "</div><div class='d muted'>" + (base != null ? "Antes da placa: " + n(base) + " avaliações" : "") + "</div></div>";
+    h += "<div class='kpi'><div class='l'>Nota no Google</div><div class='n'>" + (nota != null ? String(nota).replace(".", ",") + " <span class='star'>★</span>" : "–") + "</div><div class='d " + (notaAntes != null && nota != null && nota > notaAntes ? "up" : "muted") + "'>" + (notaAntes != null ? (nota != null && nota > notaAntes ? "▲ " : "") + "Antes da placa: " + String(notaAntes).replace(".", ",") + " ★" : (base != null ? "Antes da placa: " + n(base) + " avaliações" : "")) + "</div></div>";
     h += "</div>";
 
     if (d.pro && d.gerido) {
