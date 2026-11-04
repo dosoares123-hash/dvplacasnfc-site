@@ -56,14 +56,27 @@
 .pro-sl-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;align-items:flex-start}
 .pro-sl-track::-webkit-scrollbar{display:none}
 .pro-sl-s{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;padding:2px;box-sizing:border-box;min-width:0}
-.pro-sl-cap{padding:6px 4px 12px}
-.pro-sl-cap .k{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pg)}
-.pro-sl-cap h4{margin:6px 0 4px;font-family:"Sora",sans-serif;font-size:19px;line-height:1.2}
-.pro-sl-cap p{margin:0;color:var(--pm);font-size:14px;line-height:1.5}
+.pro-sl-guia{border:1px solid var(--pg);border-radius:20px;padding:16px 18px;margin:0 0 14px;background:linear-gradient(180deg,#241f14,#17171b 75%);box-shadow:0 0 28px rgba(212,173,91,.12)}
+.pro-sl-guia .k{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pg)}
+.pro-sl-guia h4{margin:6px 0 4px;font-family:"Sora",sans-serif;font-size:19px;line-height:1.2}
+.pro-sl-guia p{margin:0;color:var(--pm);font-size:14px;line-height:1.5}
+.pro-sl-guia .in{animation:paIn .35s ease}
+@keyframes paIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.pro-sl-go{position:relative;display:block;width:100%;margin-top:14px;padding:14px;border-radius:14px;border:0;background:linear-gradient(180deg,var(--pg2),var(--pg));color:#1a1408;font:700 15px/1 inherit;cursor:pointer;overflow:visible}
+.pro-sl-go::before{content:"";position:absolute;inset:-3px;border-radius:17px;padding:2px;background:conic-gradient(from var(--pa-ang,0deg),transparent 0 62%,#fff3c8 78%,#f0d38d 86%,transparent 96%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:paAng 2.6s linear infinite;pointer-events:none;filter:drop-shadow(0 0 6px rgba(240,211,141,.8))}
+@property --pa-ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes paAng{to{--pa-ang:360deg}}
 .pro-sl-s .pro-box{margin-top:0}
 .pro-sl-nav{display:flex;align-items:center;gap:10px;margin-top:14px}
 .pro-sl-nav .ar{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--pl);background:var(--pc2);color:var(--pf);font:700 20px/1 inherit;cursor:pointer;display:grid;place-items:center}
-.pro-sl-nav .ar:disabled{opacity:.35;cursor:default}
+.pro-sl-nav .ar{position:relative;transition:background .2s,color .2s,box-shadow .2s;border-color:rgba(212,173,91,.35)}
+.pro-sl-nav .ar::before{content:"";position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(transparent 0 55%,rgba(240,211,141,.15) 65%,#f0d38d 88%,#fff3c8 95%,transparent 100%);-webkit-mask:radial-gradient(closest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px));mask:radial-gradient(closest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px));animation:paRoda 2.2s linear infinite;pointer-events:none;filter:drop-shadow(0 0 4px rgba(240,211,141,.7))}
+@keyframes paRoda{to{transform:rotate(360deg)}}
+.pro-sl-nav .ar:hover:not(:disabled){color:var(--pg2)}
+.pro-sl-nav .ar:active:not(:disabled),.pro-sl-nav .ar.on{background:linear-gradient(180deg,var(--pg2),var(--pg));color:#1a1408;box-shadow:0 0 22px rgba(212,173,91,.55)}
+.pro-sl-nav .ar.on::before{animation-duration:.8s}
+.pro-sl-nav .ar:disabled{opacity:.3;cursor:default}.pro-sl-nav .ar:disabled::before{display:none}
+@media (prefers-reduced-motion:reduce){.pro-sl-nav .ar::before,.pro-sl-go::before{animation:none}}
 .pro-sl-dots{flex:1;display:flex;justify-content:center;gap:8px}
 .pro-sl-dots button{width:9px;height:9px;padding:0;border-radius:9px;border:0;background:var(--pl);cursor:pointer;transition:width .3s,background .3s}
 .pro-sl-dots button[aria-current=true]{width:26px;background:var(--pg)}
@@ -270,30 +283,36 @@
     };
     var N = PASSOS.length;
     el.classList.add("pro-ui");
-    el.innerHTML = "<div class='pro-win pro-sl'><div class='pro-bar'><i></i><i></i><i></i><span>Painel D&amp;V · " + esc(nome) + "</span><b class='ex'>Exemplo</b></div><div class='pro-body'>" +
+    el.innerHTML = "<div class='pro-win pro-sl'><div class='pro-bar'><i></i><i></i><i></i><span>Painel D&amp;V · " + esc(nome) + "</span><b class='ex'>Exemplo</b></div><div class='pro-body'><div class='pro-sl-guia' aria-live='polite'></div>" +
       "<div class='pro-sl-vp'><div class='pro-sl-track' tabindex='0' aria-roledescription='carrossel' aria-label='Visita ao Plano Pro'>" +
-      PASSOS.map(function (p, i) { return "<section class='pro-sl-s' aria-roledescription='passo' aria-label='Passo " + (i + 1) + " de " + N + "'><div class='pro-sl-cap'><div class='k'>Passo " + (i + 1) + " de " + N + "</div><h4>" + p[1] + "</h4><p>" + p[2] + "</p></div>" + CONT[p[0]]() + "</section>"; }).join("") +
+      PASSOS.map(function (p, i) { return "<section class='pro-sl-s' aria-roledescription='passo' aria-label='Passo " + (i + 1) + " de " + N + "'>" + CONT[p[0]]() + "</section>"; }).join("") +
       "</div></div><div class='pro-sl-nav'><button type='button' class='ar' data-sl='-1' aria-label='Passo anterior'>‹</button><div class='pro-sl-dots'>" + PASSOS.map(function (p, i) { return "<button type='button' data-ir='" + i + "' aria-label='Ir para o passo " + (i + 1) + "'></button>"; }).join("") + "</div><button type='button' class='ar' data-sl='1' aria-label='Passo seguinte'>›</button></div><p class='pro-sl-hint'>Deslize para o lado ou use as setas</p></div></div>";
+    var comecou = false, guia = el.querySelector(".pro-sl-guia");
+    function guiaHtml() {
+      if (!comecou) { guia.innerHTML = "<div class='in'><div class='k'>Experimente o Plano Pro</div><h4>Uma visita guiada em " + N + " passos</h4><p>Veja, com dados de exemplo, tudo o que o painel mostra ao dono do negócio.</p><button type='button' class='pro-sl-go' data-comecar='1'>Começar a visita</button></div>"; return; }
+      var p = PASSOS[cur]; guia.innerHTML = "<div class='in'><div class='k'>Passo " + (cur + 1) + " de " + N + "</div><h4>" + p[1] + "</h4><p>" + p[2] + "</p></div>";
+    }
     var tr = el.querySelector(".pro-sl-track"), vp = el.querySelector(".pro-sl-vp"), ss = [].slice.call(el.querySelectorAll(".pro-sl-s"));
     var m = el.querySelector(".pro-map"); if (m) mapa(m, ex.cells, { periodo: "em 90 dias" });
     function altura() { var s = ss[cur]; if (s) vp.style.height = s.offsetHeight + "px"; }
     function marcar() {
       el.querySelectorAll(".pro-sl-dots button").forEach(function (b, i) { b.setAttribute("aria-current", String(i === cur)); });
       el.querySelector("[data-sl='-1']").disabled = cur === 0; el.querySelector("[data-sl='1']").disabled = cur === N - 1;
-      altura();
+      altura(); if (comecou) guiaHtml();
     }
-    function ir(i) { cur = Math.max(0, Math.min(N - 1, i)); tr.scrollTo({ left: cur * tr.clientWidth }); marcar(); }
-    var tm; tr.addEventListener("scroll", function () { clearTimeout(tm); tm = setTimeout(function () { var i = Math.round(tr.scrollLeft / tr.clientWidth); if (i !== cur) { cur = i; marcar(); } }, 60); }, { passive: true });
+    function ir(i) { comecou = true; cur = Math.max(0, Math.min(N - 1, i)); tr.scrollTo({ left: cur * tr.clientWidth }); marcar(); }
+    var tm; tr.addEventListener("scroll", function () { clearTimeout(tm); tm = setTimeout(function () { var i = Math.round(tr.scrollLeft / tr.clientWidth); if (i !== cur) { cur = i; comecou = true; marcar(); } }, 60); }, { passive: true });
     tr.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") { e.preventDefault(); ir(cur + 1); } else if (e.key === "ArrowLeft") { e.preventDefault(); ir(cur - 1); } });
     el.addEventListener("click", function (e) {
-      var b = e.target.closest("[data-sl]"); if (b) { ir(cur + +b.dataset.sl); return; }
+      var go = e.target.closest("[data-comecar]"); if (go) { comecou = true; guiaHtml(); ir(0); return; }
+      var b = e.target.closest("[data-sl]"); if (b) { if (!b.disabled) { b.classList.add("on"); setTimeout(function () { b.classList.remove("on"); }, 700); } ir(cur + +b.dataset.sl); return; }
       var d = e.target.closest("[data-ir]"); if (d) { ir(+d.dataset.ir); return; }
       var ds = e.target.closest("[data-dest]"); if (ds) { dest = +ds.dataset.dest; el.querySelector(".pro-destbox").innerHTML = destHtml(); altura(); return; }
       var c = e.target.closest("[data-cta]"); if (c && opt.cta) opt.cta();
     });
     addEventListener("resize", function () { tr.scrollLeft = cur * tr.clientWidth; altura(); });
     if (window.ResizeObserver) new ResizeObserver(altura).observe(ss[0]);
-    marcar(); setTimeout(altura, 50);
+    guiaHtml(); marcar(); setTimeout(altura, 50);
   }
 
   /* Demonstração completa (site e painel no plano grátis). */
