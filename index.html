@@ -271,14 +271,13 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 .pagar-passos b{font-family:var(--display);color:var(--gold);font-size:18px}
 .pagar-nota{font-size:13px!important;opacity:.85}
 /* oficina */
-.plaque.real{background:url(placa-mesa.jpg) center/100% 100% no-repeat!important;aspect-ratio:640/909;min-height:0;overflow:hidden;border:0!important;border-radius:16px;width:240px!important;padding:26px 30px 140px 42px;align-content:center;gap:10px}
+.plaque.real{aspect-ratio:640/909;min-height:0;overflow:hidden;border:0!important;border-radius:16px;width:240px!important;padding:26px 30px 140px 42px;align-content:center;gap:10px}
 .plaque.real .p-tap,.plaque.real .p-hint{display:none}
 .escolha .esc-prev .plaque.real{margin-bottom:-218px}
 .modelos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .modelos button{display:grid;gap:8px;justify-items:center;padding:10px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--muted);font:600 14px/1.2 var(--body);cursor:pointer;text-align:center}
 .modelos button[aria-pressed="true"]{border-color:var(--gold);color:var(--fg);background:rgba(212,173,91,.12)}
 .modelos .thumb{width:64px;aspect-ratio:3/4;border-radius:8px;background:linear-gradient(160deg,#1d1d22,#0b0b0d);border:1px solid #34333a}
-.modelos .thumb.foto{background:url(placa-mesa.jpg) center/cover;border:0}
 .conf-f .hint{font-size:13px;color:var(--muted);margin:0}
 .plaque .p-name,.plaque .p-title{transition:color .2s}
 #cPlaca .p-name,#cPlaca .p-title{overflow-wrap:anywhere;max-width:100%}
@@ -419,10 +418,8 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 @media (max-width:860px){
   .conf-prev{order:-1;position:sticky!important;top:calc(66px + env(safe-area-inset-top,0px));z-index:8;padding:12px 12px 10px!important;min-height:0!important;
     background:rgba(18,18,21,.94)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 14px 30px rgba(0,0,0,.45);display:grid;grid-template-columns:auto 1fr;align-items:center;gap:6px 14px}
-  .conf-prev .plaque{zoom:.56;grid-row:1/3}
   .conf-prev .note{margin:0!important;text-align:left!important;font-size:12px;align-self:end}
   .conf-prev #cQuero{margin:0!important;align-self:start;justify-self:start;padding:11px 16px;font-size:14px}
-  .conf-prev.min .plaque{zoom:.34}
 }
 /* ===== Herói: textos surgem sempre que volta ao topo ===== */
 .hero .eyebrow,.hero .hl,.hero .lead,.hero-cta,.hero-facts li{opacity:0;transform:translateY(22px);filter:blur(6px);display:inline-block}
@@ -568,6 +565,24 @@ section.band{background:rgba(18,18,21,.78)}
 .mv-badge{position:absolute;top:14px;right:14px;z-index:2;background:linear-gradient(180deg,#f0d38d,#d4ad5b);color:#1a1408;font:800 12.5px/1 var(--display);padding:8px 12px;border-radius:999px;box-shadow:0 0 18px rgba(212,173,91,.5)}
 .mv-preco{color:var(--muted);font-size:14px}.mv-preco b{color:var(--gold-2);font-family:var(--display);font-size:20px}
 .mv-note{margin-top:18px}.mv-note a{color:var(--gold)}
+/* Pré-visualização em cena: placa de pé num balcão de madeira, como nas fotos */
+.cena{position:relative;display:grid;place-items:center;padding:46px 34px 64px;border-radius:16px;overflow:hidden;
+  background:
+   radial-gradient(30% 22% at 18% 0%,rgba(255,206,120,.42),transparent 70%),
+   radial-gradient(28% 20% at 84% 0%,rgba(255,206,120,.32),transparent 70%),
+   linear-gradient(180deg,transparent calc(100% - 78px),#6b4528 calc(100% - 78px),#4a2d18 calc(100% - 40px),#2a190c 100%),
+   linear-gradient(180deg,transparent calc(100% - 86px),rgba(212,173,91,.55) calc(100% - 86px),rgba(212,173,91,.55) calc(100% - 84px),transparent calc(100% - 84px)),
+   repeating-linear-gradient(90deg,#0d0d0f 0 34px,#16161a 34px 36px)}
+.cena::after{content:"";position:absolute;left:0;right:0;bottom:0;height:78px;background:repeating-linear-gradient(178deg,rgba(0,0,0,.0) 0 6px,rgba(0,0,0,.18) 6px 7px,rgba(255,255,255,.03) 7px 11px);pointer-events:none}
+.stand{position:relative;z-index:1;filter:drop-shadow(0 22px 18px rgba(0,0,0,.65))}
+.stand #cPlaca{border-radius:6px!important;box-shadow:6px 3px 0 0 rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.08),inset -2px 0 0 rgba(0,0,0,.25)!important;transform:none!important}
+.stand-pe{position:absolute;left:14%;right:-10%;bottom:-13px;height:15px;border-radius:2px;transform:skewX(-48deg);filter:brightness(.62);z-index:-1;background:#0c0c0e;box-shadow:0 6px 10px rgba(0,0,0,.5)}
+@media (max-width:860px){
+  .conf-prev .cena{grid-row:1/3;padding:14px 16px 26px}
+  .conf-prev .cena .plaque{zoom:1}
+  .conf-prev .stand{zoom:.56}
+  .conf-prev.min .stand{zoom:.34}
+}
 </style>
 </head>
 <body>
@@ -826,7 +841,7 @@ section.band{background:rgba(18,18,21,.78)}
         <div class="chips-s" id="cMat" hidden><button type="button" aria-pressed="true" data-v="PLA">PLA</button></div>
         <fieldset class="conf-f"><legend>Tipo de link</legend><div class="chips-s" id="cLink"><button type="button" aria-pressed="true" data-v="direto">Direto (definitivo)</button><button type="button" aria-pressed="false" data-v="gerido">Gerido (pode mudar) · Mais pedido</button></div><p class="hint" id="cLinkHint"></p></fieldset>
       </form>
-      <div class="mini conf-prev" aria-live="polite"><div class="plaque" id="cPlaca"><img class="p-logo" id="pvLogo" alt="" hidden><img class="p-img" id="pvImg" alt="" hidden><div class="p-name" id="pvNome">O seu negócio</div><div class="p-stars" id="pvStars">★★★★★</div><div class="p-title" id="pvFrase">Avalie-nos</div><div class="p-tap" id="pvTap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div><div class="p-hint" id="pvHint">Encoste o telemóvel</div></div><p class="note" style="text-align:center;margin:16px 0 0">Pré-visualização aproximada. Recebe a prova final em 24 horas.</p><button class="btn btn-gold" type="button" id="cQuero" style="margin-top:16px">Quero esta placa</button></div>
+      <div class="mini conf-prev" aria-live="polite"><div class="cena"><div class="stand"><div class="plaque" id="cPlaca"><img class="p-logo" id="pvLogo" alt="" hidden><img class="p-img" id="pvImg" alt="" hidden><div class="p-name" id="pvNome">O seu negócio</div><div class="p-stars" id="pvStars">★★★★★</div><div class="p-title" id="pvFrase">Avalie-nos</div><div class="p-tap" id="pvTap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div><div class="p-hint" id="pvHint">Encoste o telemóvel</div></div><i class="stand-pe" id="cPe" aria-hidden="true"></i></div></div><p class="note" style="text-align:center;margin:16px 0 0">Pré-visualização aproximada. Recebe a prova final em 24 horas.</p><button class="btn btn-gold" type="button" id="cQuero" style="margin-top:16px">Quero esta placa</button></div>
     </div>
   </div>
 </section>
@@ -1075,6 +1090,7 @@ section.band{background:rgba(18,18,21,.78)}
     var clara = lum(base) > 0.6;
     pl.style.background = "linear-gradient(160deg," + base + "," + base + ")";
     pl.style.borderColor = clara ? "#d8d1c3" : "#34333a";
+    if (pl.id === "cPlaca" && $("cPe")) $("cPe").style.background = base;
     var frase = clara ? "#111114" : "#f7f4ee";
     pl.querySelectorAll(".p-name,.p-stars").forEach(function (e) { e.style.color = txt; });
     pl.querySelectorAll(".p-title").forEach(function (e) { e.style.color = frase; });
