@@ -51,6 +51,24 @@
 .pro-wa{margin-top:12px;background:#0b141a;border-radius:14px;padding:12px}
 .pro-wa p{margin:0;background:#1f2c33;border-radius:10px 10px 10px 2px;padding:10px 12px;font-size:13px;line-height:1.5;color:#e9edef;max-width:92%}
 .pro-wa p small{display:block;text-align:right;color:#8696a0;font-size:10.5px;margin-top:4px}
+.pro-sl{position:relative}
+.pro-sl-vp{overflow:hidden;transition:height .35s ease}
+.pro-sl-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;align-items:flex-start}
+.pro-sl-track::-webkit-scrollbar{display:none}
+.pro-sl-s{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;padding:2px;box-sizing:border-box;min-width:0}
+.pro-sl-cap{padding:6px 4px 12px}
+.pro-sl-cap .k{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pg)}
+.pro-sl-cap h4{margin:6px 0 4px;font-family:"Sora",sans-serif;font-size:19px;line-height:1.2}
+.pro-sl-cap p{margin:0;color:var(--pm);font-size:14px;line-height:1.5}
+.pro-sl-s .pro-box{margin-top:0}
+.pro-sl-nav{display:flex;align-items:center;gap:10px;margin-top:14px}
+.pro-sl-nav .ar{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--pl);background:var(--pc2);color:var(--pf);font:700 20px/1 inherit;cursor:pointer;display:grid;place-items:center}
+.pro-sl-nav .ar:disabled{opacity:.35;cursor:default}
+.pro-sl-dots{flex:1;display:flex;justify-content:center;gap:8px}
+.pro-sl-dots button{width:9px;height:9px;padding:0;border-radius:9px;border:0;background:var(--pl);cursor:pointer;transition:width .3s,background .3s}
+.pro-sl-dots button[aria-current=true]{width:26px;background:var(--pg)}
+.pro-sl-cta{display:block;width:100%;margin-top:12px;padding:14px;border-radius:12px;border:0;background:linear-gradient(180deg,var(--pg2),var(--pg));color:#1a1408;font:700 15px/1 inherit;cursor:pointer}
+.pro-sl-hint{font-size:12px;color:var(--pm);text-align:center;margin-top:8px}
 .pro-tour{position:sticky;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:3;box-shadow:0 -10px 30px rgba(0,0,0,.45);background-color:#17171b;margin-top:16px;border:1px solid var(--pg);border-radius:20px;padding:16px;background:linear-gradient(180deg,#241f14,#17171b 70%)}
 .pro-tour .k{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--pg)}
 .pro-tour h4{margin:6px 0 4px;font-family:"Sora",sans-serif;font-size:18px}
@@ -235,9 +253,53 @@
     ["relatorio", "Receba o resumo no WhatsApp", "Todos os meses recebe um resumo simples com os números do seu negócio."]
   ];
 
+
+  /* Demonstração em slides: um passo por cartão, desliza para o lado. */
+  function demoSlides(el, opt) {
+    var ex = exemplo(), nome = opt.nome || "Café Aurora", dest = 0, cur = 0;
+    var a = ex.aval, ant = a[ex.marca], ag = a[a.length - 1];
+    var semana = 7 * 864e5, t0 = Date.now() - (a.length - 1) * semana, serie = a.map(function (n, i) { return { t: t0 + i * semana, n: n }; });
+    function destHtml() { return "<h4>Destino da placa <small>mude quando quiser</small></h4><div class='pro-dest'>" + DESTINOS.map(function (x, i) { return "<button type='button' data-dest='" + i + "' aria-pressed='" + (i === dest) + "'>" + x[0] + " " + x[1] + "</button>"; }).join("") + "</div><div class='pro-phone'><div class='ic'>" + DESTINOS[dest][0] + "</div><b>" + DESTINOS[dest][1] + "</b><small>" + DESTINOS[dest][2] + "</small></div>"; }
+    var CONT = {
+      kpis: function () { return kpis(ex.per); },
+      mapa: function () { return "<div class='pro-box'><h4>Quando tocam mais? <small>últimos 90 dias</small></h4><div class='pro-map'></div></div>"; },
+      meses: function () { return "<div class='pro-box'><h4>Toques por mês <small>últimos 6 meses</small></h4>" + barras(ex.meses) + "</div>"; },
+      google: function () { return "<div class='pro-box'><h4>Avaliações no Google <small>leitura semanal automática</small></h4>" + evolucao(serie, serie[ex.marca]) + "<div class='pro-kv'><div>Antes da placa<b>" + ant + "</b></div><div>Agora<b>" + ag + " <span class='pro-up' style='font-size:14px'>+" + (ag - ant) + "</span></b></div><div>Nota antes<b>" + String(ex.notaAntes).replace(".", ",") + " ★</b></div><div>Nota agora<b style='color:var(--pg)'>" + String(ex.notaAgora).replace(".", ",") + " ★</b></div></div></div>"; },
+      destino: function () { return "<div class='pro-box pro-destbox'>" + destHtml() + "</div>"; },
+      relatorio: function () { return "<div class='pro-box'><h4>Resumo mensal <small>no seu WhatsApp</small></h4><div class='pro-wa'><p>Olá! Resumo de " + ex.meses[5].l + " da " + esc(nome) + ":<br>• " + ex.meses[5].n + " toques na placa (+" + Math.round((ex.meses[5].n - ex.meses[4].n) / ex.meses[4].n * 100) + "%)<br>• Dia mais forte: sábado, 12h–13h<br>• " + ag + " avaliações no Google (+" + (ag - ant) + " desde a placa)<br>Bom mês! D&amp;V Placas NFC<small>09:00</small></p></div></div>" + (opt.cta ? "<button type='button' class='pro-sl-cta' data-cta='1'>" + esc(opt.ctaTexto || "Quero o Plano Pro") + "</button>" : ""); }
+    };
+    var N = PASSOS.length;
+    el.classList.add("pro-ui");
+    el.innerHTML = "<div class='pro-win pro-sl'><div class='pro-bar'><i></i><i></i><i></i><span>Painel D&amp;V · " + esc(nome) + "</span><b class='ex'>Exemplo</b></div><div class='pro-body'>" +
+      "<div class='pro-sl-vp'><div class='pro-sl-track' tabindex='0' aria-roledescription='carrossel' aria-label='Visita ao Plano Pro'>" +
+      PASSOS.map(function (p, i) { return "<section class='pro-sl-s' aria-roledescription='passo' aria-label='Passo " + (i + 1) + " de " + N + "'><div class='pro-sl-cap'><div class='k'>Passo " + (i + 1) + " de " + N + "</div><h4>" + p[1] + "</h4><p>" + p[2] + "</p></div>" + CONT[p[0]]() + "</section>"; }).join("") +
+      "</div></div><div class='pro-sl-nav'><button type='button' class='ar' data-sl='-1' aria-label='Passo anterior'>‹</button><div class='pro-sl-dots'>" + PASSOS.map(function (p, i) { return "<button type='button' data-ir='" + i + "' aria-label='Ir para o passo " + (i + 1) + "'></button>"; }).join("") + "</div><button type='button' class='ar' data-sl='1' aria-label='Passo seguinte'>›</button></div><p class='pro-sl-hint'>Deslize para o lado ou use as setas</p></div></div>";
+    var tr = el.querySelector(".pro-sl-track"), vp = el.querySelector(".pro-sl-vp"), ss = [].slice.call(el.querySelectorAll(".pro-sl-s"));
+    var m = el.querySelector(".pro-map"); if (m) mapa(m, ex.cells, { periodo: "em 90 dias" });
+    function altura() { var s = ss[cur]; if (s) vp.style.height = s.offsetHeight + "px"; }
+    function marcar() {
+      el.querySelectorAll(".pro-sl-dots button").forEach(function (b, i) { b.setAttribute("aria-current", String(i === cur)); });
+      el.querySelector("[data-sl='-1']").disabled = cur === 0; el.querySelector("[data-sl='1']").disabled = cur === N - 1;
+      altura();
+    }
+    function ir(i) { cur = Math.max(0, Math.min(N - 1, i)); tr.scrollTo({ left: cur * tr.clientWidth }); marcar(); }
+    var tm; tr.addEventListener("scroll", function () { clearTimeout(tm); tm = setTimeout(function () { var i = Math.round(tr.scrollLeft / tr.clientWidth); if (i !== cur) { cur = i; marcar(); } }, 60); }, { passive: true });
+    tr.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") { e.preventDefault(); ir(cur + 1); } else if (e.key === "ArrowLeft") { e.preventDefault(); ir(cur - 1); } });
+    el.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-sl]"); if (b) { ir(cur + +b.dataset.sl); return; }
+      var d = e.target.closest("[data-ir]"); if (d) { ir(+d.dataset.ir); return; }
+      var ds = e.target.closest("[data-dest]"); if (ds) { dest = +ds.dataset.dest; el.querySelector(".pro-destbox").innerHTML = destHtml(); altura(); return; }
+      var c = e.target.closest("[data-cta]"); if (c && opt.cta) opt.cta();
+    });
+    addEventListener("resize", function () { tr.scrollLeft = cur * tr.clientWidth; altura(); });
+    if (window.ResizeObserver) new ResizeObserver(altura).observe(ss[0]);
+    marcar(); setTimeout(altura, 50);
+  }
+
   /* Demonstração completa (site e painel no plano grátis). */
   function demo(el, opt) {
     addCss(); opt = opt || {};
+    if (opt.modo !== "completo") return demoSlides(el, opt);
     var ex = exemplo(), nome = opt.nome || "Café Aurora", tab = "toques", passo = -1, dest = 0;
     el.classList.add("pro-ui");
     el.innerHTML = "<div class='pro-tabs' role='tablist'><button role='tab' data-t='toques' aria-selected='true'>Toques na placa<small>quando e quantas vezes</small></button><button role='tab' data-t='google' aria-selected='false'>Google<small>avaliações e nota</small></button></div>" +
