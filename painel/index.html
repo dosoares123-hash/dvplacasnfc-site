@@ -126,10 +126,8 @@ section h2{font-family:"Sora",sans-serif;font-size:17px;margin:0 0 12px}
         "<a class='btn gold' style='margin-top:14px' href='" + pedirPro + "' target='_blank' rel='noopener'>Ativar o Plano Pro</a></section>";
     }
 
-    if (aval.length > 1 || base != null) {
-      var pts = (base != null ? [{ n: base, data: d.base.data || d.instalada }] : []).concat(aval).slice(-6);
-      var mx = Math.max.apply(null, pts.map(function (p) { return +p.n; }).concat([1])), mn = Math.min.apply(null, pts.map(function (p) { return +p.n; }));
-      h += "<section class='card'><h2>Evolução das avaliações</h2><div class='bars'>" + pts.map(function (p) { var v = +p.n; var hgt = mx === mn ? 60 : 15 + (v - mn) / (mx - mn) * 85; return "<div class='bar'><b>" + v + "</b><i style='height:" + hgt + "%'></i><span>" + new Date(p.data).toLocaleDateString("pt-PT", { day: "2-digit", month: "2-digit" }) + "</span></div>"; }).join("") + "</div></section>";
+    if (aval.length || base != null) {
+      h += "<section class='card'><h2>Avaliações no Google</h2>" + DVPro.evolucaoDe(aval, d.base, d.instalada) + "</section>";
     }
 
     if (reviewUrl) {

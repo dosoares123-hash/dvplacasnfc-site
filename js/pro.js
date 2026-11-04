@@ -64,6 +64,18 @@
 .pro-foco{box-shadow:0 0 0 2px var(--pg),0 0 30px rgba(212,173,91,.25);transition:box-shadow .3s}
 @media (max-width:420px){.pro-kpi .n{font-size:22px}.pro-heat{gap:2px}.pro-hx{gap:2px}}
 @media (prefers-reduced-motion:reduce){.pro-bars i{transition:none}}
+.evo-wrap{margin-top:8px}.pro-evo{width:100%;height:auto;display:block;margin-top:6px}
+.evo-leg{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--pm)}.evo-leg span{display:flex;align-items:center;gap:6px}
+.evo-leg i{display:inline-block;width:22px;height:0;border-top:3px solid #f0d38d}.evo-leg i.lg-proj{border-top:3px dashed #8d887e}
+.evo-res{margin-top:6px;font-size:14px;color:var(--pf)}.evo-res b{font-family:"Sora",sans-serif;font-size:22px;color:#7fd3a0;margin-right:4px}
+.pro-vazio{font-size:12px;color:var(--pm);margin:6px 0 0}
+.evo-real,.evo-antes{stroke-dasharray:1;stroke-dashoffset:1;animation:evoDraw 1.6s ease-out forwards}
+.evo-antes{animation-duration:.7s}.evo-real{animation-delay:.7s}
+.evo-proj{opacity:0;animation:evoFade .6s ease-out .7s forwards}
+.evo-area{opacity:0;animation:evoFade .8s ease-out 1.6s forwards}
+.evo-dot{opacity:0;animation:evoFade .4s ease-out 2.2s forwards}.evo-dot2{opacity:0;animation:evoFade .4s ease-out 1.3s forwards}
+@keyframes evoDraw{to{stroke-dashoffset:0}}@keyframes evoFade{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.evo-real,.evo-antes{animation:none;stroke-dashoffset:0}.evo-proj,.evo-area,.evo-dot,.evo-dot2{animation:none;opacity:1}}
 `;
   function addCss() { if (document.getElementById("pro-css")) return; var s = document.createElement("style"); s.id = "pro-css"; s.textContent = css; document.head.appendChild(s); }
   function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
@@ -135,6 +147,71 @@
       xy.map(function (p, i) { return i === xy.length - 1 ? "<circle cx='" + p[0] + "' cy='" + p[1] + "' r='4.5' fill='#f0d38d'/>" : ""; }).join("") + "</svg>";
   }
 
+
+  /* Evolução das avaliações: duas linhas sobrepostas.
+   * Dourada = com a placa (real). Cinzenta tracejada = ritmo que tinha antes da placa, prolongado.
+   * serie: [{t: ms, n}], inst: {t: ms, n}; opt.ritmo: avaliações/dia antes da placa (se não houver histórico). */
+  var gid = 0;
+  function evolucao(serie, inst, opt) {
+    addCss(); opt = opt || {}; gid++;
+    var pts = (serie || []).filter(function (p) { return p && isFinite(p.t) && isFinite(p.n); }).sort(function (a, b) { return a.t - b.t; });
+    if (inst && isFinite(inst.t) && isFinite(inst.n) && !pts.some(function (p) { return Math.abs(p.t - inst.t) < 864e5; })) pts.push({ t: inst.t, n: inst.n });
+    pts.sort(function (a, b) { return a.t - b.t; });
+    var agora = opt.ate || Date.now();
+    if (!pts.length) return "<p class='pro-vazio'>Ainda sem leituras do Google.</p>";
+    if (!inst) inst = pts[0];
+    var antes = pts.filter(function (p) { return p.t <= inst.t; }), depois = pts.filter(function (p) { return p.t >= inst.t; });
+    var ult = pts[pts.length - 1]; if (ult.t < agora - 864e5) agora = Math.max(ult.t, agora);
+    // ritmo antes da placa (avaliações por dia)
+    var ritmo = opt.ritmo != null ? opt.ritmo : null;
+    if (antes.length >= 2) { var a0 = antes[0], a1 = antes[antes.length - 1]; if (a1.t - a0.t >= 7 * 864e5) ritmo = Math.max(0, (a1.n - a0.n) / ((a1.t - a0.t) / 864e5)); }
+    var semDados = ritmo == null; if (semDados) ritmo = 0;
+    var fim = Math.max(agora, ult.t, inst.t + 7 * 864e5), ini = Math.min(pts[0].t, inst.t - Math.max(14 * 864e5, (fim - inst.t) * 0.25));
+    var proj = inst.n + ritmo * (fim - inst.t) / 864e5, real = ult.n;
+    var vmax = Math.max(real, proj, inst.n) , vmin = Math.min(pts[0].n, inst.n);
+    var pad = Math.max(2, (vmax - vmin) * 0.12); vmax += pad; vmin = Math.max(0, vmin - pad);
+    var W = 640, H = 260, L = 34, R = 16, T = 22, B = 28;
+    var X = function (t) { return L + (t - ini) / (fim - ini) * (W - L - R); }, Y = function (v) { return T + (1 - (v - vmin) / ((vmax - vmin) || 1)) * (H - T - B); };
+    var path = function (arr) { return arr.map(function (p, i) { return (i ? "L" : "M") + X(p.t).toFixed(1) + " " + Y(p.n).toFixed(1); }).join(" "); };
+    var linhaAntes = antes.length >= 2 ? path(antes) : path([{ t: ini, n: inst.n - ritmo * (inst.t - ini) / 864e5 }, inst]);
+    var linhaProj = path([inst, { t: fim, n: proj }]);
+    var reais = depois.length ? depois.concat(ult.t < fim ? [{ t: fim, n: real }] : []) : [inst, { t: fim, n: inst.n }];
+    var linhaReal = path(reais);
+    var area = linhaReal + " L" + X(fim).toFixed(1) + " " + Y(proj).toFixed(1) + " L" + X(inst.t).toFixed(1) + " " + Y(inst.n).toFixed(1) + " Z";
+    var ganho = Math.round(real - proj);
+    // grelha
+    var g = "", passos = 4;
+    for (var i = 0; i <= passos; i++) { var v = vmin + (vmax - vmin) * i / passos, y = Y(v); g += "<line x1='" + L + "' x2='" + (W - R) + "' y1='" + y.toFixed(1) + "' y2='" + y.toFixed(1) + "' stroke='#2b2a30' stroke-width='1'/><text x='" + (L - 6) + "' y='" + (y + 4).toFixed(1) + "' text-anchor='end' fill='#a9a397' font-size='11'>" + Math.round(v) + "</text>"; }
+    var fmtD = function (t) { var d = new Date(t); return d.getDate() + " " + MESES[d.getMonth()]; };
+    g += "<text x='" + L + "' y='" + (H - 8) + "' fill='#a9a397' font-size='11'>" + fmtD(ini) + "</text><text x='" + (W - R) + "' y='" + (H - 8) + "' text-anchor='end' fill='#a9a397' font-size='11'>hoje</text>";
+    var xi = X(inst.t);
+    var svg = "<svg class='pro-evo' viewBox='0 0 " + W + " " + H + "' role='img' aria-label='Avaliações Google: com a placa " + real + ", ao ritmo anterior seriam " + Math.round(proj) + "'>" +
+      "<defs><linearGradient id='evg" + gid + "' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#f0d38d' stop-opacity='.38'/><stop offset='1' stop-color='#d4ad5b' stop-opacity='.04'/></linearGradient></defs>" + g +
+      "<line x1='" + xi.toFixed(1) + "' x2='" + xi.toFixed(1) + "' y1='" + (T - 8) + "' y2='" + (H - B) + "' stroke='#a9a397' stroke-dasharray='3 4'/><text x='" + (xi + 6).toFixed(1) + "' y='" + (T + 2) + "' fill='#a9a397' font-size='11.5'>placa instalada</text>" +
+      (ganho > 0 ? "<path class='evo-area' d='" + area + "' fill='url(#evg" + gid + ")'/>" : "") +
+      "<path class='evo-l evo-antes' pathLength='1' d='" + linhaAntes + "' fill='none' stroke='#8d887e' stroke-width='3' stroke-linecap='round'/>" +
+      "<path class='evo-l evo-proj' d='" + linhaProj + "' fill='none' stroke='#8d887e' stroke-width='2.5' stroke-dasharray='7 6' stroke-linecap='round'/>" +
+      "<path class='evo-l evo-real' pathLength='1' d='" + linhaReal + "' fill='none' stroke='#f0d38d' stroke-width='3.5' stroke-linejoin='round' stroke-linecap='round'/>" +
+      "<circle class='evo-dot' cx='" + X(fim).toFixed(1) + "' cy='" + Y(real).toFixed(1) + "' r='5.5' fill='#f0d38d'/>" +
+      "<circle class='evo-dot2' cx='" + X(fim).toFixed(1) + "' cy='" + Y(proj).toFixed(1) + "' r='4' fill='#8d887e'/>" +
+      "<text class='evo-dot' x='" + (X(fim) - 10).toFixed(1) + "' y='" + (Y(real) - 10).toFixed(1) + "' text-anchor='end' fill='#f0d38d' font-size='13' font-weight='800'>" + real + "</text>" +
+      "<text class='evo-dot2' x='" + (X(fim) - 10).toFixed(1) + "' y='" + (Y(proj) + 18).toFixed(1) + "' text-anchor='end' fill='#a9a397' font-size='12' font-weight='700'>" + Math.round(proj) + "</text></svg>";
+    var leg = "<div class='evo-leg'><span><i class='lg-real'></i>Com a placa</span><span><i class='lg-proj'></i>" + (semDados ? "Sem a placa (ficava nas " + inst.n + ")" : "Sem a placa (ritmo anterior)") + "</span></div>";
+    var res = ganho > 0 ? "<div class='evo-res'><b>+" + ganho + "</b> avaliações a mais do que teria sem a placa</div>" : "";
+    return "<div class='pro-ui evo-wrap'>" + leg + svg + res + (semDados && !opt.semNota ? "<p class='pro-vazio'>Como ainda não temos leituras de antes da placa, a linha cinzenta mostra o número com que começou.</p>" : "") + "</div>";
+  }
+
+  function evolucaoDe(aval, base, instalada) {
+    var serie = (aval || []).map(function (p) { return { t: new Date(p.data).getTime(), n: +p.n }; });
+    var bt = base && base.data ? new Date(base.data).getTime() : NaN, bn = base && base.n != null ? +base.n : null;
+    if (bn != null && isFinite(bt)) serie.push({ t: bt, n: bn });
+    serie = serie.filter(function (p) { return isFinite(p.t) && isFinite(p.n); }).sort(function (a, b) { return a.t - b.t; });
+    if (!serie.length) return evolucao([], null);
+    var it = instalada ? new Date(instalada).getTime() : (isFinite(bt) ? bt : serie[0].t);
+    var ate = serie.filter(function (p) { return p.t <= it + 864e5; }), n = ate.length ? ate[ate.length - 1].n : (bn != null ? bn : serie[0].n);
+    return evolucao(serie, { t: it, n: n });
+  }
+
   /* Dados de exemplo: um café com mais movimento ao almoço e ao fim da tarde, sábado forte, domingo fraco. */
   function exemplo() {
     var cells = [], peso = [0.8, 0.85, 0.9, 1, 1.15, 1.35, 0.45];
@@ -181,7 +258,8 @@
         h += wa();
       } else {
         var a = ex.aval, ant = a[ex.marca], ag = a[a.length - 1];
-        h += "<div class='pro-box' data-p='google'><h4>Avaliações no Google <small>leitura semanal automática</small></h4>" + linha(a, ex.marca) +
+        var semana = 7 * 864e5, t0 = Date.now() - (a.length - 1) * semana, serie = a.map(function (n, i) { return { t: t0 + i * semana, n: n }; });
+        h += "<div class='pro-box' data-p='google'><h4>Avaliações no Google <small>leitura semanal automática</small></h4>" + evolucao(serie, serie[ex.marca]) +
           "<div class='pro-kv'><div>Antes da placa<b>" + ant + "</b></div><div>Agora<b>" + ag + " <span class='pro-up' style='font-size:14px'>+" + (ag - ant) + "</span></b></div><div>Nota antes<b>" + String(ex.notaAntes).replace(".", ",") + " ★</b></div><div>Nota agora<b style='color:var(--pg)'>" + String(ex.notaAgora).replace(".", ",") + " ★</b></div></div></div>";
         h += "<div class='pro-box'><h4>Avaliações novas por mês</h4>" + barras([{ l: "antes", n: 1 }, { l: "1.º mês", n: 6 }, { l: "2.º mês", n: 7 }, { l: "3.º mês", n: 8 }, { l: "4.º mês", n: 9 }], 1) + "</div>";
         h += wa();
@@ -216,5 +294,5 @@
     desenhar(); tourHtml();
   }
 
-  window.DVPro = { mapa: mapa, kpis: function (p) { addCss(); return "<div class='pro-ui'>" + kpis(p) + "</div>"; }, barras: function (l) { addCss(); return barras(l); }, demo: demo };
+  window.DVPro = { evolucao: evolucao, evolucaoDe: evolucaoDe, mapa: mapa, kpis: function (p) { addCss(); return "<div class='pro-ui'>" + kpis(p) + "</div>"; }, barras: function (l) { addCss(); return barras(l); }, demo: demo };
 })();
