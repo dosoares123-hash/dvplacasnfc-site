@@ -377,6 +377,33 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
 .wa-float{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;background:#25d366;color:#05210f;display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.45);text-decoration:none}
 .wa-float svg{width:30px;height:30px}
 #proDemo .pro-tour{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+/* ===== Herói: placa impressa camada a camada ===== */
+.stage:has(.pr){min-height:500px}
+.pr{position:relative;transform:rotate(-4deg);--ciclo:13s}
+.pr-zone{position:relative}
+.pr .plaque.pr-placa{transform:none;animation:prBuild var(--ciclo) infinite}
+.pr-lines{position:absolute;inset:0;border-radius:22px;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 1px,transparent 1px 7px);mix-blend-mode:screen;animation:prBuild var(--ciclo) infinite,prLines var(--ciclo) infinite}
+.pr-y{position:absolute;left:0;right:0;top:100%;height:0;z-index:4;animation:prY var(--ciclo) infinite}
+.pr-front{position:absolute;left:4%;right:4%;top:-1px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#f0d38d 20%,#ffe9b0 50%,#f0d38d 80%,transparent);box-shadow:0 0 12px rgba(240,211,141,.9),0 0 26px rgba(212,173,91,.6);animation:prFront var(--ciclo) infinite}
+.pr-x{position:absolute;top:0;left:8%;animation:prX .62s ease-in-out infinite alternate}
+.pr-head{position:absolute;left:-26px;bottom:0;width:52px;height:78px;animation:prHead var(--ciclo) infinite}
+.pr-head i{position:absolute;left:50%;transform:translateX(-50%);display:block}
+.pr-fan{top:0;width:52px;height:30px;border-radius:7px;background:repeating-linear-gradient(90deg,#3a3940 0 3px,#26252b 3px 6px);border:1px solid #4a4950}
+.pr-block{top:28px;width:34px;height:24px;border-radius:4px;background:linear-gradient(180deg,#d4ad5b,#a8893f);box-shadow:inset 0 -3px 0 rgba(0,0,0,.25)}
+.pr-tip{top:52px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:16px solid #c9a24f}
+.pr-melt{top:68px;width:6px;height:10px;border-radius:0 0 4px 4px;background:#ffe2a0;box-shadow:0 0 10px #f0d38d,0 0 20px rgba(240,211,141,.8)}
+.pr-base{position:relative;z-index:5;margin:-18px auto 0;width:112%;left:-6%;height:38px;border-radius:12px 12px 16px 16px;background:linear-gradient(180deg,#232228,#121215 70%);border:1px solid #34333a;box-shadow:0 26px 50px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.07)}
+.pr-base span{position:absolute;left:12%;right:12%;top:9px;height:4px;border-radius:4px;background:linear-gradient(90deg,transparent,rgba(212,173,91,.75),transparent)}
+.stage .phone{animation:prPhone var(--ciclo,13s) infinite}
+@keyframes prBuild{0%{clip-path:inset(100% 0 0 0);opacity:1}46%{clip-path:inset(0 0 0 0);animation-timing-function:linear}92%{clip-path:inset(0 0 0 0);opacity:1}97%{opacity:0}100%{clip-path:inset(0 0 0 0);opacity:0}}
+.pr .plaque.pr-placa,.pr-lines{animation-timing-function:steps(34,end)}
+@keyframes prLines{0%,46%{opacity:1}54%,100%{opacity:0}}
+@keyframes prY{0%{top:100%;animation-timing-function:steps(34,end)}46%{top:0%;animation-timing-function:ease-in}54%{top:-28%}100%{top:-28%}}
+@keyframes prFront{0%,45%{opacity:1}48%,100%{opacity:0}}
+@keyframes prHead{0%,46%{opacity:1}52%,97%{opacity:0}100%{opacity:1}}
+@keyframes prX{from{left:8%}to{left:92%}}
+@keyframes prPhone{0%,50%{opacity:0;transform:translate(60px,30px) rotate(20deg)}58%,90%{opacity:1;transform:rotate(12deg)}96%,100%{opacity:0;transform:rotate(12deg)}}
+@media (prefers-reduced-motion:reduce){.pr .plaque.pr-placa,.pr-lines,.pr-y,.pr-x,.pr-head,.stage .phone{animation:none}.pr-y,.pr-lines{display:none}}
 </style>
 </head>
 <body>
@@ -418,12 +445,19 @@ button.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--band),0 0 0 5px var(--
       </ul>
     </div>
     <div class="stage" aria-hidden="true">
-      <div class="plaque">
-        <div class="p-name">O seu negócio</div>
-        <div class="p-stars">★★★★★</div>
-        <div class="p-title">Avalie-nos</div>
-        <div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div>
-        <div class="p-hint">Encoste o telemóvel</div>
+      <div class="pr">
+        <div class="pr-zone">
+          <div class="plaque pr-placa">
+            <div class="p-name">O seu negócio</div>
+            <div class="p-stars">★★★★★</div>
+            <div class="p-title">Avalie-nos</div>
+            <div class="p-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div>
+            <div class="p-hint">Encoste o telemóvel</div>
+          </div>
+          <div class="pr-lines"></div>
+          <div class="pr-y"><div class="pr-front"></div><div class="pr-x"><div class="pr-head"><i class="pr-fan"></i><i class="pr-block"></i><i class="pr-tip"></i><i class="pr-melt"></i></div></div></div>
+        </div>
+        <div class="pr-base"><span></span></div>
       </div>
       <div class="phone"><div class="ring"></div></div>
     </div>
