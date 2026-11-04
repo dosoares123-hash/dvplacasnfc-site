@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_PT">
 <meta property="og:url" content="https://dvplacasnfc.pt/">
-<meta property="og:image" content="https://dvplacasnfc.pt/social/og-site.jpg">
+<meta property="og:image" content="https://dvplacasnfc.pt/social/og-site-v2.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="D&amp;V Placas NFC: um toque, tudo ligado.">
@@ -544,6 +544,18 @@ section.band{background:rgba(18,18,21,.78)}
 .fim-gar{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:24px;font-size:13.5px;color:var(--muted)}
 .fim-gar span::before{content:"✓ ";color:var(--gold)}
 @media (prefers-reduced-motion:reduce){.pd-l{transition:none}}
+.preco-d{display:grid;grid-template-columns:1.2fr .8fr;gap:0;border:1px solid rgba(212,173,91,.5);border-radius:28px;overflow:hidden;background:linear-gradient(135deg,#1f1a10 0%,#141416 60%);box-shadow:0 0 60px rgba(212,173,91,.10)}
+.preco-l{padding:44px}.preco-l h2{margin-top:6px}
+.preco-l ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px;color:var(--muted);font-size:16px}
+.preco-l li{display:flex;gap:12px}.preco-l li::before{content:"✓";color:var(--gold);font-weight:800}
+.preco-r{padding:44px 36px;display:grid;justify-items:center;align-content:center;gap:6px;text-align:center;background:radial-gradient(120% 100% at 50% 0%,rgba(212,173,91,.18),transparent 70%);border-left:1px solid rgba(212,173,91,.25)}
+.preco-de{font:600 15px var(--display);color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.preco-v{font:800 clamp(88px,12vw,124px)/.9 var(--display);letter-spacing:-.05em;background:linear-gradient(180deg,#fff3c8,#d4ad5b 70%,#a8822f);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(212,173,91,.35))}
+.preco-v small{font-size:.42em;letter-spacing:0}
+.preco-p{font-size:14px;color:var(--muted);margin-bottom:14px}
+.preco-mais{font-size:14px;color:var(--muted);margin-top:8px}
+.preco-r .note{margin:6px 0 0;font-size:13px}
+@media (max-width:760px){.preco-d{grid-template-columns:1fr}.preco-l{padding:30px 24px}.preco-r{padding:32px 24px;border-left:0;border-top:1px solid rgba(212,173,91,.25)}}
 </style>
 </head>
 <body>
@@ -707,15 +719,15 @@ section.band{background:rgba(18,18,21,.78)}
     </div>
     <div class="panel" role="tabpanel" id="s-barb" hidden>
       <div class="galeria sugg-fotos"><figure class="gal-it"><img src="modelos/placa-redes-monograma.webp" alt="Placa redes com monograma: logótipo em relevo e 4 botões NFC, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa de redes com monograma</b><span>Instagram, WhatsApp, TikTok e Facebook · um toque para cada</span><a href="#orcamento" data-tag="Placa de redes com monograma (barbearia)">Quero este</a></figcaption></figure><figure class="gal-it"><img src="modelos/placa-redes-dourada.webp" alt="Placa redes texturizada preta e dourada com 4 ícones e botões NFC dourados, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa de redes texturizada dourada</b><span>acabamento preto e dourado · 4 botões NFC</span><a href="#orcamento" data-tag="Placa de redes texturizada dourada (barbearia)">Quero este</a></figcaption></figure><figure class="gal-it"><img src="modelos/placa-redes-classica.webp" alt="Placa preta com nome da empresa, slogan e 3 ícones de redes com botões NFC, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa de redes clássica</b><span>nome, slogan e 3 redes · um toque para cada</span><a href="#orcamento" data-tag="Placa de redes clássica (barbearia)">Quero este</a></figcaption></figure><figure class="gal-it"><img src="modelos/placa-redes-servicos.webp" alt="Placa preta com monograma, lista de serviços e 4 ícones de redes com botões NFC, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa de redes com serviços</b><span>lista de serviços + 4 redes · ideal para o balcão</span><a href="#orcamento" data-tag="Placa de redes com serviços (barbearia)">Quero este</a></figcaption></figure></div>
-      <div><h3>Kit barbearia</h3><p class="lead" style="font-size:16px">Uma placa no espelho para marcações pelo WhatsApp e outra no balcão para avaliações.</p><div class="sugg-meta"><span><b>Abre:</b> WhatsApp de marcações + avaliações Google</span><span><b>Material sugerido:</b> PETG, resiste à humidade</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="whats" data-frase="Marque o próximo corte" data-nome="Barbearia" data-mat="PETG">Quero esta</a></div>
+      <div><h3>Kit barbearia</h3><p class="lead" style="font-size:16px">Uma placa no espelho para marcações pelo WhatsApp e outra no balcão para avaliações.</p><div class="sugg-meta"><span><b>Abre:</b> WhatsApp de marcações + avaliações Google</span><span><b>Preço:</b> desde 19 € por placa</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="whats" data-frase="Marque o próximo corte" data-nome="Barbearia" data-mat="PLA">Quero esta</a></div>
     </div>
     <div class="panel" role="tabpanel" id="s-rest" hidden>
       <div class="galeria sugg-fotos"><figure class="gal-it"><img src="modelos/placa-ementa-restaurante.webp" alt="Placa de mesa Ementa, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa de mesa Ementa</b><span>abre o menu digital</span><a href="#orcamento" data-tag="Placa de mesa Ementa (sugestões)">Quero este</a></figcaption></figure></div>
-      <div><h3>Kit restaurante</h3><p class="lead" style="font-size:16px">Uma placa por mesa com o menu digital e o Wi-Fi, e uma à saída para as avaliações.</p><div class="sugg-meta"><span><b>Abre:</b> menu, Wi-Fi e avaliações</span><span><b>Material sugerido:</b> PETG, resiste a líquidos e limpezas</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="menu" data-frase="Menu &amp; Wi-Fi" data-mat="PETG">Quero esta</a></div>
+      <div><h3>Kit restaurante</h3><p class="lead" style="font-size:16px">Uma placa por mesa com o menu digital e o Wi-Fi, e uma à saída para as avaliações.</p><div class="sugg-meta"><span><b>Abre:</b> menu, Wi-Fi e avaliações</span><span><b>Preço:</b> desde 19 € por placa</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="menu" data-frase="Menu &amp; Wi-Fi" data-mat="PLA">Quero esta</a></div>
     </div>
     <div class="panel" role="tabpanel" id="s-ofi" hidden>
       <div class="galeria sugg-fotos"><figure class="gal-it"><img src="modelos/placa-oficina-redonda.webp" alt="Placa redonda WhatsApp, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa redonda WhatsApp</b><span>marcações e dúvidas</span><a href="#orcamento" data-tag="Placa redonda WhatsApp (sugestões)">Quero este</a></figcaption></figure><figure class="gal-it"><img src="modelos/placa-oficina-capacete.webp" alt="Placa em forma de capacete, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa em forma de capacete</b><span>com caveira em relevo</span><a href="#orcamento" data-tag="Placa em forma de capacete (sugestões)">Quero este</a></figcaption></figure><figure class="gal-it"><img src="modelos/placa-oficina-mota.webp" alt="Placa em forma de mota, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa em forma de mota</b><span>recorte à medida</span><a href="#orcamento" data-tag="Placa em forma de mota (sugestões)">Quero este</a></figcaption></figure></div>
-      <div><h3>Placa de contacto para oficinas</h3><p class="lead" style="font-size:16px">No balcão ou na parede da oficina: o cliente encosta o telemóvel e abre logo o WhatsApp para marcar uma revisão ou tirar dúvidas.</p><div class="sugg-meta"><span><b>Abre:</b> WhatsApp de marcações</span><span><b>Formatos:</b> redonda, capacete ou mota, recortada à medida</span><span><b>Material sugerido:</b> PETG, resiste a óleo e calor</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="whats" data-frase="Fale connosco" data-mat="PETG">Quero esta</a></div>
+      <div><h3>Placa de contacto para oficinas</h3><p class="lead" style="font-size:16px">No balcão ou na parede da oficina: o cliente encosta o telemóvel e abre logo o WhatsApp para marcar uma revisão ou tirar dúvidas.</p><div class="sugg-meta"><span><b>Abre:</b> WhatsApp de marcações</span><span><b>Formatos:</b> redonda, capacete ou mota, recortada à medida</span><span><b>Preço:</b> desde 19 € por placa</span></div><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-uso="whats" data-frase="Fale connosco" data-mat="PLA">Quero esta</a></div>
     </div>
   </div>
 </section>
@@ -743,7 +755,7 @@ section.band{background:rgba(18,18,21,.78)}
     </div>
     <div class="panel" role="tabpanel" id="t-animais">
       <figure class="capa gal-it"><img src="modelos/tags/tag-pata-frente-verso.webp" alt="Tag pata para a coleira, frente e verso, exemplo" width="1000" height="1000" loading="lazy" decoding="async" data-abre="modelos/tags/tag-pata-frente-verso.webp"></figure>
-      <div><h3>Tag para a coleira</h3><p class="lead" style="font-size:16px">Se o seu animal se perder, quem o encontrar encosta o telemóvel à tag e vê logo como o contactar.</p><ul><li>Nome do animal e o seu telefone ou WhatsApp</li><li>Notas úteis: alergias, medicação, veterinário</li><li>Com link gerido, atualiza os dados sem trocar a tag</li><li>Leve e resistente à água (PETG)</li></ul><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-tag="Tag para animais (coleira)">Quero esta tag</a></div>
+      <div><h3>Tag para a coleira</h3><p class="lead" style="font-size:16px">Se o seu animal se perder, quem o encontrar encosta o telemóvel à tag e vê logo como o contactar.</p><ul><li>Nome do animal e o seu telefone ou WhatsApp</li><li>Notas úteis: alergias, medicação, veterinário</li><li>Com link gerido, atualiza os dados sem trocar a tag</li><li>Leve e resistente ao dia a dia</li></ul><a class="btn btn-gold" style="margin-top:20px" href="#orcamento" data-tag="Tag para animais (coleira)">Quero esta tag</a></div>
       <div class="galeria gal-tags"><figure class="gal-it"><img src="modelos/tags/tag-pata-frente-verso.webp" alt="Tag pata (frente e verso), frente e verso, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Tag pata (frente e verso)</b><span>Na foto: preto e dourado · há em 8 cores</span><a href="#orcamento" data-tag="Tag pata (frente e verso) em preto e dourado (tag para animais)">Quero esta</a></figcaption></figure><figure class="gal-it"><img src="modelos/tags/tag-gato-frente-verso.webp" alt="Tag gato (frente e verso), frente e verso, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Tag gato (frente e verso)</b><span>Na foto: preto e dourado · há em 8 cores</span><a href="#orcamento" data-tag="Tag gato (frente e verso) em preto e dourado (tag para animais)">Quero esta</a></figcaption></figure><figure class="gal-it"><img src="modelos/tags/animal-osso-vermelho.webp" alt="Tag osso em vermelho, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Tag osso</b><span>Na foto: Vermelho · há em 8 cores</span><a href="#orcamento" data-tag="Tag osso em vermelho (tag para animais)">Quero esta</a></figcaption></figure><figure class="gal-it"><img src="modelos/tags/animal-chapa-cinzenta.webp" alt="Chapa com relevo em cinzento, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Chapa com relevo</b><span>Na foto: Cinzento · há em 8 cores</span><a href="#orcamento" data-tag="Chapa com relevo em cinzento (tag para animais)">Quero esta</a></figcaption></figure><figure class="gal-it"><img src="modelos/tags/animal-redonda-dourada.webp" alt="Tag redonda com patas em dourado, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Tag redonda com patas</b><span>Na foto: Dourado · há em 8 cores</span><a href="#orcamento" data-tag="Tag redonda com patas em dourado (tag para animais)">Quero esta</a></figcaption></figure><figure class="gal-it"><img src="modelos/tags/animal-cao-cinzento.webp" alt="Tag cabeça de cão em cinzento, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Tag cabeça de cão</b><span>Na foto: Cinzento · há em 8 cores</span><a href="#orcamento" data-tag="Tag cabeça de cão em cinzento (tag para animais)">Quero esta</a></figcaption></figure><figure class="gal-it"><img src="modelos/tags/animal-gato-rosa.webp" alt="Tag cabeça de gato em rosa, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Tag cabeça de gato</b><span>Na foto: Rosa · há em 8 cores</span><a href="#orcamento" data-tag="Tag cabeça de gato em rosa (tag para animais)">Quero esta</a></figcaption></figure><figure class="gal-it"><img src="modelos/tags/animal-oval-preta.webp" alt="Tag oval texturada em preto, exemplo" width="1000" height="1000" loading="lazy" decoding="async"><figcaption><b>Tag oval texturada</b><span>Na foto: Preto · há em 8 cores</span><a href="#orcamento" data-tag="Tag oval texturada em preto (tag para animais)">Quero esta</a></figcaption></figure></div>
     </div>
     <div class="panel" role="tabpanel" id="t-criancas" hidden>
@@ -763,9 +775,8 @@ section.band{background:rgba(18,18,21,.78)}
     <div class="sec-head"><p class="eyebrow">Criar e personalizar</p><h2>A placa com a cara do seu negócio</h2><p class="lead">Carregue o seu logótipo, escreva o nome e a frase, escolha as letras e as cores. A placa muda à medida que escolhe. No fim, envie-nos o pedido com um toque e receba a prova digital em 24 horas.</p></div>
     <div class="conf">
       <form class="card conf-form" id="conf" onsubmit="return false">
-        <fieldset class="conf-f"><legend>Modelo da placa</legend><div class="modelos" id="cModelo">
-          <button type="button" data-v="mesa" aria-pressed="true"><span class="thumb foto"></span>Modelo placa padrão<br><small style="font-weight:500">preta texturada, com símbolo NFC</small></button>
-          <button type="button" data-v="livre" aria-pressed="false"><span class="thumb"></span>Exemplo<br><small style="font-weight:500">escolhe a cor da placa</small></button>
+        <fieldset class="conf-f" hidden><legend>Modelo da placa</legend><div class="modelos" id="cModelo">
+                    <button type="button" data-v="livre" aria-pressed="true"><span class="thumb"></span>Exemplo<br><small style="font-weight:500">escolhe a cor da placa</small></button>
         </div></fieldset>
         <fieldset class="conf-f"><legend>Logótipo e imagem <small style="font-weight:500;color:var(--muted)">(opcional)</small></legend>
           <div class="upl">
@@ -791,7 +802,7 @@ section.band{background:rgba(18,18,21,.78)}
         <fieldset class="conf-f"><legend>Letra da frase</legend><div class="chips-s" id="cFonteFrase"></div></fieldset>
         <fieldset class="conf-f" id="fsBase"><legend>Cor da placa</legend><div class="sws" id="cBase"><button type="button" aria-label="Preto" title="Preto" aria-pressed="true" data-c="#0c0c0e" style="background:#0c0c0e"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f1ede4" style="background:#f1ede4"></button><button type="button" aria-label="Cinzento" title="Cinzento" aria-pressed="false" data-c="#5e5e62" style="background:#5e5e62"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#1f3a8a" style="background:#1f3a8a"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#1f5a3a" style="background:#1f5a3a"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#8f1d2e" style="background:#8f1d2e"></button><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="false" data-c="#c9a24f" style="background:#c9a24f"></button></div></fieldset>
         <fieldset class="conf-f"><legend>Cor das letras</legend><div class="sws" id="cTxt"><button type="button" aria-label="Dourado" title="Dourado" aria-pressed="true" data-c="#d4ad5b" style="background:#d4ad5b"></button><button type="button" aria-label="Branco" title="Branco" aria-pressed="false" data-c="#f7f4ee" style="background:#f7f4ee"></button><button type="button" aria-label="Preto" title="Preto" aria-pressed="false" data-c="#111114" style="background:#111114"></button><button type="button" aria-label="Vermelho" title="Vermelho" aria-pressed="false" data-c="#c0263f" style="background:#c0263f"></button><button type="button" aria-label="Rosa" title="Rosa" aria-pressed="false" data-c="#e8afcf" style="background:#e8afcf"></button><button type="button" aria-label="Azul" title="Azul" aria-pressed="false" data-c="#3b6cf0" style="background:#3b6cf0"></button><button type="button" aria-label="Verde" title="Verde" aria-pressed="false" data-c="#3fa46a" style="background:#3fa46a"></button><button type="button" aria-label="Prateado" title="Prateado" aria-pressed="false" data-c="#c7c9cc" style="background:#c7c9cc"></button></div></fieldset>
-        <fieldset class="conf-f"><legend>Material</legend><div class="chips-s" id="cMat"><button type="button" aria-pressed="true" data-v="PLA">PLA · desde 19 €</button><button type="button" aria-pressed="false" data-v="PETG">PETG · desde 24 €</button></div></fieldset>
+        <div class="chips-s" id="cMat" hidden><button type="button" aria-pressed="true" data-v="PLA">PLA</button></div>
         <fieldset class="conf-f"><legend>Tipo de link</legend><div class="chips-s" id="cLink"><button type="button" aria-pressed="true" data-v="direto">Direto (definitivo)</button><button type="button" aria-pressed="false" data-v="gerido">Gerido (pode mudar) · Mais pedido</button></div><p class="hint" id="cLinkHint"></p></fieldset>
       </form>
       <div class="mini conf-prev" aria-live="polite"><div class="plaque" id="cPlaca"><img class="p-logo" id="pvLogo" alt="" hidden><img class="p-img" id="pvImg" alt="" hidden><div class="p-name" id="pvNome">O seu negócio</div><div class="p-stars" id="pvStars">★★★★★</div><div class="p-title" id="pvFrase">Avalie-nos</div><div class="p-tap" id="pvTap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 8.5a5 5 0 0 1 0 7M12.5 6a8.5 8.5 0 0 1 0 12M16 3.5a12 12 0 0 1 0 17"/></svg></div><div class="p-hint" id="pvHint">Encoste o telemóvel</div></div><p class="note" style="text-align:center;margin:16px 0 0">Pré-visualização aproximada. Recebe a prova final em 24 horas.</p><button class="btn btn-gold" type="button" id="cQuero" style="margin-top:16px">Quero esta placa</button></div>
@@ -815,7 +826,7 @@ section.band{background:rgba(18,18,21,.78)}
       <p class="lead" style="margin-bottom:24px">Cada placa é impressa em 3D, camada a camada, aqui em Portugal. O chip fica fechado lá dentro, protegido do uso diário.</p>
       <ol class="pd-list">
         <li data-l="1"><span class="n">1</span><span><b>Nome e logótipo em relevo</b><p>Impressos noutra cor, com relevo que se sente ao toque.</p></span></li>
-        <li data-l="2"><span class="n">2</span><span><b>Face da placa</b><p>Em PLA ou PETG, na cor que escolher, com acabamento texturizado.</p></span></li>
+        <li data-l="2"><span class="n">2</span><span><b>Face da placa</b><p>Em PLA mate, na cor que escolher, com acabamento texturizado.</p></span></li>
         <li data-l="3"><span class="n">3</span><span><b>Chip NFC selado</b><p>Fica fechado dentro da placa durante a impressão. Já vai programado e testado.</p></span></li>
         <li data-l="4"><span class="n">4</span><span><b>Base resistente</b><p>Fica de pé no balcão ou cola-se à parede. Não precisa de pilhas nem de tomada.</p></span></li>
       </ol>
@@ -825,12 +836,21 @@ section.band{background:rgba(18,18,21,.78)}
 
 <section id="materiais" class="band">
   <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Materiais</p><h2>Escolha a resistência certa</h2><p class="lead">Todas as placas levam um chip NFC compatível com qualquer telemóvel recente, já programado com o seu link.</p></div>
-    <div class="grid2">
-      <article class="card mat featured"><span class="tag">Mais pedido</span><h3>PLA</h3><div class="price">desde <b>19 €</b></div><ul><li>Cores vivas e acabamento mate</li><li>Leve e económico</li><li>Ideal para balcões e interiores</li></ul><a class="btn btn-gold" href="#orcamento" data-material="PLA">Escolher PLA</a><a href="produtos/placa-mesa-pla.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
-      <article class="card mat"><h3>PETG</h3><div class="price">desde <b>24 €</b></div><ul><li>A opção mais robusta</li><li>Resistente a impactos, humidade e calor</li><li>Para uso intenso todos os dias</li></ul><a class="btn" href="#orcamento" data-material="PETG">Escolher PETG</a><a href="produtos/placa-mesa-petg.html" style="font-size:14px;color:var(--muted)">Ver detalhes do produto →</a></article>
+    <div class="preco-d">
+      <div class="preco-l">
+        <p class="eyebrow">Preço</p>
+        <h2>A sua placa NFC personalizada</h2>
+        <ul><li>Impressa em 3D em PLA mate, com cores vivas</li><li>Nome e logótipo em relevo, chip NFC selado lá dentro</li><li>Chip já programado com o seu link e testado</li><li>Prova digital em 24 horas. Só paga depois de aprovar</li></ul>
+      </div>
+      <div class="preco-r">
+        <span class="preco-de">desde</span>
+        <div class="preco-v">19<small> €</small></div>
+        <span class="preco-p">por placa</span>
+        <a class="btn btn-gold" href="#criar">Criar a minha placa</a>
+        <a class="preco-mais" href="produtos/placa-mesa-pla.html">Ver detalhes do produto →</a>
+        <p class="note">Descontos para várias placas no mesmo pedido.</p>
+      </div>
     </div>
-    <p class="note">Preços por placa. Descontos para várias placas no mesmo pedido.</p>
   </div>
 </section>
 
@@ -856,12 +876,7 @@ section.band{background:rgba(18,18,21,.78)}
         <label for="fTel">Telemóvel / WhatsApp<input id="fTel" name="telefone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20"></label>
         <label for="fEmail">Email (opcional)<input id="fEmail" name="email" type="email" inputmode="email" autocomplete="email" maxlength="160"></label>
       </div>
-      <fieldset style="border:0;margin:0;padding:0;display:grid;gap:8px"><legend style="font-size:14px;font-weight:600;color:var(--muted);padding:0;margin-bottom:6px">Material</legend>
-        <div class="seg" style="grid-template-columns:repeat(2,1fr)">
-          <label><input type="radio" name="material" value="PLA" checked><span>PLA<small>desde 19 €</small></span></label>
-          <label><input type="radio" name="material" value="PETG"><span>PETG<small>desde 24 €</small></span></label>
-        </div>
-      </fieldset>
+      <input type="hidden" name="material" value="PLA">
       <label for="fQtd">Quantas placas?<input id="fQtd" name="quantidade" type="number" min="1" max="500" value="1" inputmode="numeric"></label>
       <label for="fMsg">O que quer que a placa faça?<textarea id="fMsg" name="mensagem" maxlength="2000" placeholder="Ex.: avaliações Google no balcão e Wi-Fi nas mesas"></textarea></label>
       <div class="hp" aria-hidden="true"><label for="fSite">Site<input id="fSite" name="site" tabindex="-1" autocomplete="off"></label></div>
@@ -1027,7 +1042,7 @@ section.band{background:rgba(18,18,21,.78)}
     direto: "Abre logo a sua página e fica bloqueado para sempre.",
     gerido: "Pode mudar o destino sem trocar a placa e recebe o relatório de toques."
   };
-  var st = { modelo: "mesa", dest: "google", pos: "cima", fonteNome: "moderno", fonteFrase: "moderno", base: "#0c0c0e", txt: "#d4ad5b", mat: "PLA", link: "direto" };
+  var st = { modelo: "livre", dest: "google", pos: "cima", fonteNome: "moderno", fonteFrase: "moderno", base: "#0c0c0e", txt: "#d4ad5b", mat: "PLA", link: "direto" };
   var escolhida = false;
 
   function lum(hex) { var n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255; }
@@ -1202,11 +1217,11 @@ section.band{background:rgba(18,18,21,.78)}
 
   draw();
 
-  /* Vindo das páginas de produto: ?material=PETG ou ?tag=animais já preenchem a escolha. */
+  /* Vindo das páginas de produto: ?material=PLA ou ?tag=animais já preenchem a escolha. */
   (function () {
     try {
       var q = new URLSearchParams(location.search), mat = q.get("material"), tag = q.get("tag");
-      if (mat === "PLA" || mat === "PETG") {
+      if (mat === "PLA") {
         st.mat = mat; marcar("cMat", "data-v", mat);
         var r = form.querySelector('input[name=material][value="' + mat + '"]'); if (r) r.checked = true;
       }
