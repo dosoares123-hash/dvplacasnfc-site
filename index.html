@@ -103,6 +103,14 @@ header.top{position:sticky;top:0;z-index:20;background:rgba(12,12,14,.86);backdr
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media (max-width:900px){.grid3{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:600px){.grid3{grid-template-columns:1fr}}
+.vid-main{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#000;aspect-ratio:16/9}
+.vid-main video,.vid-it video{width:100%;height:100%;display:block;object-fit:cover;background:#000}
+.vid-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+.vid-it{margin:0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.vid-it video{height:auto;aspect-ratio:16/9;object-fit:contain}
+.vid-it figcaption{padding:12px 14px;font-size:14px;color:var(--muted)}.vid-it figcaption b{display:block;color:var(--fg);font-family:var(--display);font-size:15px;margin-bottom:2px}
+@media (max-width:860px){.vid-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.vid-grid{grid-template-columns:1fr}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
 .use{display:grid;gap:10px;align-content:start}
 .use .ic{width:44px;height:44px;border-radius:12px;background:rgba(212,173,91,.12);color:var(--gold);display:grid;place-items:center}
@@ -596,6 +604,7 @@ section.band{background:rgba(18,18,21,.78)}
     </a>
     <nav aria-label="Secções"><ul>
       <li><a href="#maisvendidas">Mais vendidas</a></li>
+      <li><a href="#videos">Vídeos</a></li>
       <li><a href="#como">Como funciona</a></li>
       <li><a href="#faq">Perguntas</a></li>
       <li><a href="#pro">Plano Pro</a></li>
@@ -651,6 +660,14 @@ section.band{background:rgba(18,18,21,.78)}
     <div class="sec-head mv-head"><p class="eyebrow">Placas padrão</p><h2>As mais vendidas</h2><p class="lead">A placa de avaliações Google que os nossos clientes mais escolhem. Pronta a encomendar, em branco ou preto. O cliente encosta o telemóvel e abre logo a página para deixar as estrelas.</p></div>
     <div class="mv-grid"><figure class="gal-it mv-it"><span class=mv-badge>★ Mais vendida</span><img src="modelos/padrao-google-1.webp" alt="Duas placas NFC de avaliações Google, uma branca e uma preta, num balcão de madeira" width="750" height="1000" loading="eager" decoding="async"><figcaption><b>Placa Google · branca ou preta</b><span>escolha a cor do seu balcão</span><span class="mv-preco">desde <b>19 €</b></span><a href="#orcamento" data-tag="Placa Google · branca ou preta (placas padrão)">Quero esta</a></figcaption></figure><figure class="gal-it mv-it"><img src="modelos/padrao-google-4.webp" alt="Placas NFC pretas de avaliações Google em fila num balcão de madeira" width="750" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa Google preta</b><span>preto mate, ideal para balcões escuros</span><span class="mv-preco">desde <b>19 €</b></span><a href="#orcamento" data-tag="Placa Google preta (placas padrão)">Quero esta</a></figcaption></figure><figure class="gal-it mv-it"><img src="modelos/padrao-google-2.webp" alt="Placa NFC branca de avaliações Google em cima de um balcão" width="750" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa Google branca</b><span>logótipo Google em relevo e símbolo NFC</span><span class="mv-preco">desde <b>19 €</b></span><a href="#orcamento" data-tag="Placa Google branca (placas padrão)">Quero esta</a></figcaption></figure><figure class="gal-it mv-it"><img src="modelos/padrao-google-3.webp" alt="Placa NFC branca de avaliações Google vista de lado num balcão" width="750" height="1000" loading="lazy" decoding="async"><figcaption><b>Placa Google branca de balcão</b><span>fica de pé, sem pilhas nem tomada</span><span class="mv-preco">desde <b>19 €</b></span><a href="#orcamento" data-tag="Placa Google branca de balcão (placas padrão)">Quero esta</a></figcaption></figure></div>
     <p class="note mv-note">Fotos das nossas placas. Quer com o seu logótipo ou outras cores? <a href="#criar">Crie a sua placa aqui</a>.</p>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Em ação</p><h2>Veja um toque a funcionar</h2><p class="lead">O cliente encosta o telemóvel e abre logo o que precisa: avaliações, redes sociais ou o seu contacto. Sem apps e sem câmaras.</p></div>
+    <div class="vid-main"><video src="videos/hero.mp4" poster="videos/hero.webp" autoplay muted loop playsinline preload="metadata" aria-label="Vídeo: um toque com o telemóvel numa placa NFC abre as avaliações Google"></video></div>
+    <div class="vid-grid"><figure class="vid-it"><video src="videos/placa.mp4" poster="videos/placa.webp" controls muted playsinline preload="none"></video><figcaption><b>Placa de avaliações</b>mais estrelas no Google</figcaption></figure><figure class="vid-it"><video src="videos/tag.mp4" poster="videos/tag.webp" controls muted playsinline preload="none"></video><figcaption><b>Tags NFC</b>o seu Instagram no porta-chaves</figcaption></figure><figure class="vid-it"><video src="videos/cartao.mp4" poster="videos/cartao.webp" controls muted playsinline preload="none"></video><figcaption><b>Cartão de visita NFC</b>o contacto fica guardado</figcaption></figure><figure class="vid-it"><video src="videos/link-gerido.mp4" poster="videos/link-gerido.webp" controls muted playsinline preload="none"></video><figcaption><b>Link gerido</b>mude o destino quando quiser</figcaption></figure></div>
   </div>
 </section>
 
